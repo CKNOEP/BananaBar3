@@ -136,16 +136,16 @@ L.action_configdesc               = "Ouvre le menu popup de configuration";
 
 -- name for the "Target mob by symbol" menu entry in the mouse button settings menu
 -- this still exists in the menu, but is no longer supported in WoW 2.0
-L.action_target                   = "Ciblez le mob par symbole";
-L.action_targetdesc               = "Cibler le symbole correspondant ou de la marque du chasseur";
+L.action_target                   = "Pose le symbole sur le mob";
+L.action_targetdesc               = "Pose le symbole sur le mob";
 
 -- name for the config menu entry in the mouse button settings menu
 L.action_setsymbol                = "Définir le symbole de raid ou la marque du chasseur";
 L.action_setsymboldesc            = "Définir le symbole de raid ou la marque du chasseur sur la cible actuelle";
 
 -- name for the config menu entry in the mouse button settings menu
-L.action_setTargetsymbol                = "Target le Mob du Symbole (focus)";
-L.action_setTargetsymboldesc            = "Target le mob avec le Symbole lorsqu'il est ciblé par un joueur, target la cible ";
+L.action_setTargetsymbol                = "Cible le Mob du Symbole (focus)";
+L.action_setTargetsymboldesc            = "Cible le Mob porteur du Symbole";
 
 -- setting in the mobsettings menu, if activated this mob will get a symbol
 -- if you press the autosymbols key (binding_key)
@@ -158,8 +158,8 @@ L.autosymbolsoncombat             = "Activer les symboles automatiques lors de l
 L.autosymbolsoncombatdesc         = "Si activé : les symboles sont définis sur ce mob lorsqu'il entre en combat avec votre raid";
 
 -- if activated this mob will be SKIPPED for mouse over targeting        
-L.autosymbolsonmouseover          = "Désactiver les symboles automatiques au survol de la souris";
-L.autosymbolsonmouseoverdesc      = "Si coché, la configuration des symboles au survol de la souris est désactivée";
+L.autosymbolsonmouseover          = "Désactiver la pose des symboles automatiques au survol de la souris";
+L.autosymbolsonmouseoverdesc      = "Désactiver la pose des symboles au survol de la souris";
 
 -- description for the menu entrys for the specific mobs in the mobsettings menu          
 L.autosymboldesc                  = "Si coché, ce symbole est utilisé pour les symboles automatiques et les symboles automatiques au combat,"..
