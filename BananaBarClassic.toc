@@ -1,0 +1,25 @@
+## Interface: 11304
+## Title: BananaBar Raid Symbols Classic |cff7fff7f-Ace3-|r
+## Author: Bordeaux
+## Version: "2.0.3" 
+## Notes: BananaBar2 is a set of buttons and functions to manage everything you can do with raid symbols.
+## X-ReleaseDate: "2020-05-27T22:53:58Z"
+## X-Email: bananabar@jendro.de
+## X-Category: UnitFrame
+## X-Embeds: Ace3
+## OptionalDeps: Ace3
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: BananaBarClassicData
+embeds.xml
+SecureActionQueue-2.0.lua
+BananaBar2.xml
+BananaBarConstants.lua
+BananaBar2Locale-deDE.lua
+BananaBar2Locale-enUS.lua
+BananaBar2Locale-enGB.lua
+BananaBar2Locale-frFR.lua
+BananaBar2Button.lua
+BananaBar2AssistButton.lua
+BananaBar2.lua
+Bindings.xml
