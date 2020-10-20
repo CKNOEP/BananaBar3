@@ -1,4 +1,4 @@
-## Interface: 11304
+## Interface: 11305
 ## Title: BananaBar Raid Symbols Classic |cff7fff7f-Ace3-|r
 ## Author: Bordeaux , Lädygaga-Sulfuron
 ## Version: "3.0.0" 
