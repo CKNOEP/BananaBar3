@@ -1,12 +1,1 @@
-tag cf022dd76b3a181fb3fd4a92cc54b4e1b140eb58 2.0.3
-Author:	Carsten Jendro <15619117+Machibuse@users.noreply.github.com>
-Date:	Thu May 28 00:54:20 2020 +0200
-
-Change symbol order fix
-
-commit da72eaf1ef5bc496cedfd60428b80752303180ce
-Author: Carsten Jendro <15619117+Machibuse@users.noreply.github.com>
-Date:   Thu May 28 00:53:58 2020 +0200
-
-    Fix Change Symbol Order
 
