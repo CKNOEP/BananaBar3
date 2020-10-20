@@ -10,7 +10,7 @@
 ## OptionalDeps: Ace3
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
-## SavedVariables: BananaBarClassicData
+## SavedVariables: BananaBarClassicData3
 embeds.xml
 SecureActionQueue-2.0.lua
 BananaBar2.xml
