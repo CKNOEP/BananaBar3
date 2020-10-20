@@ -2,7 +2,7 @@
 ## Title: BananaBar Raid Symbols Classic |cff7fff7f-Ace3-|r
 ## Author: Bordeaux , Lädygaga-Sulfuron
 ## Version: "3.0.0" 
-## Notes: BananaBar2 is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
+## Notes: BananaBar is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
 ## X-ReleaseDate: "2020-05-27T22:53:58Z"
 ## X-Email: bananabar@jendro.de
 ## X-Category: UnitFrame
