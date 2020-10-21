@@ -1,5 +1,5 @@
 ## Interface: 11305
-## Title: BananaBar Raid Symbols Classic |cff7fff7f-Ace3-|r
+## Title: BananaBar3 Raid Symbols Classic |cff7fff7f-Ace3-|r
 ## Author: Bordeaux , Lädygaga-Sulfuron
 ## Version: "3.0.0" 
 ## Notes: BananaBar is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
@@ -13,13 +13,13 @@
 ## SavedVariables: BananaBarClassicData3
 embeds.xml
 SecureActionQueue-2.0.lua
-BananaBar2.xml
+BananaBar3.xml
 BananaBarConstants.lua
-BananaBar2Locale-deDE.lua
-BananaBar2Locale-enUS.lua
-BananaBar2Locale-enGB.lua
-BananaBar2Locale-frFR.lua
-BananaBar2Button.lua
-BananaBar2AssistButton.lua
-BananaBar2.lua
+BananaBar3Locale-deDE.lua
+BananaBar3Locale-enUS.lua
+BananaBar3Locale-enGB.lua
+BananaBar3Locale-frFR.lua
+BananaBar3Button.lua
+BananaBar3AssistButton.lua
+BananaBar3.lua
 Bindings.xml

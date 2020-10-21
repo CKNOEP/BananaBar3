@@ -1,7 +1,7 @@
 --ActionButtonTemplate
 
 
-local MAJOR_VERSION = "BananaBar2AssistButton-2.0"
+local MAJOR_VERSION = "BananaBar3AssistButton-2.0"
 local MINOR_VERSION = "$Rev: 101 $"
 
 
@@ -9,7 +9,7 @@ local SecureActionQueue = LibStub("SecureActionQueue-2.0")
 
 
 
-local BananaBar2AssistButton = LibStub:NewLibrary("BananaBar2AssistButton-2.0", 1)
+local BananaBar3AssistButton = LibStub:NewLibrary("BananaBar3AssistButton-2.0", 1)
 
 
 function prnt(text)
@@ -24,7 +24,7 @@ function BananaShowTargetDropDown()
 	ToggleDropDownMenu(1, nil, TargetFrameDropDown, "cursor");
 end
 
-function BananaBar2AssistButton:new(addon, name)
+function BananaBar3AssistButton:new(addon, name)
     o = {}
     setmetatable(o, self)
     self.__index = self
@@ -32,7 +32,7 @@ function BananaBar2AssistButton:new(addon, name)
     return o
 end
 
-function BananaBar2AssistButton:init(addon,name)
+function BananaBar3AssistButton:init(addon,name)
     self.AssistButton = true;
     self.Name = name;
     self.Addon = addon;
@@ -43,7 +43,7 @@ function BananaBar2AssistButton:init(addon,name)
     BananaBarButtonNameCounter = BananaBarButtonNameCounter +1;
     
 	
-		self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar2AssistButtonTemplate","SecureActionButtonTemplate"); 
+		self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3AssistButtonTemplate","SecureActionButtonTemplate"); 
 		
 		
 		
@@ -121,32 +121,32 @@ end
 
 -- Functions
 
-function BananaBar2AssistButton:SetButtonSymbol(index)
-    BananaBar2AssistButton:SetSymbolTexture(self.Icon,index);
+function BananaBar3AssistButton:SetButtonSymbol(index)
+    BananaBar3AssistButton:SetSymbolTexture(self.Icon,index);
 end
 
-function BananaBar2AssistButton:SetButtonTexture(tex)
-    BananaBar2AssistButton:SetSymbolTexture2(self.Icon,tex);
+function BananaBar3AssistButton:SetButtonTexture(tex)
+    BananaBar3AssistButton:SetSymbolTexture2(self.Icon,tex);
 end
 
 
-function BananaBar2AssistButton:SetTargetSymbol(index)
+function BananaBar3AssistButton:SetTargetSymbol(index)
     if index <= 0 then
         self.TargetSymbol:Hide();            
-        BananaBar2AssistButton:SetSymbolTexture(self.TargetSymbol,index);
+        BananaBar3AssistButton:SetSymbolTexture(self.TargetSymbol,index);
     else
-        BananaBar2AssistButton:SetSymbolTexture(self.TargetSymbol,index);
+        BananaBar3AssistButton:SetSymbolTexture(self.TargetSymbol,index);
         self.TargetSymbol:Show();            
     end
 end
 
 
-function BananaBar2AssistButton:SetDead(isdead)
+function BananaBar3AssistButton:SetDead(isdead)
     self.dead = isdead;
     self:UpdateDeadSymbol();
 end
 
-function BananaBar2AssistButton:UpdateDeadSymbol()
+function BananaBar3AssistButton:UpdateDeadSymbol()
     if self.dead and self.showDead then
         self.DeadSymbol:Show();
     else
@@ -154,13 +154,13 @@ function BananaBar2AssistButton:UpdateDeadSymbol()
     end
 end
 
-function BananaBar2AssistButton:EnableDeadSymbol(showDead)
+function BananaBar3AssistButton:EnableDeadSymbol(showDead)
     self.showDead = showDead;
     self:UpdateDeadSymbol();
 end
 
 
-function BananaBar2AssistButton:UpdateLayoutArrows(direction)
+function BananaBar3AssistButton:UpdateLayoutArrows(direction)
     if self.dockDirection == 1 then
         self.Arrows[3]:Show();
     else
@@ -183,14 +183,14 @@ function BananaBar2AssistButton:UpdateLayoutArrows(direction)
     end
 end
 
-function BananaBar2AssistButton:UpdateNormalArrows()
+function BananaBar3AssistButton:UpdateNormalArrows()
     self.Arrows[1]:Hide();
     self.Arrows[2]:Hide();
     self.Arrows[3]:Hide();
     self.Arrows[4]:Hide();
 end
 
-function BananaBar2AssistButton:UpdateArrows()
+function BananaBar3AssistButton:UpdateArrows()
     if self.Addon.layoutmode then
         self:UpdateLayoutArrows()
     else
@@ -200,7 +200,7 @@ end
 
 
 
-function BananaBar2AssistButton:Dock(direction, other)
+function BananaBar3AssistButton:Dock(direction, other)
     self.dockFrame = other;       
     self.dockDirection = direction;       
     self:UpdateArrows();
@@ -248,14 +248,14 @@ function BananaBar2AssistButton:Dock(direction, other)
     end
 end
 
-function BananaBar2AssistButton:OnLoad(mouseButton)
+function BananaBar3AssistButton:OnLoad(mouseButton)
 --    self.Addon:Print("OnLoad:"..self.FrameName);
 end
 
-function BananaBar2AssistButton:OnClick(mouseButton)
+function BananaBar3AssistButton:OnClick(mouseButton)
 	--self.Addon:Debug("Click:"..self.FrameName.." "..mouseButton);
     if not self.Addon.layoutmode then
-	    local  clicktype = BananaBar2AssistButton:GetClickType(mouseButton);
+	    local  clicktype = BananaBar3AssistButton:GetClickType(mouseButton);
 		--self.Addon:Print(clicktype);
 		if clicktype == 8 then
 			if self.AssistUnit then
@@ -270,7 +270,7 @@ function BananaBar2AssistButton:OnClick(mouseButton)
 	end
 end
 
-function BananaBar2AssistButton:OnMouseDown(mouseButton)
+function BananaBar3AssistButton:OnMouseDown(mouseButton)
     if self.Addon.layoutmode then
         if mouseButton == "RightButton" then
             self:Dock(BANANA_DOCK_NONE);
@@ -282,7 +282,7 @@ function BananaBar2AssistButton:OnMouseDown(mouseButton)
         elseif mouseButton == "Button4" then
             self.Addon:Set_layoutmode(false);
         elseif mouseButton == "Button5" then
-            BananaBar2AssistButton:UndockAll();
+            BananaBar3AssistButton:UndockAll();
         else
             --self.Addon:Debug("OnMouseDown:"..self.FrameName.." "..mouseButton);
         end
@@ -290,14 +290,14 @@ function BananaBar2AssistButton:OnMouseDown(mouseButton)
     end
 end
 
-function BananaBar2AssistButton:OnMouseUp(mouseButton)
+function BananaBar3AssistButton:OnMouseUp(mouseButton)
     if self.Addon.layoutmode then
         self:DragStop();
-        BananaBar2AssistButton:SaveAllPos();
+        BananaBar3AssistButton:SaveAllPos();
     end
 end
 
-function BananaBar2AssistButton:GetClickType(mouseButton)
+function BananaBar3AssistButton:GetClickType(mouseButton)
     local b = 0;
     if mouseButton == "LeftButton" then
         b = 0*8;
@@ -324,26 +324,26 @@ function BananaBar2AssistButton:GetClickType(mouseButton)
     return b;
 end
 
-function BananaBar2AssistButton:OnEnter()
+function BananaBar3AssistButton:OnEnter()
 	BananaBarButtonUnderMouse = self;
     self.Addon:SetTooltipButton(self);
 end
 
 
-function BananaBar2AssistButton:OnLeave()
+function BananaBar3AssistButton:OnLeave()
 	self.Addon:BananaSetCursor(nil)
 	BananaBarButtonUnderMouse = nil;
     self.Addon:SetTooltipButton(nil);
 end
 
-function BananaBar2AssistButton:DragStart()
+function BananaBar3AssistButton:DragStart()
     moveButton = self:GetMoveFrame();
     moveButton.frame:SetMovable(true);
     moveButton.frame:StartMoving();
     self.moving = true;
 end
 
-function BananaBar2AssistButton:DragStop()
+function BananaBar3AssistButton:DragStop()
     if self.moving then
         moveButton = self:GetMoveFrame();
         moveButton.frame:StopMovingOrSizing();
@@ -353,7 +353,7 @@ function BananaBar2AssistButton:DragStop()
     end
 end
 
-function BananaBar2AssistButton:AutoDock()
+function BananaBar3AssistButton:AutoDock()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         if self.ButtonId ~= i then
             local dx = self.frame:GetLeft()-BananaBarAllAssistButtons[i].frame:GetLeft();
@@ -361,22 +361,22 @@ function BananaBar2AssistButton:AutoDock()
             if i == 5 then
                 --self.Addon:Debug("xy:"..dx.." "..dy);
             end
-            if BananaBar2AssistButton:TestDiff(dx,dy,0,25,9) then
+            if BananaBar3AssistButton:TestDiff(dx,dy,0,25,9) then
                 --self.Addon:Debug("AutoDock:"..self.ButtonId.." oberhalb von "..i);
                 self:Dock(BANANA_DOCK_TOP,BananaBarAllAssistButtons[i]);
                 return;
             end
-            if BananaBar2AssistButton:TestDiff(dx,dy,25,0,9) then
+            if BananaBar3AssistButton:TestDiff(dx,dy,25,0,9) then
                 --self.Addon:Debug("AutoDock:"..self.ButtonId.." rechts von "..i);
                 self:Dock(BANANA_DOCK_RIGHT,BananaBarAllAssistButtons[i]);
                 return;
             end
-            if BananaBar2AssistButton:TestDiff(dx,dy,0,-25,9) then
+            if BananaBar3AssistButton:TestDiff(dx,dy,0,-25,9) then
                 --self.Addon:Debug("AutoDock:"..self.ButtonId.." unterhalb von "..i);
                 self:Dock(BANANA_DOCK_BOTTOM,BananaBarAllAssistButtons[i]);
                 return;
             end
-            if BananaBar2AssistButton:TestDiff(dx,dy,-25,0,9) then
+            if BananaBar3AssistButton:TestDiff(dx,dy,-25,0,9) then
                 --self.Addon:Debug("AutoDock:"..self.ButtonId.." links von "..i);
                 self:Dock(BANANA_DOCK_LEFT,BananaBarAllAssistButtons[i]);
                 return;
@@ -386,7 +386,7 @@ function BananaBar2AssistButton:AutoDock()
 end
 
 
-function BananaBar2AssistButton:SavePos()
+function BananaBar3AssistButton:SavePos()
 	if self.dockFrame then
         --dock settings speichern
         self.Addon.db.profile.ButtonLayout[self.Name].DockTo = self.dockFrame.Name;
@@ -405,10 +405,10 @@ function BananaBar2AssistButton:SavePos()
 end
 
 
-function BananaBar2AssistButton:LoadPos()
+function BananaBar3AssistButton:LoadPos()
     if self.Addon.db.profile.ButtonLayout[self.Name] then
         if self.Addon.db.profile.ButtonLayout[self.Name].DockDir ~= 0 then
-            local other = BananaBar2AssistButton:FindButtonByName(self.Addon.db.profile.ButtonLayout[self.Name].DockTo);
+            local other = BananaBar3AssistButton:FindButtonByName(self.Addon.db.profile.ButtonLayout[self.Name].DockTo);
             if other then
                 --self.Addon:Print("other= "..other.Name);
                 self:Dock(self.Addon.db.profile.ButtonLayout[self.Name].DockDir,other)
@@ -434,7 +434,7 @@ function BananaBar2AssistButton:LoadPos()
 end
 
 
-function BananaBar2AssistButton:UpdateVisible()
+function BananaBar3AssistButton:UpdateVisible()
     if (self.visible and self.Addon:IsActive() and self.Addon.db.profile.showraidinfo and self.Addon.ShowRaidInfo) or self.Addon.layoutmode or self.Addon.db.profile.showraidinfoall then
 		SecureActionQueue:FrameShow(self.frame);
         --self.frame:Show();
@@ -444,13 +444,13 @@ function BananaBar2AssistButton:UpdateVisible()
     end
 end
 
-function BananaBar2AssistButton:SetVisible(visible)
+function BananaBar3AssistButton:SetVisible(visible)
     self.visible = visible;
     self:UpdateVisible();
 end
 
 
-function BananaBar2AssistButton:GetMoveFrame()
+function BananaBar3AssistButton:GetMoveFrame()
     local moveFrame = self;
     for i= 1,50,1 do
         if moveFrame.dockFrame then
@@ -464,7 +464,7 @@ function BananaBar2AssistButton:GetMoveFrame()
     return nil;
 end
 
-function BananaBar2AssistButton:SetCount(number)
+function BananaBar3AssistButton:SetCount(number)
     if number then
         self.Count:SetText(tostring(number));
     else
@@ -472,7 +472,7 @@ function BananaBar2AssistButton:SetCount(number)
     end
 end
 
-function BananaBar2AssistButton:SetButtonName(name)
+function BananaBar3AssistButton:SetButtonName(name)
     if name then
         self.ButtonName:SetText(name);
     else
@@ -481,7 +481,7 @@ function BananaBar2AssistButton:SetButtonName(name)
     self.ButtonName2:SetText("");
 end
 
-function BananaBar2AssistButton:SetButtonName2(name)
+function BananaBar3AssistButton:SetButtonName2(name)
     if name then
         self.ButtonName2:SetText(name);
     else
@@ -491,7 +491,7 @@ function BananaBar2AssistButton:SetButtonName2(name)
 end
 
 
-function BananaBar2AssistButton:UpdateScale(scale)
+function BananaBar3AssistButton:UpdateScale(scale)
     if self.frame.dockFrame then
 		self.frame:SetScale(scale);
 	else
@@ -505,7 +505,7 @@ end
 
 -- STATIC Functions
 
-function BananaBar2AssistButton:SetSymbolTexture(frame, index)
+function BananaBar3AssistButton:SetSymbolTexture(frame, index)
     if index <= 0 then
         frame:SetTexture(BANANA_TEXTURE_NULL);            
         frame:SetTexCoord(0, 1, 0, 1);
@@ -528,13 +528,13 @@ function BananaBar2AssistButton:SetSymbolTexture(frame, index)
         );
     end
 end
-function BananaBar2AssistButton:SetSymbolTexture2(frame, tex)
+function BananaBar3AssistButton:SetSymbolTexture2(frame, tex)
     frame:SetTexture(tex);            
 	frame:SetTexCoord(0, 1, 0, 1);
 end
 
 
-function BananaBar2AssistButton:TestDiff(dx1,dy1,dx2,dy2,diff)
+function BananaBar3AssistButton:TestDiff(dx1,dy1,dx2,dy2,diff)
     local dx = dx1-dx2;
     local dy = dy1-dy2;
     if dx < 0 then 
@@ -552,7 +552,7 @@ function BananaBar2AssistButton:TestDiff(dx1,dy1,dx2,dy2,diff)
     return true;
 end
 
-function BananaBar2AssistButton:FindButtonByName(name)
+function BananaBar3AssistButton:FindButtonByName(name)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         if BananaBarAllAssistButtons[i].Name == name then
             return BananaBarAllAssistButtons[i];
@@ -561,46 +561,46 @@ function BananaBar2AssistButton:FindButtonByName(name)
     return nil;
 end
 
-function BananaBar2AssistButton:UpdateAllArrows()
+function BananaBar3AssistButton:UpdateAllArrows()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllAssistButtons[i]:UpdateArrows();
     end
 end
-function BananaBar2AssistButton:UpdateAllScale(scale)
+function BananaBar3AssistButton:UpdateAllScale(scale)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllAssistButtons[i]:UpdateScale(scale);
     end
 end
 
-function BananaBar2AssistButton:UndockAll()
+function BananaBar3AssistButton:UndockAll()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllAssistButtons[i]:Dock(BANANA_DOCK_NONE);
     end
 end
-function BananaBar2AssistButton:SaveAllPos()
+function BananaBar3AssistButton:SaveAllPos()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllAssistButtons[i]:SavePos()
     end
 end
-function BananaBar2AssistButton:LoadAllPos()
-    BananaBar2AssistButton:UndockAll();
+function BananaBar3AssistButton:LoadAllPos()
+    BananaBar3AssistButton:UndockAll();
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllAssistButtons[i]:LoadPos()
     end
 end
-function BananaBar2AssistButton:UpdateAllVisible()
+function BananaBar3AssistButton:UpdateAllVisible()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllAssistButtons[i]:UpdateVisible();
     end
 end
-function BananaBar2AssistButton:EnableAllDeadSymbol(showDead)
+function BananaBar3AssistButton:EnableAllDeadSymbol(showDead)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllAssistButtons[i].showDead = showDead;
         BananaBarAllAssistButtons[i]:UpdateDeadSymbol();
     end
 end 
 
-function BananaBar2AssistButton:UpdateAllButtonFrame(show)
+function BananaBar3AssistButton:UpdateAllButtonFrame(show)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         if show then
             BananaBarAllAssistButtons[i].NormalTexture:SetAlpha(1);
@@ -615,7 +615,7 @@ function BananaBar2AssistButton:UpdateAllButtonFrame(show)
 end
 
 
-function BananaBar2AssistButton:SetMobName(name)
+function BananaBar3AssistButton:SetMobName(name)
     if name then
         self.MobName:SetText(name);
     else
@@ -636,7 +636,7 @@ function CanSetSymbols()
     return false;
 end
 
-function BananaBar2AssistButton:SetSelected(value)
+function BananaBar3AssistButton:SetSelected(value)
 	if self.selected == value then
 		return;
 	end

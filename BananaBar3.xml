@@ -11,7 +11,7 @@
 		</FontHeight>
 		<Color r="1.0" g="0.7" b="0.7" />
 	</Font>
-	<Button name="BananaBar2ButtonTemplate" clampedToScreen="true"  inherits="SecureActionButtonTemplate"  virtual="true">
+	<Button name="BananaBar3ButtonTemplate" clampedToScreen="true"  inherits="SecureActionButtonTemplate"  virtual="true">
 				
 		<Size>
 			<AbsDimension x="36" y="36" />
@@ -269,7 +269,7 @@
 		<!-- mouseover -->
 		<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square" />
 	</Button>
-	<Button clampedToScreen="true" name="BananaBar2AssistButtonTemplate" virtual="true" inherits="SecureUnitButtonTemplate">
+	<Button clampedToScreen="true" name="BananaBar3AssistButtonTemplate" virtual="true" inherits="SecureUnitButtonTemplate">
 		<Size>
 			<AbsDimension x="36" y="36" />
 		</Size>
@@ -501,7 +501,7 @@
 			<OnShow>
 			</OnShow>
 			<OnHide>
-				BananaBar2:EscapePressed();
+				BananaBar3:EscapePressed();
 			</OnHide>
 		</Scripts>
 	</Frame>

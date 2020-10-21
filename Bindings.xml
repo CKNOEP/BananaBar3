@@ -1,20 +1,20 @@
 <Bindings>
-	<Binding name="BANANABAR2_BINDING_MOUSEOVER"  header="BANANABAR2_PLUGINNAME" runOnUp="true">
+	<Binding name="BananaBar3_BINDING_MOUSEOVER"  header="BananaBar3_PLUGINNAME" runOnUp="true">
 		if ( keystate == "down" ) then
-			BananaBar2:MouseOverSymbolsDown();
+			BananaBar3:MouseOverSymbolsDown();
 		else
-			BananaBar2:MouseOverSymbolsUp();
+			BananaBar3:MouseOverSymbolsUp();
 		end
 	</Binding>
-	<Binding name="BANANABAR2_BINDING_SEARCH"   runOnUp="true">
+	<Binding name="BananaBar3_BINDING_SEARCH"   runOnUp="true">
 		if ( keystate == "down" ) then
-			BananaBar2:SearchDown();
+			BananaBar3:SearchDown();
 		else
-			BananaBar2:SearchUp();
+			BananaBar3:SearchUp();
 		end
 	</Binding>
-	<Binding name="BANANABAR2_BINDING_KEY">
-		BananaBar2:SetSymbolsKeyPressed();
+	<Binding name="BananaBar3_BINDING_KEY">
+		BananaBar3:SetSymbolsKeyPressed();
 	</Binding>
 </Bindings>
 

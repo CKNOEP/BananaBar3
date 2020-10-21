@@ -1,5 +1,5 @@
 local AceLocale = LibStub:GetLibrary("AceLocale-3.0");
-local L = AceLocale:NewLocale("BananaBar2", "enGB", true);
+local L = AceLocale:NewLocale("BananaBar3", "enGB", true);
 
 if not L then return end
 
@@ -17,7 +17,7 @@ L.unmarked                     = "Unmarkiert";
 -- Short name of the Addon, should normally not be translated
 L.addonname                       = "BananaBar"; 
 
--- Long name of the Addon, the word BananaBar2 should normally not be translated, 
+-- Long name of the Addon, the word BananaBar3 should normally not be translated, 
 -- the appendix "Raid Symbols" can be translated
 L.addonnamelong                   = "BananaBar Raid Symbols";
 
@@ -108,7 +108,7 @@ L.layoutmodedesc                  = "Activetes the layoutmode.Use it to move and
 
 
 
--- scale the normal BananaBar2 button size
+-- scale the normal BananaBar3 button size
 L.scale                           = "Scale"; 
 L.scaledesc                       = "Scale the buttons from 10% to 200%"; 
 
@@ -120,9 +120,9 @@ L.scaleassistdesc                 = "Scale assist buttons the buttons from 10% t
 L.reset                           = "Reset"; 
 L.resetdesc                       = "reset all settings of the current profile"; 
 
--- this message comes up if BananaBar2 has detected that you have installed a newer version 
+-- this message comes up if BananaBar3 has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults
-L.oldprofilemessage               = "The settings of the loaded profile are from an older BananaBar2 "..
+L.oldprofilemessage               = "The settings of the loaded profile are from an older BananaBar3 "..
 			  "version, settings are resetted to their defaults.";
 
 -- name for the /bb2config console command

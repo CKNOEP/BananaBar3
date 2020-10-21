@@ -57,12 +57,12 @@ function SecureActionQueue:Shedule(sheduleid,type,par1,par2,par3,par4)
 end
 
 function SecureActionQueue:Execute(type,par1,par2,par3,par4)
-    --BananaBar2:Print("type "..type.." "..tostring(InCombat).." "..tostring(UnitAffectingCombat("player")))
+    --BananaBar3:Print("type "..type.." "..tostring(InCombat).." "..tostring(UnitAffectingCombat("player")))
     xpcall(self[type],onerror, self,par1,par2,par3,par4)
 end
 
 function onerror()
-    BananaBar2:Debug("SecureActionQueue:Execute Failed")
+    BananaBar3:Debug("SecureActionQueue:Execute Failed")
 end
 
 ------------------------------------------------------------------
@@ -90,7 +90,7 @@ end
 ------------------------------------------------------------------
 
 function SecureActionQueue:FrameSetAttribute(frame,key,value)
-	--BananaBar2:Print(frame,key,value);
+	--BananaBar3:Print(frame,key,value);
     local sheduleid = "FRAME_SETATTRIBUTE_"..frame:GetName().."#"..key;
     self:Shedule(sheduleid,"FRAME_SETATTRIBUTE",frame,key,value);
 end

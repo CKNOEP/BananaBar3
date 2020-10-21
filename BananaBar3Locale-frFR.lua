@@ -1,5 +1,5 @@
 local AceLocale = LibStub:GetLibrary("AceLocale-3.0");
-local L = AceLocale:NewLocale("BananaBar2", "frFR", false);
+local L = AceLocale:NewLocale("BananaBar3", "frFR", false);
 
 if not L then return end
 
@@ -17,7 +17,7 @@ L.unmarked                     = "Sans marque";
 -- Short name of the Addon, should normally not be translated
 L.addonname                       = "BananaBar"; 
 
--- Long name of the Addon, the word BananaBar2 should normally not be translated, 
+-- Long name of the Addon, the word BananaBar3 should normally not be translated, 
 -- the appendix "Raid Symbols" can be translated
 L.addonnamelong                   = "BananaBar Symboles de Raid";
 
@@ -108,7 +108,7 @@ L.layoutmodedesc                  = "Active le mode Modification des cadres.Util
 
 
 
--- scale the normal BananaBar2 button size
+-- scale the normal BananaBar3 button size
 L.scale                           = "échelle"; 
 L.scaledesc                       = "Échelle des boutons de 10% à 200%"; 
 
@@ -120,9 +120,9 @@ L.scaleassistdesc                 = "Boutons de modification de l'échelle 10% t
 L.reset                           = "Réinitialiser"; 
 L.resetdesc                       = "Réinitialiser tous les paramètres du profil actuel"; 
 
--- this message comes up if BananaBar2 has detected that you have installed a newer version 
+-- this message comes up if BananaBar3 has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults
-L.oldprofilemessage               = "TLes paramètres du profil chargé proviennent d'un ancien BananaBar2  "..
+L.oldprofilemessage               = "TLes paramètres du profil chargé proviennent d'un ancien BananaBar3  "..
 			  "version, les paramètres sont réinitialisés à leurs valeurs par défaut";
 
 -- name for the /bb2config console command

@@ -1,12 +1,12 @@
 --ActionButtonTemplate
 
 
-local MAJOR_VERSION = "BananaBar2Button-2.0"
+local MAJOR_VERSION = "BananaBar3Button-2.0"
 local MINOR_VERSION = "$Rev: 101 $"
 --Locale
-local L = LibStub("AceLocale-3.0"):GetLocale("BananaBar2")
+local L = LibStub("AceLocale-3.0"):GetLocale("BananaBar3")
 
-local BananaBar2Button = LibStub:NewLibrary("BananaBar2Button-2.0", 1)
+local BananaBar3Button = LibStub:NewLibrary("BananaBar3Button-2.0", 1)
 local SecureActionQueue = LibStub("SecureActionQueue-2.0")
 
 function prnt(text)
@@ -17,7 +17,7 @@ local BananaBarAllButtons = {};
 local BananaBarButtonNameCounter = 1;
 BananaBarButtonUnderMouse = nil;
 
-function BananaBar2Button:new(addon, name)
+function BananaBar3Button:new(addon, name)
     o = {}
     setmetatable(o, self)
     self.__index = self
@@ -27,7 +27,7 @@ function BananaBar2Button:new(addon, name)
 end
 
 
-function BananaBar2Button:init(addon,name)
+function BananaBar3Button:init(addon,name)
     self.Name = name;
     self.Addon = addon;
     self.FrameName = "BananaBarButton"..BananaBarButtonNameCounter;
@@ -36,8 +36,8 @@ function BananaBar2Button:init(addon,name)
     
 	BananaBarAllButtons[BananaBarButtonNameCounter] = self;
     BananaBarButtonNameCounter = BananaBarButtonNameCounter +1;
-    --self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar2ButtonTemplate","SecureActionButtonTemplate"); 
-    self.frame = CreateFrame("Button",self.FrameName,UIParent,"BananaBar2ButtonTemplate" , "SecureActionButtonTemplate"); 	
+    --self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3ButtonTemplate","SecureActionButtonTemplate"); 
+    self.frame = CreateFrame("Button",self.FrameName,UIParent,"BananaBar3ButtonTemplate" , "SecureActionButtonTemplate"); 	
 			
 	--self.Addon:Debug(self.FrameName.."unit"..self.Unit.."target")
 		SecureActionQueue:FrameSetAttribute(self.frame,"unit", "target")
@@ -133,11 +133,11 @@ end
 
 -- Functions
 
-function BananaBar2Button:SetButtonSymbol(index, unit)
-    BananaBar2Button:SetSymbolTexture(self.Icon,index);
+function BananaBar3Button:SetButtonSymbol(index, unit)
+    BananaBar3Button:SetSymbolTexture(self.Icon,index);
 end
 
-function BananaBar2Button:SetStopwatch(set)
+function BananaBar3Button:SetStopwatch(set)
     if set then
         self.Stopwatch:Show()
     else
@@ -145,11 +145,11 @@ function BananaBar2Button:SetStopwatch(set)
     end
 end
 
-function BananaBar2Button:SetButtonSymbolExtra(unit, icon)
-    BananaBar2Button:SetSymbolTexture(self.Icon,0, unit, icon);
+function BananaBar3Button:SetButtonSymbolExtra(unit, icon)
+    BananaBar3Button:SetSymbolTexture(self.Icon,0, unit, icon);
 end
 
-function BananaBar2Button:SetSheepSymbol(icon)
+function BananaBar3Button:SetSheepSymbol(icon)
     if icon == nil then
         self.SubIcon:Hide()
     else
@@ -158,7 +158,7 @@ function BananaBar2Button:SetSheepSymbol(icon)
     end
 end
 
-function BananaBar2Button:SetTimer(start, seconds)
+function BananaBar3Button:SetTimer(start, seconds)
     if start then
         local left = start + seconds - GetTime()+1
         if left > 0 then
@@ -169,10 +169,10 @@ function BananaBar2Button:SetTimer(start, seconds)
     else
         self.Timer:SetText("");
     end
-    --BananaBar2Button:SetSymbolTexture(self.Icon,0, unit, icon);
+    --BananaBar3Button:SetSymbolTexture(self.Icon,0, unit, icon);
 end
 
-function BananaBar2Button:SetSymbolTexture(frame, index, unit, icon)
+function BananaBar3Button:SetSymbolTexture(frame, index, unit, icon)
     if unit then
         if unit == "none" then
             if icon then
@@ -209,23 +209,23 @@ function BananaBar2Button:SetSymbolTexture(frame, index, unit, icon)
 end
 
 
-function BananaBar2Button:SetTargetSymbol(index)
+function BananaBar3Button:SetTargetSymbol(index)
     if index <= 0 then
         self.TargetSymbol:Hide();            
-        BananaBar2Button:SetSymbolTexture(self.TargetSymbol,index);
+        BananaBar3Button:SetSymbolTexture(self.TargetSymbol,index);
     else
-        BananaBar2Button:SetSymbolTexture(self.TargetSymbol,index);
+        BananaBar3Button:SetSymbolTexture(self.TargetSymbol,index);
         self.TargetSymbol:Show();            
     end
 end
 
 
-function BananaBar2Button:SetDead(isdead)
+function BananaBar3Button:SetDead(isdead)
     self.dead = isdead;
     self:UpdateDeadSymbol();
 end
 
-function BananaBar2Button:UpdateDeadSymbol()
+function BananaBar3Button:UpdateDeadSymbol()
     if self.dead and self.showDead then
         self.DeadSymbol:Show();
     else
@@ -233,12 +233,12 @@ function BananaBar2Button:UpdateDeadSymbol()
     end
 end
 
-function BananaBar2Button:SetHuntersmark(huntersmark)
+function BananaBar3Button:SetHuntersmark(huntersmark)
     self.huntersmark = huntersmark;
     self:UpdateHuntersmarkSymbol();
 end
 
-function BananaBar2Button:UpdateHuntersmarkSymbol()
+function BananaBar3Button:UpdateHuntersmarkSymbol()
     if self.huntersmark then
         self.HuntersmarkSymbol:Show();
     else
@@ -246,13 +246,13 @@ function BananaBar2Button:UpdateHuntersmarkSymbol()
     end
 end
 
-function BananaBar2Button:EnableDeadSymbol(showDead)
+function BananaBar3Button:EnableDeadSymbol(showDead)
     self.showDead = showDead;
     self:UpdateDeadSymbol();
 end
 
 
-function BananaBar2Button:UpdateLayoutArrows(direction)
+function BananaBar3Button:UpdateLayoutArrows(direction)
     if self.dockDirection == 1 then
         self.Arrows[3]:Show();
     else
@@ -275,14 +275,14 @@ function BananaBar2Button:UpdateLayoutArrows(direction)
     end
 end
 
-function BananaBar2Button:UpdateNormalArrows()
+function BananaBar3Button:UpdateNormalArrows()
     self.Arrows[1]:Hide();
     self.Arrows[2]:Hide();
     self.Arrows[3]:Hide();
     self.Arrows[4]:Hide();
 end
 
-function BananaBar2Button:UpdateArrows()
+function BananaBar3Button:UpdateArrows()
     if self.Addon.layoutmode then
         self:UpdateLayoutArrows()
     else
@@ -292,7 +292,7 @@ end
 
 
 
-function BananaBar2Button:Dock(direction, other)
+function BananaBar3Button:Dock(direction, other)
 
     --self.Addon:Debug("Dock called");
     --self.Addon:Debug(direction);
@@ -347,17 +347,17 @@ function BananaBar2Button:Dock(direction, other)
     end
 end
 
-function BananaBar2Button:OnLoad(frame)
+function BananaBar3Button:OnLoad(frame)
     --self.Addon:Print("OnLoad:"..self.FrameName);
 end
 
-function BananaBar2Button:OnClick(mouseButton)
+function BananaBar3Button:OnClick(mouseButton)
 	--self.Addon:Debug("Click quoi:"..self.FrameName.." "..(mouseButton or 'null'));
-	--self.Addon:Debug(BananaBar2Button:GetClickType(mouseButton));
+	--self.Addon:Debug(BananaBar3Button:GetClickType(mouseButton));
 
 	
     if not self.Addon.layoutmode then
-	    local  clicktype = BananaBar2Button:GetClickType(mouseButton);
+	    local  clicktype = BananaBar3Button:GetClickType(mouseButton);
 	    u="target"
 		
 		if UnitExists(u) then 
@@ -367,9 +367,9 @@ function BananaBar2Button:OnClick(mouseButton)
 	end
 end
 
-function BananaBar2Button:OnMouseDown(mouseButton, frame)
+function BananaBar3Button:OnMouseDown(mouseButton, frame)
     --self.Addon:Debug("OnMouseDown:"..self.FrameName.." "..(mouseButton or 'null'));
-	local  clicktype = BananaBar2Button:GetClickType(mouseButton);
+	local  clicktype = BananaBar3Button:GetClickType(mouseButton);
 	    u="target"
 		if UnitExists(u) then 
 		Targetunitname=UnitName(u)
@@ -389,14 +389,14 @@ function BananaBar2Button:OnMouseDown(mouseButton, frame)
         elseif mouseButton == "Button4" then
             self.Addon:Set_layoutmode(false);
         elseif mouseButton == "Button5" then
-            BananaBar2Button:UndockAll();
+            BananaBar3Button:UndockAll();
         else
             --self.Addon:Debug("OnMouseDown:"..self.FrameName.." "..(mouseButton or 'null')); 
         end
         return;
     else
-    	BananaBar2:DragPrepare(self,mouseButton);
-    local  clicktype = BananaBar2Button:GetClickType(mouseButton);
+    	BananaBar3:DragPrepare(self,mouseButton);
+    local  clicktype = BananaBar3Button:GetClickType(mouseButton);
 	if  mouseButton == "RightButton" then -- Target Unit
           self.Addon:ExecuteAction(self, clicktype); 
         elseif mouseButton == "LeftButton" then -- Set Target
@@ -412,16 +412,16 @@ function BananaBar2Button:OnMouseDown(mouseButton, frame)
     end
 	end
 end
-function BananaBar2Button:OnMouseUp(mouseButton, frame)
+function BananaBar3Button:OnMouseUp(mouseButton, frame)
     if self.Addon.layoutmode then
         self:DragStop();
-        BananaBar2Button:SaveAllPos();
+        BananaBar3Button:SaveAllPos();
     else
-    	BananaBar2:DragStop(BananaBarButtonUnderMouse,mouseButton);
+    	BananaBar3:DragStop(BananaBarButtonUnderMouse,mouseButton);
     end
 end
 
-function BananaBar2Button:GetClickType(mouseButton, frame)
+function BananaBar3Button:GetClickType(mouseButton, frame)
     local b = 0;
     if mouseButton == "LeftButton" then
         b = 0*8;
@@ -448,28 +448,28 @@ function BananaBar2Button:GetClickType(mouseButton, frame)
     return b;
 end
 
-function BananaBar2Button:OnEnter()
-    --self.Addon:Print("BananaBar2Button:OnEnter")
+function BananaBar3Button:OnEnter()
+    --self.Addon:Print("BananaBar3Button:OnEnter")
 	BananaBarButtonUnderMouse = self;
     self.Addon:SetTooltipButton(self);
 end
 
 
-function BananaBar2Button:OnLeave()
-    --self.Addon:Print("BananaBar2Button:OnLeave")
+function BananaBar3Button:OnLeave()
+    --self.Addon:Print("BananaBar3Button:OnLeave")
 	self.Addon:BananaSetCursor(nil)
 	BananaBarButtonUnderMouse = nil;
     self.Addon:SetTooltipButton(nil);
 end
 
-function BananaBar2Button:DragStart()
+function BananaBar3Button:DragStart()
     moveButton = self:GetMoveFrame();
     moveButton.frame:SetMovable(true);
     moveButton.frame:StartMoving();
     self.moving = true;
 end
 
-function BananaBar2Button:DragStop()
+function BananaBar3Button:DragStop()
     if self.moving then
         moveButton = self:GetMoveFrame();
         moveButton.frame:StopMovingOrSizing();
@@ -479,7 +479,7 @@ function BananaBar2Button:DragStop()
     end
 end
 
-function BananaBar2Button:AutoDock()
+function BananaBar3Button:AutoDock()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         if self.ButtonId ~= i then
             local dx = self.frame:GetLeft()-BananaBarAllButtons[i].frame:GetLeft();
@@ -487,22 +487,22 @@ function BananaBar2Button:AutoDock()
             if i == 5 then
                 --self.Addon:Debug("xy:"..dx.." "..dy);
             end
-            if BananaBar2Button:TestDiff(dx,dy,0,25,9) then
+            if BananaBar3Button:TestDiff(dx,dy,0,25,9) then
                 --self.Addon:Debug("AutoDock:"..self.ButtonId.." oberhalb von "..i);
                 self:Dock(BANANA_DOCK_TOP,BananaBarAllButtons[i]);
                 return;
             end
-            if BananaBar2Button:TestDiff(dx,dy,25,0,9) then
+            if BananaBar3Button:TestDiff(dx,dy,25,0,9) then
                 --self.Addon:Debug("AutoDock:"..self.ButtonId.." rechts von "..i);
                 self:Dock(BANANA_DOCK_RIGHT,BananaBarAllButtons[i]);
                 return;
             end
-            if BananaBar2Button:TestDiff(dx,dy,0,-25,9) then
+            if BananaBar3Button:TestDiff(dx,dy,0,-25,9) then
                 --self.Addon:Debug("AutoDock:"..self.ButtonId.." unterhalb von "..i);
                 self:Dock(BANANA_DOCK_BOTTOM,BananaBarAllButtons[i]);
                 return;
             end
-            if BananaBar2Button:TestDiff(dx,dy,-25,0,9) then
+            if BananaBar3Button:TestDiff(dx,dy,-25,0,9) then
                 --self.Addon:Debug("AutoDock:"..self.ButtonId.." links von "..i);
                 self:Dock(BANANA_DOCK_LEFT,BananaBarAllButtons[i]);
                 return;
@@ -512,7 +512,7 @@ function BananaBar2Button:AutoDock()
 end
 
 
-function BananaBar2Button:SavePos()
+function BananaBar3Button:SavePos()
 	if self.dockFrame then
         --dock settings speichern
         self.Addon.db.profile.ButtonLayout[self.Name].DockTo = self.dockFrame.Name;
@@ -531,10 +531,10 @@ function BananaBar2Button:SavePos()
 end
 
 
-function BananaBar2Button:LoadPos()
+function BananaBar3Button:LoadPos()
     if self.Addon.db.profile.ButtonLayout[self.Name] then
         if self.Addon.db.profile.ButtonLayout[self.Name].DockDir ~= 0 then
-            local other = BananaBar2Button:FindButtonByName(self.Addon.db.profile.ButtonLayout[self.Name].DockTo);
+            local other = BananaBar3Button:FindButtonByName(self.Addon.db.profile.ButtonLayout[self.Name].DockTo);
             if other then
                 --self.Addon:Print("other= "..other.Name);
                 self:Dock(self.Addon.db.profile.ButtonLayout[self.Name].DockDir,other)
@@ -559,7 +559,7 @@ function BananaBar2Button:LoadPos()
     end
 end
 
-function BananaBar2Button:UpdateVisible()
+function BananaBar3Button:UpdateVisible()
     if (self.visible and self.Addon:IsActive() and self.Addon.ShowButtons) or self.Addon.layoutmode then
         self.frame:Show();
     else
@@ -567,13 +567,13 @@ function BananaBar2Button:UpdateVisible()
     end
 end
 
-function BananaBar2Button:SetVisible(visible)
+function BananaBar3Button:SetVisible(visible)
     self.visible = visible;
     self:UpdateVisible();
 end
 
 
-function BananaBar2Button:GetMoveFrame()
+function BananaBar3Button:GetMoveFrame()
     local moveFrame = self;
     for i= 1,BANANA_MAX_BUTTONS,1 do
         if moveFrame.dockFrame then
@@ -587,7 +587,7 @@ function BananaBar2Button:GetMoveFrame()
     return nil;
 end
 
-function BananaBar2Button:SetCount(number)
+function BananaBar3Button:SetCount(number)
     if number then
         self.Count:SetText(tostring(number));
     else
@@ -597,7 +597,7 @@ end
 
 
 
-function BananaBar2Button:UpdateScale(scale)
+function BananaBar3Button:UpdateScale(scale)
     if self.frame.dockFrame then
 		self.frame:SetScale(scale);
 	else
@@ -612,7 +612,7 @@ end
 -- STATIC Functions
 
 
-function BananaBar2Button:TestDiff(dx1,dy1,dx2,dy2,diff)
+function BananaBar3Button:TestDiff(dx1,dy1,dx2,dy2,diff)
     local dx = dx1-dx2;
     local dy = dy1-dy2;
     if dx < 0 then 
@@ -630,7 +630,7 @@ function BananaBar2Button:TestDiff(dx1,dy1,dx2,dy2,diff)
     return true;
 end
 
-function BananaBar2Button:FindButtonByName(name)
+function BananaBar3Button:FindButtonByName(name)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         if BananaBarAllButtons[i].Name == name then
             return BananaBarAllButtons[i];
@@ -639,13 +639,13 @@ function BananaBar2Button:FindButtonByName(name)
     return nil;
 end
 
-function BananaBar2Button:UpdateAllArrows()
+function BananaBar3Button:UpdateAllArrows()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i]:UpdateArrows();
     end
 end
 
-function BananaBar2Button:UpdateAllExtraInfo(show)
+function BananaBar3Button:UpdateAllExtraInfo(show)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
 		if show then
 			BananaBarAllButtons[i].HealthBar:Show();
@@ -658,41 +658,41 @@ function BananaBar2Button:UpdateAllExtraInfo(show)
 end
 
 
-function BananaBar2Button:UpdateAllScale(scale)
+function BananaBar3Button:UpdateAllScale(scale)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i]:UpdateScale(scale);
     end
 end
 
-function BananaBar2Button:UndockAll()
+function BananaBar3Button:UndockAll()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i]:Dock(BANANA_DOCK_NONE);
     end
 end
-function BananaBar2Button:SaveAllPos()
+function BananaBar3Button:SaveAllPos()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i]:SavePos()
     end
 end
-function BananaBar2Button:LoadAllPos()
-    BananaBar2Button:UndockAll();
+function BananaBar3Button:LoadAllPos()
+    BananaBar3Button:UndockAll();
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i]:LoadPos()
     end
 end
-function BananaBar2Button:UpdateAllVisible()
+function BananaBar3Button:UpdateAllVisible()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i]:UpdateVisible();
     end
 end
-function BananaBar2Button:EnableAllDeadSymbol(showDead)
+function BananaBar3Button:EnableAllDeadSymbol(showDead)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i].showDead = showDead;
         BananaBarAllButtons[i]:UpdateDeadSymbol();
     end
 end 
 
-function BananaBar2Button:UpdateAllButtonFrame(show)
+function BananaBar3Button:UpdateAllButtonFrame(show)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         if show then
             BananaBarAllButtons[i].NormalTexture:SetAlpha(1);
@@ -705,7 +705,7 @@ function BananaBar2Button:UpdateAllButtonFrame(show)
         end
     end
 end
-function BananaBar2Button:UpdateAllButtonBack(show)
+function BananaBar3Button:UpdateAllButtonBack(show)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         if show then
             BananaBarAllButtons[i].Buttonback:SetAlpha(0.75);
@@ -715,7 +715,7 @@ function BananaBar2Button:UpdateAllButtonBack(show)
     end
 end
 
-function BananaBar2Button:SetMobName(name)
+function BananaBar3Button:SetMobName(name)
     if name then
         self.MobName:SetText(name);
     else
@@ -736,7 +736,7 @@ function CanSetSymbols()
     return false;
 end
 
-function BananaBar2Button:SetSelected(value)
+function BananaBar3Button:SetSelected(value)
 	if self.selected == value then
 		return;
 	end

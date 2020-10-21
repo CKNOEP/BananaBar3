@@ -1,6 +1,6 @@
-﻿BananaBar2 =
+﻿BananaBar3 =
     LibStub("AceAddon-3.0"):NewAddon(
-    "BananaBar2",
+    "BananaBar3",
     "AceConsole-3.0",
     "AceHook-3.0",
     "AceEvent-3.0",
@@ -8,12 +8,12 @@
     "AceTimer-3.0"
 )
 
-local L = LibStub("AceLocale-3.0"):GetLocale("BananaBar2")
+local L = LibStub("AceLocale-3.0"):GetLocale("BananaBar3")
 
 --local Tablet = LibStub("Tablet-2.0")
 
-local BananaBar2AssistButton = LibStub("BananaBar2AssistButton-2.0")
-local BananaBar2Button = LibStub("BananaBar2Button-2.0")
+local BananaBar3AssistButton = LibStub("BananaBar3AssistButton-2.0")
+local BananaBar3Button = LibStub("BananaBar3Button-2.0")
 
 local SecureActionQueue = LibStub("SecureActionQueue-2.0")
 
@@ -21,22 +21,22 @@ local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
 local actual_settings_version = 4
 
-BINDING_HEADER_BANANABAR2_PLUGINNAME = L["addonnamelong"]
-BINDING_NAME_BANANABAR2_BINDING_MOUSEOVER = L["binding_mouseover"]
-BINDING_NAME_BANANABAR2_BINDING_KEY = L["binding_key"]
-BINDING_NAME_BANANABAR2_BINDING_SEARCH = L["binding_search"]
+BINDING_HEADER_BananaBar3_PLUGINNAME = L["addonnamelong"]
+BINDING_NAME_BananaBar3_BINDING_MOUSEOVER = L["binding_mouseover"]
+BINDING_NAME_BananaBar3_BINDING_KEY = L["binding_key"]
+BINDING_NAME_BananaBar3_BINDING_SEARCH = L["binding_search"]
 
-BananaBar2.name = L["addonname"]
-BananaBar2.version = "2.0.3";
-BananaBar2.date = "2020-05-27T22:53:58Z";
-BananaBar2.hasIcon = "Interface\\Addons\\BananaBarClassic\\Images\\BananaBar64"
-BananaBar2.defaultMinimapPosition = 170
+BananaBar3.name = L["addonname"]
+BananaBar3.version = "2.0.3";
+BananaBar3.date = "2020-05-27T22:53:58Z";
+BananaBar3.hasIcon = "Interface\\Addons\\BananaBarClassic\\Images\\BananaBar64"
+BananaBar3.defaultMinimapPosition = 170
 
 
 
 --local options = {
 options = {
-    handler = BananaBar2,
+    handler = BananaBar3,
     type = "group",
     args = {
         updaterate = {
@@ -45,10 +45,10 @@ options = {
             name = L["updaterate"],
             desc = L["updateratedesc"],
             get = function()
-                return BananaBar2:Get_updaterate()
+                return BananaBar3:Get_updaterate()
             end,
             set = function(info, v)
-                BananaBar2:Set_updaterate(v)
+                BananaBar3:Set_updaterate(v)
             end,
             min = 0.1,
             max = 2,
@@ -62,7 +62,7 @@ options = {
             width = "full",
             type = "execute",
             func = function()
-                BananaBar2:ResetSettings()
+                BananaBar3:ResetSettings()
             end
         },
         layoutmode = {
@@ -71,10 +71,10 @@ options = {
             width = "full",
             desc = L["layoutmodedesc"],
             get = function()
-                return BananaBar2:Get_layoutmode()
+                return BananaBar3:Get_layoutmode()
             end,
             set = function(info, v)
-                BananaBar2:Set_layoutmode(v)
+                BananaBar3:Set_layoutmode(v)
             end,
             order = 5
         },
@@ -84,10 +84,10 @@ options = {
             name = L["autosetcombat"],
             desc = L["autosetcombatdesc"],
             get = function()
-                return BananaBar2:Get_autosetcombat()
+                return BananaBar3:Get_autosetcombat()
             end,
             set = function(info, v)
-                BananaBar2:Set_autosetcombat(v)
+                BananaBar3:Set_autosetcombat(v)
             end,
             order = 4
         },
@@ -97,10 +97,10 @@ options = {
             name = L["showdebugmessages"],
             desc = L["showdebugmessagesdesc"],
             get = function()
-                return BananaBar2:Get_showdebugmessages()
+                return BananaBar3:Get_showdebugmessages()
             end,
             set = function(info, v)
-                BananaBar2:Set_showdebugmessages(v)
+                BananaBar3:Set_showdebugmessages(v)
             end,
             order = 3
         },
@@ -131,59 +131,62 @@ options = {
                 width = "full",
                 name = "",
                 values = {
-                    [10] = "Left mouse button",
-                    [11] = "Right mouse button",
+                    --[10] = "Left mouse button",
+                    --[11] = "Right mouse button",
                     [12] = "Middle mouse button",
-                    [13] = "Mouse 4",
-                    [14] = "Mouse 5",
+                    --[13] = "Mouse 4",
+                    --[14] = "Mouse 5",
                 },
                 get = function()
-                    return BananaBar2:Get_action_part_mouse("action_config", v)
+                    return BananaBar3:Get_action_part_mouse("action_config", v)
                 end,
                 set = function(info, v)
-                    BananaBar2:Set_action_part_mouse("action_config", v)
+                    BananaBar3:Set_action_part_mouse("action_config", v)
                 end,
                 order = 1
             },
-				config_shift = {
-                type = "toggle",
-                width = "half",
-                name = L["shift"],
-                desc = L["shiftdesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_config", 1)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_config", 1, v)
-                end,
-                order = 2
-            },
-				config_control = {
-                type = "toggle",
-                width = "half",
-                name = L["control"],
-                desc = L["controldesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_config", 2)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_config", 2, v)
-                end,
-                order = 3
-            },
-				config_alt = {
-                type = "toggle",
-                width = "half",
-                name = L["alt"],
-                desc = L["altdesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_config", 3)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_config", 3, v)
-                end,
-                order = 4
-            },
+				--config_shift = {
+                --type = "toggle",
+                --width = "half",
+				--name = L["shift"],
+                --desc = L["shiftdesc"],
+                ----get = function()
+                --    return BananaBar3:Get_action_part("action_config", 1)
+                --end,
+                --set = function(info, v)
+                --    BananaBar3:Set_action_part("action_config", 1, v)
+                --end,
+                
+				--order = 2
+            --},
+				--config_control = {
+                --type = "toggle",
+                --width = "half",
+				--name = L["control"],
+                --desc = L["controldesc"],
+                --get = function()
+                --    return BananaBar3:Get_action_part("action_config", 2)
+                --end,
+                --set = function(info, v)
+                --    BananaBar3:Set_action_part("action_config", 2, v)
+                --end,
+               
+			   -- order = 3
+            --},
+				--config_alt = {
+                --type = "toggle",
+                --width = "half",
+				--name = L["alt"],
+                --desc = L["altdesc"],
+                --get = function()
+                --    return BananaBar3:Get_action_part("action_config", 3)
+                --end,
+                --set = function(info, v)
+                --    BananaBar3:Set_action_part("action_config", 3, v)
+                --end,
+                
+				--order = 4
+            --},
              action_targetsetsymbol = {
                 type = "header",
                 name = L["action_setTargetsymbol"],
@@ -196,58 +199,61 @@ options = {
                 name = "",
                 values = {
                     [10] = "Left mouse button",
-                    [11] = "Right mouse button",
-                    [12] = "Middle mouse button",
-                    [13] = "Mouse 4",
-                    [14] = "Mouse 5",
+                    --[11] = "Right mouse button",
+                    --[12] = "Middle mouse button",
+                    --[13] = "Mouse 4",
+                    --[14] = "Mouse 5",
                 },
                 get = function()
-                    return BananaBar2:Get_action_part_mouse("action_setTargetsymbol", v)
+                    return BananaBar3:Get_action_part_mouse("action_setTargetsymbol", v)
                 end,
                 set = function(info, v)
-                    BananaBar2:Set_action_part_mouse("action_setTargetsymbol", v)
+                    BananaBar3:Set_action_part_mouse("action_setTargetsymbol", v)
                 end,
                 order = 11
             },
-				targetsetsymbol_shift = {
-                type = "toggle",
-                width = "half",
-                name = L["shift"],
-                desc = L["shiftdesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_setTargetsymbol", 1)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_setTargetsymbol", 1, v)
-                end,
-                order = 12
-            },
-				targetsetsymbol_control = {
-                type = "toggle",
-                width = "half",
-                name = L["control"],
-                desc = L["controldesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_setTargetsymbol", 2)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_setTargetsymbol", 2, v)
-                end,
-                order = 13
-            },
-				targetsetsymbol_alt = {
-                type = "toggle",
-                width = "half",
-                name = L["alt"],
-                desc = L["altdesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_setTargetsymbol", 3)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_setTargetsymbol", 3, v)
-                end,
-                order = 14
-            },
+		--		targetsetsymbol_shift = {
+        --        type = "toggle",
+        --        width = "half",
+        --        name = L["shift"],
+        --        desc = L["shiftdesc"],
+        --        get = function()
+        --            return BananaBar3:Get_action_part("action_setTargetsymbol", 1)
+        --        end,
+        --        set = function(info, v)
+        --            BananaBar3:Set_action_part("action_setTargetsymbol", 1, v)
+        --        end,
+        --        order = 0
+		--		--order = 12
+        --    },
+		--		targetsetsymbol_control = {
+        --        type = "toggle",
+        --        width = "half",
+        --        name = L["control"],
+        --        desc = L["controldesc"],
+        --        get = function()
+        --            return BananaBar3:Get_action_part("action_setTargetsymbol", 2)
+        --        end,
+        --        set = function(info, v)
+        --            BananaBar3:Set_action_part("action_setTargetsymbol", 2, v)
+        --        end,
+        --        order = 0
+		--		--order = 13
+        --    },
+		--		targetsetsymbol_alt = {
+        --        type = "toggle",
+        --        width = "half",
+        --        name = L["alt"],
+        --        desc = L["altdesc"],
+        --        get = function()
+        --            return BananaBar3:Get_action_part("action_setTargetsymbol", 3)
+        --        end,
+        --        set = function(info, v)
+        --            BananaBar3:Set_action_part("action_setTargetsymbol", 3, v)
+        --        end,
+        --        order = 0
+		--		--order = 14
+        --    },
              action_setsymbol = {
                 type = "header",
                 name = L["action_setsymbol"],
@@ -259,59 +265,62 @@ options = {
                 width = "full",
                 name = "",
                 values = {
-                    [10] = "Left mouse button",
+                    --[10] = "Left mouse button",
                     [11] = "Right mouse button",
-                    [12] = "Middle mouse button",
-                    [13] = "Mouse 4",
-                    [14] = "Mouse 5",
+                    --[12] = "Middle mouse button",
+                    --[13] = "Mouse 4",
+                    --[14] = "Mouse 5",
                 },
                 get = function()
-                    return BananaBar2:Get_action_part_mouse("action_setsymbol", v)
+                    return BananaBar3:Get_action_part_mouse("action_setsymbol", v)
                 end,
                 set = function(info, v)
-                    BananaBar2:Set_action_part_mouse("action_setsymbol", v)
+                    BananaBar3:Set_action_part_mouse("action_setsymbol", v)
                 end,
                 order = 21
             },
-				setsymbol_shift = {
-                type = "toggle",
-                width = "half",
-                name = L["shift"],
-                desc = L["shiftdesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_setsymbol", 1)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_setsymbol", 1, v)
-                end,
-                order = 22
-            },
-				setsymbol_control = {
-                type = "toggle",
-                width = "half",
-                name = L["control"],
-                desc = L["controldesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_setsymbol", 2)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_setsymbol", 2, v)
-                end,
-                order = 23
-            },
-				setsymbol_alt = {
-                type = "toggle",
-                width = "half",
-                name = L["alt"],
-                desc = L["altdesc"],
-                get = function()
-                    return BananaBar2:Get_action_part("action_setsymbol", 3)
-                end,
-                set = function(info, v)
-                    BananaBar2:Set_action_part("action_setsymbol", 3, v)
-                end,
-                order = 24
-            },
+		--		setsymbol_shift = {
+        --        type = "toggle",
+        --        width = "half",
+        --        name = L["shift"],
+        --        desc = L["shiftdesc"],
+        --        get = function()
+        --            return BananaBar3:Get_action_part("action_setsymbol", 1)
+        --        end,
+        --        set = function(info, v)
+        --            BananaBar3:Set_action_part("action_setsymbol", 1, v)
+        --        end,
+        --        order = 0
+				--order = 22
+        --    },
+		--		setsymbol_control = {
+        --        type = "toggle",
+        --        width = "half",
+        --        name = L["control"],
+        --        desc = L["controldesc"],
+        --        get = function()
+        --            return BananaBar3:Get_action_part("action_setsymbol", 2)
+        --        end,
+        --        set = function(info, v)
+        --            BananaBar3:Set_action_part("action_setsymbol", 2, v)
+        --        end,
+        --        order = 0
+		--		--order = 23
+        --    },
+		--		setsymbol_alt = {
+        --        type = "toggle",
+        --        width = "half",
+        --        name = L["alt"],
+        --        desc = L["altdesc"],
+        --        get = function()
+        --            return BananaBar3:Get_action_part("action_setsymbol", 3)
+        --        end,
+        --        set = function(info, v)
+        --            BananaBar3:Set_action_part("action_setsymbol", 3, v)
+        --        end,
+        --        order = 0
+		--		--order = 24
+        --    },
 		}
        },
         visibility = {
@@ -325,10 +334,10 @@ options = {
                     name = L["scale"],
                     desc = L["scaledesc"],
                     get = function()
-                        return BananaBar2:Get_scale()
+                        return BananaBar3:Get_scale()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_scale(v)
+                        BananaBar3:Set_scale(v)
                     end,
                     min = 10,
                     max = 200,
@@ -341,10 +350,10 @@ options = {
                     name = L["scaleassist"],
                     desc = L["scaleassistdesc"],
                     get = function()
-                        return BananaBar2:Get_scaleassist()
+                        return BananaBar3:Get_scaleassist()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_scaleassist(v)
+                        BananaBar3:Set_scaleassist(v)
                     end,
                     min = 10,
                     max = 200,
@@ -357,10 +366,10 @@ options = {
                     name = L["hideunused"],
                     desc = L["hideunuseddesc"],
                     get = function()
-                        return BananaBar2:Get_hideunused()
+                        return BananaBar3:Get_hideunused()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_hideunused(v)
+                        BananaBar3:Set_hideunused(v)
                     end,
                     order = 2
                 },
@@ -370,10 +379,10 @@ options = {
                     name = L["hidebuttonframes"],
                     desc = L["hidebuttonframesdesc"],
                     get = function()
-                        return BananaBar2:Get_hidebuttonframes()
+                        return BananaBar3:Get_hidebuttonframes()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_hidebuttonframes(v)
+                        BananaBar3:Set_hidebuttonframes(v)
                     end,
                     order = 3
                 },
@@ -383,10 +392,10 @@ options = {
                     name = L["hidebuttonback"],
                     desc = L["hidebuttonbackdesc"],
                     get = function()
-                        return BananaBar2:Get_hidebuttonback()
+                        return BananaBar3:Get_hidebuttonback()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_hidebuttonback(v)
+                        BananaBar3:Set_hidebuttonback(v)
                     end,
                     order = 3
                 },
@@ -396,10 +405,10 @@ options = {
                     name = L["markdead"],
                     desc = L["markdeaddesc"],
                     get = function()
-                        return BananaBar2:Get_markdead()
+                        return BananaBar3:Get_markdead()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_markdead(v)
+                        BananaBar3:Set_markdead(v)
                     end,
                     order = 4
                 },
@@ -409,10 +418,10 @@ options = {
                     name = L["showinraid"],
                     desc = L["showinraiddesc"],
                     get = function()
-                        return BananaBar2:Get_showinraid()
+                        return BananaBar3:Get_showinraid()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showinraid(v)
+                        BananaBar3:Set_showinraid(v)
                     end,
                     order = 20
                 },
@@ -422,10 +431,10 @@ options = {
                     name = L["showinparty"],
                     desc = L["showinpartydesc"],
                     get = function()
-                        return BananaBar2:Get_showinparty()
+                        return BananaBar3:Get_showinparty()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showinparty(v)
+                        BananaBar3:Set_showinparty(v)
                     end,
                     order = 21
                 },
@@ -435,10 +444,10 @@ options = {
                     name = L["showoutofgroup"],
                     desc = L["showoutofgroupdesc"],
                     get = function()
-                        return BananaBar2:Get_showoutofgroup()
+                        return BananaBar3:Get_showoutofgroup()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showoutofgroup(v)
+                        BananaBar3:Set_showoutofgroup(v)
                     end,
                     order = 22
                 },
@@ -448,10 +457,10 @@ options = {
                     name = L["showraidinfoall"],
                     desc = L["showraidinfoalldesc"],
                     get = function()
-                        return BananaBar2:Get_showraidinfoall()
+                        return BananaBar3:Get_showraidinfoall()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showraidinfoall(v)
+                        BananaBar3:Set_showraidinfoall(v)
                     end,
                     order = 23
                 },
@@ -461,10 +470,10 @@ options = {
                     name = L["showraidinfo"],
                     desc = L["showraidinfodesc"],
                     get = function()
-                        return BananaBar2:Get_showraidinfo()
+                        return BananaBar3:Get_showraidinfo()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showraidinfo(v)
+                        BananaBar3:Set_showraidinfo(v)
                     end,
                     order = 23
                 },
@@ -474,10 +483,10 @@ options = {
                     name = L["showextrainfo"],
                     desc = L["showextrainfodesc"],
                     get = function()
-                        return BananaBar2:Get_showextrainfo()
+                        return BananaBar3:Get_showextrainfo()
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showextrainfo(v)
+                        BananaBar3:Set_showextrainfo(v)
                     end,
                     order = 24
                 }
@@ -494,10 +503,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLOR1 .. L["symbolname1"] .. "|r",
                     desc = L["showbuttondesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(1)
+                        return BananaBar3:Get_showbutton(1)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(1, v)
+                        BananaBar3:Set_showbutton(1, v)
                     end,
                     order = 1
                 },
@@ -506,10 +515,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLOR2 .. L["symbolname2"] .. "|r",
                     desc = L["showbuttondesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(2)
+                        return BananaBar3:Get_showbutton(2)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(2, v)
+                        BananaBar3:Set_showbutton(2, v)
                     end,
                     order = 2
                 },
@@ -518,10 +527,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLOR3 .. L["symbolname3"] .. "|r",
                     desc = L["showbuttondesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(3)
+                        return BananaBar3:Get_showbutton(3)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(3, v)
+                        BananaBar3:Set_showbutton(3, v)
                     end,
                     order = 3
                 },
@@ -530,10 +539,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLOR4 .. L["symbolname4"] .. "|r",
                     desc = L["showbuttondesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(4)
+                        return BananaBar3:Get_showbutton(4)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(4, v)
+                        BananaBar3:Set_showbutton(4, v)
                     end,
                     order = 4
                 },
@@ -542,10 +551,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLOR5 .. L["symbolname5"] .. "|r",
                     desc = L["showbuttondesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(5)
+                        return BananaBar3:Get_showbutton(5)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(5, v)
+                        BananaBar3:Set_showbutton(5, v)
                     end,
                     order = 5
                 },
@@ -554,10 +563,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLOR6 .. L["symbolname6"] .. "|r",
                     desc = L["showbuttondesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(6)
+                        return BananaBar3:Get_showbutton(6)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(6, v)
+                        BananaBar3:Set_showbutton(6, v)
                     end,
                     order = 6
                 },
@@ -566,10 +575,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLOR7 .. L["symbolname7"] .. "|r",
                     desc = L["showbuttondesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(7)
+                        return BananaBar3:Get_showbutton(7)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(7, v)
+                        BananaBar3:Set_showbutton(7, v)
                     end,
                     order = 7
                 },
@@ -578,10 +587,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLOR8 .. L["symbolname8"] .. "|r",
                     desc = L["showbuttondesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(8)
+                        return BananaBar3:Get_showbutton(8)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(8, v)
+                        BananaBar3:Set_showbutton(8, v)
                     end,
                     order = 8
                 },
@@ -590,10 +599,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLORHM .. L["unmarked"] .. " 1|r",
                     desc = L["showunmarkeddesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(9)
+                        return BananaBar3:Get_showbutton(9)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(9, v)
+                        BananaBar3:Set_showbutton(9, v)
                     end,
                     order = 9
                 },
@@ -602,10 +611,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLORHM .. L["unmarked"] .. " 2|r",
                     desc = L["showunmarkeddesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(10)
+                        return BananaBar3:Get_showbutton(10)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(10, v)
+                        BananaBar3:Set_showbutton(10, v)
                     end,
                     order = 10
                 },
@@ -614,10 +623,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLORHM .. L["unmarked"] .. " 3|r",
                     desc = L["showunmarkeddesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(11)
+                        return BananaBar3:Get_showbutton(11)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(11, v)
+                        BananaBar3:Set_showbutton(11, v)
                     end,
                     order = 11
                 },
@@ -626,10 +635,10 @@ options = {
                     name = "|c" .. BANANA_SYMBOL_COLORHM .. L["unmarked"] .. " 4|r",
                     desc = L["showunmarkeddesc"],
                     get = function()
-                        return BananaBar2:Get_showbutton(12)
+                        return BananaBar3:Get_showbutton(12)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_showbutton(12, v)
+                        BananaBar3:Set_showbutton(12, v)
                     end,
                     order = 12
                 }
@@ -672,10 +681,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordermouse", 1)
+                        return BananaBar3:Get_buttonorder("symbolordermouse", 1)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordermouse", 1, v)
+                        BananaBar3:Set_buttonorder("symbolordermouse", 1, v)
                     end,
                     order = 2
                 },
@@ -696,10 +705,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordermouse", 2)
+                        return BananaBar3:Get_buttonorder("symbolordermouse", 2)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordermouse", 2, v)
+                        BananaBar3:Set_buttonorder("symbolordermouse", 2, v)
                     end,
                     order = 4
                 },
@@ -720,10 +729,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordermouse", 3)
+                        return BananaBar3:Get_buttonorder("symbolordermouse", 3)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordermouse", 3, v)
+                        BananaBar3:Set_buttonorder("symbolordermouse", 3, v)
                     end,
                     order = 6
                 },
@@ -744,10 +753,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordermouse", 4)
+                        return BananaBar3:Get_buttonorder("symbolordermouse", 4)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordermouse", 4, v)
+                        BananaBar3:Set_buttonorder("symbolordermouse", 4, v)
                     end,
                     order = 8
                 },
@@ -768,10 +777,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordermouse", 5)
+                        return BananaBar3:Get_buttonorder("symbolordermouse", 5)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordermouse", 5, v)
+                        BananaBar3:Set_buttonorder("symbolordermouse", 5, v)
                     end,
                     order = 10
                 },
@@ -792,10 +801,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordermouse", 6)
+                        return BananaBar3:Get_buttonorder("symbolordermouse", 6)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordermouse", 6, v)
+                        BananaBar3:Set_buttonorder("symbolordermouse", 6, v)
                     end,
                     order = 12
                 },
@@ -816,10 +825,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordermouse", 7)
+                        return BananaBar3:Get_buttonorder("symbolordermouse", 7)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordermouse", 7, v)
+                        BananaBar3:Set_buttonorder("symbolordermouse", 7, v)
                     end,
                     order = 14
                 },
@@ -840,10 +849,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordermouse", 8)
+                        return BananaBar3:Get_buttonorder("symbolordermouse", 8)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordermouse", 8, v)
+                        BananaBar3:Set_buttonorder("symbolordermouse", 8, v)
                     end,
                     order = 16
                 }
@@ -887,10 +896,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolorderhotkey", 1)
+                        return BananaBar3:Get_buttonorder("symbolorderhotkey", 1)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolorderhotkey", 1, v)
+                        BananaBar3:Set_buttonorder("symbolorderhotkey", 1, v)
                     end,
                     order = 2
                 },
@@ -911,10 +920,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolorderhotkey", 2)
+                        return BananaBar3:Get_buttonorder("symbolorderhotkey", 2)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolorderhotkey", 2, v)
+                        BananaBar3:Set_buttonorder("symbolorderhotkey", 2, v)
                     end,
                     order = 4
                 },
@@ -935,10 +944,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolorderhotkey", 3)
+                        return BananaBar3:Get_buttonorder("symbolorderhotkey", 3)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolorderhotkey", 3, v)
+                        BananaBar3:Set_buttonorder("symbolorderhotkey", 3, v)
                     end,
                     order = 6
                 },
@@ -959,10 +968,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolorderhotkey", 4)
+                        return BananaBar3:Get_buttonorder("symbolorderhotkey", 4)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolorderhotkey", 4, v)
+                        BananaBar3:Set_buttonorder("symbolorderhotkey", 4, v)
                     end,
                     order = 8
                 },
@@ -983,10 +992,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolorderhotkey", 5)
+                        return BananaBar3:Get_buttonorder("symbolorderhotkey", 5)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolorderhotkey", 5, v)
+                        BananaBar3:Set_buttonorder("symbolorderhotkey", 5, v)
                     end,
                     order = 10
                 },
@@ -1007,10 +1016,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolorderhotkey", 6)
+                        return BananaBar3:Get_buttonorder("symbolorderhotkey", 6)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolorderhotkey", 6, v)
+                        BananaBar3:Set_buttonorder("symbolorderhotkey", 6, v)
                     end,
                     order = 12
                 },
@@ -1031,10 +1040,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolorderhotkey", 7)
+                        return BananaBar3:Get_buttonorder("symbolorderhotkey", 7)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolorderhotkey", 7, v)
+                        BananaBar3:Set_buttonorder("symbolorderhotkey", 7, v)
                     end,
                     order = 14
                 },
@@ -1055,10 +1064,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolorderhotkey", 8)
+                        return BananaBar3:Get_buttonorder("symbolorderhotkey", 8)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolorderhotkey", 8, v)
+                        BananaBar3:Set_buttonorder("symbolorderhotkey", 8, v)
                     end,
                     order = 16
                 }
@@ -1102,10 +1111,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordercombat", 1)
+                        return BananaBar3:Get_buttonorder("symbolordercombat", 1)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordercombat", 1, v)
+                        BananaBar3:Set_buttonorder("symbolordercombat", 1, v)
                     end,
                     order = 2
                 },
@@ -1126,10 +1135,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordercombat", 2)
+                        return BananaBar3:Get_buttonorder("symbolordercombat", 2)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordercombat", 2, v)
+                        BananaBar3:Set_buttonorder("symbolordercombat", 2, v)
                     end,
                     order = 4
                 },
@@ -1150,10 +1159,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordercombat", 3)
+                        return BananaBar3:Get_buttonorder("symbolordercombat", 3)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordercombat", 3, v)
+                        BananaBar3:Set_buttonorder("symbolordercombat", 3, v)
                     end,
                     order = 6
                 },
@@ -1174,10 +1183,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordercombat", 4)
+                        return BananaBar3:Get_buttonorder("symbolordercombat", 4)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordercombat", 4, v)
+                        BananaBar3:Set_buttonorder("symbolordercombat", 4, v)
                     end,
                     order = 8
                 },
@@ -1198,10 +1207,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordercombat", 5)
+                        return BananaBar3:Get_buttonorder("symbolordercombat", 5)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordercombat", 5, v)
+                        BananaBar3:Set_buttonorder("symbolordercombat", 5, v)
                     end,
                     order = 10
                 },
@@ -1222,10 +1231,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordercombat", 6)
+                        return BananaBar3:Get_buttonorder("symbolordercombat", 6)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordercombat", 6, v)
+                        BananaBar3:Set_buttonorder("symbolordercombat", 6, v)
                     end,
                     order = 12
                 },
@@ -1246,10 +1255,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordercombat", 7)
+                        return BananaBar3:Get_buttonorder("symbolordercombat", 7)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordercombat", 7, v)
+                        BananaBar3:Set_buttonorder("symbolordercombat", 7, v)
                     end,
                     order = 14
                 },
@@ -1270,10 +1279,10 @@ options = {
                     style = "dropdown",
                     desc = L["buttonorderdesc"],
                     get = function()
-                        return BananaBar2:Get_buttonorder("symbolordercombat", 8)
+                        return BananaBar3:Get_buttonorder("symbolordercombat", 8)
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_buttonorder("symbolordercombat", 8, v)
+                        BananaBar3:Set_buttonorder("symbolordercombat", 8, v)
                     end,
                     order = 16
                 }
@@ -1297,12 +1306,11 @@ local defaults = {
         showinparty = true,
         showoutofgroup = true,
         showraidinfo = true,
-        showextrainfo = true,
+        showextrainfo = false,
         actions = {
-            action_setsymbol = 2,
-			action_setsymbol2 = 2,
-            action_setTargetsymbol = 2,
-			action_config = 8
+            action_setsymbol = 8,
+			action_setTargetsymbol = 0,
+			action_config = 16
         },
         showbutton = {
             [1] = true,
@@ -1635,24 +1643,24 @@ local defaults = {
     }
 }
 
-LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar2", options, {"bb2", "bb", "bananabar"})
+LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar3", options, {"bb2", "bb", "bananabar"})
 
 ------------------------------------------
 --- OnInitialize
 ------------------------------------------
-function BananaBar2:OnInitialize()
+function BananaBar3:OnInitialize()
     self.TARGETS = {}
     self.TARGETMARKS = {}
     self.IGNOREMARKS = {}
     self.IGNOREMOBS = {}
     self.AURAINFO = {}
 
-    self.db = LibStub("AceDB-3.0"):New("BananaBarClassicData", defaults, true)
+    self.db = LibStub("AceDB-3.0"):New("BananaBarClassicData3", defaults, true)
 
     self.BananaUpdateTimer = self:ScheduleRepeatingTimer("BananaUpdate", self.db.profile.updaterate, self)
     self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 1, self)
 
-    AceConfigDialog:AddToBlizOptions("BananaBar2")
+    AceConfigDialog:AddToBlizOptions("BananaBar3")
 
     --self.dewdrop = AceLibrary("Dewdrop-2.0")
 
@@ -1661,7 +1669,7 @@ function BananaBar2:OnInitialize()
     self.Buttons = {}
     for i = 1, BANANA_MAX_BUTTONS, 1 do
         self:Debug("create new button ".."Nr"..i);
-        self.Buttons[i] = BananaBar2Button:new(self, "Nr" .. i)
+        self.Buttons[i] = BananaBar3Button:new(self, "Nr" .. i)
         if i > BANANA_RAIDSYMBOL_BUTTON_COUNT then
             self.Buttons[i]:SetButtonSymbolExtra(nil)
         else
@@ -1680,7 +1688,7 @@ function BananaBar2:OnInitialize()
 	
     self.AssistButtons = {}
     for i = 1, 40, 1 do
-        self.AssistButtons[i] = BananaBar2AssistButton:new(BananaBar2, "Assist" .. i)
+        self.AssistButtons[i] = BananaBar3AssistButton:new(BananaBar3, "Assist" .. i)
         self.AssistButtons[i]:SetButtonSymbol(4)
         if i > 1 then
             if mod(i, 5) == 1 then
@@ -1692,7 +1700,7 @@ function BananaBar2:OnInitialize()
 			
         end
     end
-    BananaBar2AssistButton:UpdateAllButtonFrame(false)
+    BananaBar3AssistButton:UpdateAllButtonFrame(false)
 
     --self.AssistButtons[1].frame:SetPoint("CENTER", "UIParent", "CENTER",-2,0);
 
@@ -1714,15 +1722,15 @@ function BananaBar2:OnInitialize()
     --	local args = AceLibrary("AceDB-2.0"):GetAceOptionsDataTable(self)
     --	for k,v in pairs(args) do
     --		if self.OnMenuRequest.args[k] == nil then
-    --		BananaBar2:Print("ä:"..k);
+    --		BananaBar3:Print("ä:"..k);
     --			self.OnMenuRequest.args[k] = v
     --		end
     --	end
 
-    self.frame = CreateFrame("Frame", "BananaBar2DummyFrame")
+    self.frame = CreateFrame("Frame", "BananaBar3DummyFrame")
     self.frame:Hide()
     self.GetIcon = function()
-        return BananaBar2.hasIcon
+        return BananaBar3.hasIcon
     end
     self.GetTitle = function()
         return L["addonname"]
@@ -1731,7 +1739,7 @@ function BananaBar2:OnInitialize()
         return false
     end
     self.OpenMenu = function()
-        BananaBar2:Execute_Config()
+        BananaBar3:Execute_Config()
     end
 
     self.mouseOverlayFrame = CreateFrame("Frame", "BananaMouseOverlay", UIParent, "SecureActionButtonTemplate")
@@ -1907,33 +1915,33 @@ local damageEventTypes = {
 local knownSpellsNameDummyId = nil
 
 
-function BananaBar2:CHAT_MSG_TARGETICONS(event, a1, a2, a3, a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19, ...)
-    BananaBar2:Dump("a-ev",event);
-    BananaBar2:Dump("a-a1",a1);
-    BananaBar2:Dump("a-a2",a2);
-    BananaBar2:Dump("a-a3",a3);
-    BananaBar2:Dump("a-a4",a4);
-    BananaBar2:Dump("a-a5",a5);
-    BananaBar2:Dump("a-a6",a6);
-    BananaBar2:Dump("a-a7",a7);
-    BananaBar2:Dump("a-a8",a8);
-    BananaBar2:Dump("a-a9",a9);
-    BananaBar2:Dump("a-a10",a10);
-    BananaBar2:Dump("a-a11",a11);
-    BananaBar2:Dump("a-a12",a12);
-    BananaBar2:Dump("a-a13",a13);
-    BananaBar2:Dump("a-a14",a14);
-    BananaBar2:Dump("a-a15",a15);
-    BananaBar2:Dump("a-a16",a16);
-    BananaBar2:Dump("a-a17",a17);
-    BananaBar2:Dump("a-a18",a18);
-    BananaBar2:Dump("a-a19",a19);
+function BananaBar3:CHAT_MSG_TARGETICONS(event, a1, a2, a3, a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,a15,a16,a17,a18,a19, ...)
+    BananaBar3:Dump("a-ev",event);
+    BananaBar3:Dump("a-a1",a1);
+    BananaBar3:Dump("a-a2",a2);
+    BananaBar3:Dump("a-a3",a3);
+    BananaBar3:Dump("a-a4",a4);
+    BananaBar3:Dump("a-a5",a5);
+    BananaBar3:Dump("a-a6",a6);
+    BananaBar3:Dump("a-a7",a7);
+    BananaBar3:Dump("a-a8",a8);
+    BananaBar3:Dump("a-a9",a9);
+    BananaBar3:Dump("a-a10",a10);
+    BananaBar3:Dump("a-a11",a11);
+    BananaBar3:Dump("a-a12",a12);
+    BananaBar3:Dump("a-a13",a13);
+    BananaBar3:Dump("a-a14",a14);
+    BananaBar3:Dump("a-a15",a15);
+    BananaBar3:Dump("a-a16",a16);
+    BananaBar3:Dump("a-a17",a17);
+    BananaBar3:Dump("a-a18",a18);
+    BananaBar3:Dump("a-a19",a19);
 end
 
-function BananaBar2:RAID_TARGET_UPDATE()
+function BananaBar3:RAID_TARGET_UPDATE()
 end
 
-function BananaBar2:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
+function BananaBar3:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
     local timestamp,
         eventType,
         hideCaster,
@@ -1951,7 +1959,7 @@ function BananaBar2:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
     -- the classic always returns a spell id of zero so we
     -- resolve the spell id using the spell name instead
 
-    --BananaBar2:Print(eventType);
+    --BananaBar3:Print(eventType);
 
     if knownSpellsNameDummyId == nil then
         knownSpellsNameDummyId = {}
@@ -1987,7 +1995,7 @@ function BananaBar2:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
         local auratype = auraTypes[dummySpellId];
 
         if eventType == "SPELL_AURA_APPLIED" then
-            BananaBar2:Debug("AURA APPLIED " .. auratype.Name .. " on " .. destName .. " from " .. sourceName .. " Max "..auratype.Duration.." Seconds")
+            BananaBar3:Debug("AURA APPLIED " .. auratype.Name .. " on " .. destName .. " from " .. sourceName .. " Max "..auratype.Duration.." Seconds")
             self.AURAINFO[destGUID] = {
                 StartTime = GetTime(),
                 EndTime = nil,
@@ -2000,12 +2008,12 @@ function BananaBar2:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
                 FromName = sourceName,
                 Name = destName .. " (" .. sourceName .. ")"}
         elseif eventType == "SPELL_AURA_REMOVED" then
-            BananaBar2:Debug("AURA REMOVED " .. spellName .. " on " .. destName .. " from " .. sourceName .. " (max " .. auratype.Duration .. " seconds)" )
+            BananaBar3:Debug("AURA REMOVED " .. spellName .. " on " .. destName .. " from " .. sourceName .. " (max " .. auratype.Duration .. " seconds)" )
             if self.AURAINFO[destGUID] then
                 self.AURAINFO[destGUID].EndTime = GetTime()
             end
         elseif eventType == "SPELL_AURA_REFRESH" then
-            BananaBar2:Debug("AURA REFRESH " .. auratype.Name .. " on " .. destName .. " from " .. sourceName .. " Max ".. auratype.Duration.." Seconds")
+            BananaBar3:Debug("AURA REFRESH " .. auratype.Name .. " on " .. destName .. " from " .. sourceName .. " Max ".. auratype.Duration.." Seconds")
             self.AURAINFO[destGUID] = {
                 StartTime = GetTime(),
                 EndTime = nil,
@@ -2019,7 +2027,7 @@ function BananaBar2:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
                 Name = destName .. " (" .. sourceName .. ")"
             }
         elseif eventType == "SPELL_AURA_BROKEN" then
-            BananaBar2:Debug(
+            BananaBar3:Debug(
                 "KNOWN AURA BROKEN " ..
                     spellName ..
                         " on " ..
@@ -2030,7 +2038,7 @@ function BananaBar2:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
                 self.AURAINFO[destGUID].BreakTime = GetTime()
             end
         elseif eventType == "SPELL_AURA_BROKEN_SPELL" then
-            BananaBar2:Debug("KNOWN AURA BROKEN BY SPELL " .. spellName .. " on " .. destName .. "  from " .. sourceName .. " (max " .. auratype.Duration .. " seconds)" )
+            BananaBar3:Debug("KNOWN AURA BROKEN BY SPELL " .. spellName .. " on " .. destName .. "  from " .. sourceName .. " (max " .. auratype.Duration .. " seconds)" )
             if self.AURAINFO[destGUID] then
                 self.AURAINFO[destGUID].BreakTime = GetTime()
             end
@@ -2045,21 +2053,21 @@ function BananaBar2:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
             self.AURAINFO[destGUID].BreakerGUID = sourceGUID
             self.AURAINFO[destGUID].BreakReason = (eventType == "SWING_DAMAGE" and "Melee Damage" or spellName)
             local after = math.floor(self.AURAINFO[destGUID].BreakTime - self.AURAINFO[destGUID].StartTime, 1)
-            BananaBar2:Debug("Broken Aura " .. destName .. " from " .. sourceName .. " with " .. self.AURAINFO[destGUID].BreakReason .. " after  " .. after .. " seconds" )
+            BananaBar3:Debug("Broken Aura " .. destName .. " from " .. sourceName .. " with " .. self.AURAINFO[destGUID].BreakReason .. " after  " .. after .. " seconds" )
         end
     end
 end
 
-function BananaBar2:BananaSetCursor(texture)
+function BananaBar3:BananaSetCursor(texture)
     self.mouseOverlayFrameTex:SetTexture(texture)
 end
 
-function BananaBar2:PLAYER_REGEN_DISABLED(event)
+function BananaBar3:PLAYER_REGEN_DISABLED(event)
     
     self:Debug("Enter Combat")
     self.IGNOREMARKS = {}
     self.IGNOREMOBS = {}
-    for mark, mobguid in pairs(BananaBar2.TARGETMARKS) do
+    for mark, mobguid in pairs(BananaBar3.TARGETMARKS) do
         if mobguid ~= nil and mark < 9 then
             self.IGNOREMARKS[mark] = 1
             self.IGNOREMOBS[mobguid] = 1
@@ -2070,7 +2078,7 @@ function BananaBar2:PLAYER_REGEN_DISABLED(event)
     SecureActionQueue:PLAYER_REGEN_DISABLED();
 end
 
-function BananaBar2:PLAYER_REGEN_ENABLED(event)
+function BananaBar3:PLAYER_REGEN_ENABLED(event)
     self:Debug("Leave Combat")
     for i = 1, 40, 1 do
         self.AssistButtons[i]:SetVisible(true)
@@ -2078,7 +2086,7 @@ function BananaBar2:PLAYER_REGEN_ENABLED(event)
     SecureActionQueue:PLAYER_REGEN_ENABLED();
 end
 
-function BananaBar2:OnMouseOverlayUpdate(frame)
+function BananaBar3:OnMouseOverlayUpdate(frame)
     local mx, my = GetCursorPosition()
     local uiscale = UIParent:GetEffectiveScale()
     local screenW = GetScreenWidth()
@@ -2114,30 +2122,30 @@ end
 --- OnEnable / OnDisable
 ------------------------------------------
 
-function BananaBar2:OnEnable()
+function BananaBar3:OnEnable()
     self:Debug("OnEnable")
     self:CheckSettingsVersion()
-    BananaBar2:OnProfileEnable()
+    BananaBar3:OnProfileEnable()
 end
 
-function BananaBar2:OnDisable()
+function BananaBar3:OnDisable()
     self:Debug("OnDisable")
     self:CheckSettingsVersion()
-    BananaBar2Button:UpdateAllVisible()
-    BananaBar2AssistButton:UpdateAllVisible()
+    BananaBar3Button:UpdateAllVisible()
+    BananaBar3AssistButton:UpdateAllVisible()
 end
 
 ------------------------------------------
 --- OnProfileEnable / OnProfileDisable
 ------------------------------------------
 
-function BananaBar2:OnProfileEnable()
+function BananaBar3:OnProfileEnable()
     self:Debug("OnProfileEnable")
     self:CheckSettingsVersion()
-    BananaBar2:ProfileUpdated()
+    BananaBar3:ProfileUpdated()
 end
 
-function BananaBar2:OnProfileDisable()
+function BananaBar3:OnProfileDisable()
     self:Debug("OnProfileDisable")
     self:CheckSettingsVersion()
 end
@@ -2146,11 +2154,11 @@ end
 --- hideunused
 ------------------------------------------
 
-function BananaBar2:Get_hideunused()
+function BananaBar3:Get_hideunused()
     return self.db.profile.hideunused
 end
 
-function BananaBar2:Set_hideunused(value)
+function BananaBar3:Set_hideunused(value)
     if self.db.profile.hideunused ~= value then
         self.db.profile.hideunused = value
     end
@@ -2160,11 +2168,11 @@ end
 --- showbutton
 ------------------------------------------
 
-function BananaBar2:Get_showbutton(index)
+function BananaBar3:Get_showbutton(index)
     return self.db.profile.showbutton[index]
 end
 
-function BananaBar2:Set_showbutton(index, value)
+function BananaBar3:Set_showbutton(index, value)
     self.db.profile.showbutton[index] = value
     self.Buttons[index]:SetVisible(value)
 end
@@ -2173,12 +2181,12 @@ end
 --- scale
 ------------------------------------------
 
-function BananaBar2:Set_scale(value)
+function BananaBar3:Set_scale(value)
     self.db.profile.scale = value
-    BananaBar2Button:UpdateAllScale(self.db.profile.scale / 100)
+    BananaBar3Button:UpdateAllScale(self.db.profile.scale / 100)
 end
 
-function BananaBar2:Get_scale()
+function BananaBar3:Get_scale()
     return self.db.profile.scale
 end
 
@@ -2186,12 +2194,12 @@ end
 --- scaleassist
 ------------------------------------------
 
-function BananaBar2:Set_scaleassist(value)
+function BananaBar3:Set_scaleassist(value)
     self.db.profile.scaleassist = value
-    BananaBar2AssistButton:UpdateAllScale(self.db.profile.scaleassist / 100)
+    BananaBar3AssistButton:UpdateAllScale(self.db.profile.scaleassist / 100)
 end
 
-function BananaBar2:Get_scaleassist()
+function BananaBar3:Get_scaleassist()
     return self.db.profile.scaleassist
 end
 
@@ -2199,13 +2207,13 @@ end
 --- updaterate
 ------------------------------------------
 
-function BananaBar2:Set_updaterate(value)
+function BananaBar3:Set_updaterate(value)
     self.db.profile.updaterate = value
     self:CancelTimer(self.BananaUpdateTimer)
     self.BananaUpdateTimer = self:ScheduleRepeatingTimer("BananaUpdate", self.db.profile.updaterate or 0.3, self)
 end
 
-function BananaBar2:Get_updaterate()
+function BananaBar3:Get_updaterate()
     return self.db.profile.updaterate
 end
 
@@ -2213,21 +2221,21 @@ end
 --- hidebuttonframes
 ------------------------------------------
 
-function BananaBar2:Set_hidebuttonframes(value)
+function BananaBar3:Set_hidebuttonframes(value)
     self.db.profile.hidebuttonframes = value
-    BananaBar2Button:UpdateAllButtonFrame(not self.db.profile.hidebuttonframes)
+    BananaBar3Button:UpdateAllButtonFrame(not self.db.profile.hidebuttonframes)
 end
 
-function BananaBar2:Get_hidebuttonframes()
+function BananaBar3:Get_hidebuttonframes()
     return self.db.profile.hidebuttonframes
 end
 
-function BananaBar2:Set_hidebuttonback(value)
+function BananaBar3:Set_hidebuttonback(value)
     self.db.profile.hidebuttonback = value
-    BananaBar2Button:UpdateAllButtonBack(not self.db.profile.hidebuttonback)
+    BananaBar3Button:UpdateAllButtonBack(not self.db.profile.hidebuttonback)
 end
 
-function BananaBar2:Get_hidebuttonback()
+function BananaBar3:Get_hidebuttonback()
     return self.db.profile.hidebuttonback
 end
 
@@ -2236,12 +2244,12 @@ end
 --- markdead
 ------------------------------------------
 
-function BananaBar2:Set_markdead(value)
+function BananaBar3:Set_markdead(value)
     self.db.profile.markdead = value
-    BananaBar2Button:EnableAllDeadSymbol(self.db.profile.markdead)
+    BananaBar3Button:EnableAllDeadSymbol(self.db.profile.markdead)
 end
 
-function BananaBar2:Get_markdead()
+function BananaBar3:Get_markdead()
     return self.db.profile.markdead
 end
 
@@ -2249,77 +2257,77 @@ end
 --- showinraid
 ------------------------------------------
 
-function BananaBar2:Get_showinraid()
+function BananaBar3:Get_showinraid()
     return self.db.profile.showinraid
 end
 
-function BananaBar2:Set_showinraid(v)
+function BananaBar3:Set_showinraid(v)
     self.db.profile.showinraid = v
-    BananaBar2Button:UpdateAllVisible()
+    BananaBar3Button:UpdateAllVisible()
 end
 
 ------------------------------------------
 --- showinparty
 ------------------------------------------
 
-function BananaBar2:Get_showinparty()
+function BananaBar3:Get_showinparty()
     return self.db.profile.showinparty
 end
 
-function BananaBar2:Set_showinparty(v)
+function BananaBar3:Set_showinparty(v)
     self.db.profile.showinparty = v
-    BananaBar2Button:UpdateAllVisible()
+    BananaBar3Button:UpdateAllVisible()
 end
 
 ------------------------------------------
 --- showoutofgroup
 ------------------------------------------
 
-function BananaBar2:Get_showoutofgroup()
+function BananaBar3:Get_showoutofgroup()
     return self.db.profile.showoutofgroup
 end
 
-function BananaBar2:Set_showoutofgroup(v)
+function BananaBar3:Set_showoutofgroup(v)
     self.db.profile.showoutofgroup = v
-    BananaBar2Button:UpdateAllVisible()
+    BananaBar3Button:UpdateAllVisible()
 end
 
 ------------------------------------------
 --- showraidinfo
 ------------------------------------------
 
-function BananaBar2:Get_showraidinfo()
+function BananaBar3:Get_showraidinfo()
     return self.db.profile.showraidinfo
 end
 
-function BananaBar2:Get_showraidinfoall()
+function BananaBar3:Get_showraidinfoall()
     return self.db.profile.showraidinfoall
 end
 
-function BananaBar2:Set_showraidinfo(v)
+function BananaBar3:Set_showraidinfo(v)
     self.db.profile.showraidinfo = v
-    BananaBar2AssistButton:UpdateAllVisible()
+    BananaBar3AssistButton:UpdateAllVisible()
 end
 
-function BananaBar2:Set_showraidinfoall(v)
+function BananaBar3:Set_showraidinfoall(v)
     self.db.profile.showraidinfoall = v
-    BananaBar2AssistButton:UpdateAllVisible()
+    BananaBar3AssistButton:UpdateAllVisible()
 end
 
 ------------------------------------------
 --- showextrainfo
 ------------------------------------------
 
-function BananaBar2:Get_showextrainfo()
+function BananaBar3:Get_showextrainfo()
     return self.db.profile.showextrainfo
 end
 
-function BananaBar2:Set_showextrainfo(v)
+function BananaBar3:Set_showextrainfo(v)
     self.db.profile.showextrainfo = v
-    BananaBar2Button:UpdateAllExtraInfo(self.db.profile.showextrainfo)
+    BananaBar3Button:UpdateAllExtraInfo(self.db.profile.showextrainfo)
 end
 
-function BananaBar2:Get_buttonorder(table, index)
+function BananaBar3:Get_buttonorder(table, index)
     table = "order_"..table;
     if self.db.profile[table] == nil then
         self.db.profile[table] = {}
@@ -2337,7 +2345,7 @@ function BananaBar2:Get_buttonorder(table, index)
 end
 
 
-function BananaBar2:Set_buttonorder(table, index, v)
+function BananaBar3:Set_buttonorder(table, index, v)
     table = "order_"..table;
     if self.db.profile[table] == nil then
         self.db.profile[table] = {}
@@ -2358,22 +2366,22 @@ function BananaBar2:Set_buttonorder(table, index, v)
         end
     end
     local oldValue = self.db.profile[table][index]
-    BananaBar2:Debug("Swap Button Order for ".. table.." Idx "..oldIndex.."  <-> "..index);
-    BananaBar2:Debug("Swap Button Order for ".. table.." Sym "..self.db.profile[table][oldIndex].."  <-> "..self.db.profile[table][index]);
+    BananaBar3:Debug("Swap Button Order for ".. table.." Idx "..oldIndex.."  <-> "..index);
+    BananaBar3:Debug("Swap Button Order for ".. table.." Sym "..self.db.profile[table][oldIndex].."  <-> "..self.db.profile[table][index]);
     self.db.profile[table][index] = v
     self.db.profile[table][oldIndex] = oldValue
-    --BananaBar2Button:UpdateAllExtraInfo(self.db.profile.showextrainfo);
+    --BananaBar3Button:UpdateAllExtraInfo(self.db.profile.showextrainfo);
 end
 
 -----------------------------------------
 --- layout
 ------------------------------------------
 
-function BananaBar2:Set_layoutmode(value)
+function BananaBar3:Set_layoutmode(value)
     self.layoutmode = value
-    BananaBar2Button:UpdateAllArrows()
-    BananaBar2Button:UpdateAllVisible()
-    BananaBar2AssistButton:UpdateAllArrows()
+    BananaBar3Button:UpdateAllArrows()
+    BananaBar3Button:UpdateAllVisible()
+    BananaBar3AssistButton:UpdateAllArrows()
     if self.layoutmode then
         self:HookEscape()
     else
@@ -2381,49 +2389,49 @@ function BananaBar2:Set_layoutmode(value)
     end
 end
 
-function BananaBar2:Get_layoutmode()
+function BananaBar3:Get_layoutmode()
     return self.layoutmode
 end
 
-function BananaBar2:Set_autosetcombat(value)
+function BananaBar3:Set_autosetcombat(value)
     self.db.profile.autosetcombat = value
 end
 
-function BananaBar2:Get_autosetcombat()
+function BananaBar3:Get_autosetcombat()
     return self.db.profile.autosetcombat == true
 end
 
-function BananaBar2:Set_showdebugmessages(value)
+function BananaBar3:Set_showdebugmessages(value)
     self.db.profile.showdebugmessages = value
 end
 
-function BananaBar2:Get_showdebugmessages()
+function BananaBar3:Get_showdebugmessages()
     return self.db.profile.showdebugmessages == true
 end
 
-function BananaBar2:EscapePressed()
+function BananaBar3:EscapePressed()
     BananaBarEscapeHookFrame:Hide()
-    BananaBar2:Set_layoutmode(false)
+    BananaBar3:Set_layoutmode(false)
 end
 
-function BananaBar2:HookEscape()
+function BananaBar3:HookEscape()
     BananaBarEscapeHookFrame:Show()
 end
 
-function BananaBar2:UnhookEscape()
+function BananaBar3:UnhookEscape()
     BananaBarEscapeHookFrame:Hide()
 end
 
-function BananaBar2:Get_action(action)
+function BananaBar3:Get_action(action)
     return self.db.profile.actions[action]
 end
 
-function BananaBar2:Set_action(action, v)
+function BananaBar3:Set_action(action, v)
     self.db.profile.actions[action] = v
-    BananaBar2:UpdateActions()
+    BananaBar3:UpdateActions()
 end
 
-function BananaBar2:UpdateActions()
+function BananaBar3:UpdateActions()
     self:Debug("Updating Action List")
     self.Actions = {}
     for key, value in pairs(self.db.profile.actions) do
@@ -2439,11 +2447,11 @@ end
 --- Execute_XXX
 ------------------------------------------
 
-function BananaBar2:Execute_Config()
-    LibStub("AceConfigDialog-3.0"):Open("BananaBar2")
+function BananaBar3:Execute_Config()
+    LibStub("AceConfigDialog-3.0"):Open("BananaBar3")
 end
 
-function BananaBar2:ExecuteAction(button, clicktype,Targetunitname)
+function BananaBar3:ExecuteAction(button, clicktype,Targetunitname)
     local action = self.Actions[clicktype]
     --self:Debug("bouton" .. self.TooltipButton.ButtonId)
 	self:Debug("Action:"..action.."-- clicktype:"..clicktype)
@@ -2466,20 +2474,20 @@ function BananaBar2:ExecuteAction(button, clicktype,Targetunitname)
 		if UnitExists(u) then 
 		Targetunitname=UnitName(u)
 		
-		BananaBar2:SetSymbol(button.ButtonId,Targetunitname)
+		BananaBar3:SetSymbol(button.ButtonId,Targetunitname)
 		self:Debug("set symbol sur bouton:"..id.." cible="..Targetunitname)
 		
-		SecureActionQueue:FrameSetAttribute(BananaBar2.Buttons[id].frame, "unit", Targetunitname)
-        SecureActionQueue:FrameSetAttribute(BananaBar2.Buttons[id].frame, "*type1", "target")
+		SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "unit", Targetunitname)
+        SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "*type1", "target")
 		end
 		
-		self:Debug("Bouton attribut unit:"..BananaBar2.Buttons[id].frame:GetAttribute("unit") or "<nil>")
-		--BananaBar2.AssistButtons[i].frame:GetAttribute("unit")	
+		self:Debug("Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
+		--BananaBar3.AssistButtons[i].frame:GetAttribute("unit")	
 	
 	elseif action == "action_setTargetsymbol" then
 	    local id = self.TooltipButton.ButtonId
 		--self:Debug("Action:"..action.."-- clicktype:"..clicktype.."Target"..Targetunitname)
-		self:Debug("Bouton attribut unit:"..BananaBar2.Buttons[id].frame:GetAttribute("unit") or "<nil>")
+		self:Debug("Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
 	else
         self:Debug("Unknown action" .. " " .. action)
 		self:Debug(Targetname)
@@ -2490,13 +2498,13 @@ end
 --- Functions
 ------------------------------------------
 
-function BananaBar2:ResetSettings()
+function BananaBar3:ResetSettings()
     --self:ResetDB("profile"); todo
     self.db.profile.settingsversion = actual_settings_version
     self:ProfileUpdated()
 end
 
-function BananaBar2:CheckSettingsVersion()
+function BananaBar3:CheckSettingsVersion()
     if actual_settings_version ~= self.db.profile.settingsversion then
         self:Print(L["oldprofilemessage"])
         self:ResetSettings()
@@ -2507,23 +2515,23 @@ end
 --- Called always when any setting is changed
 ------------------------------------------
 
-function BananaBar2:SettingsChanged()
+function BananaBar3:SettingsChanged()
 end
 
-function BananaBar2:ProfileUpdated(layout)
-    BananaBar2Button:UpdateAllVisible()
-    BananaBar2Button:LoadAllPos()
-    BananaBar2Button:UpdateAllArrows()
-    BananaBar2Button:UpdateAllButtonFrame(not self.db.profile.hidebuttonframes)
-    BananaBar2Button:UpdateAllButtonBack(not self.db.profile.hidebuttonback)
-    BananaBar2Button:UpdateAllScale(self.db.profile.scale / 100)
-    BananaBar2Button:EnableAllDeadSymbol(self.db.profile.markdead)
-    BananaBar2Button:UpdateAllExtraInfo(self.db.profile.showextrainfo)
+function BananaBar3:ProfileUpdated(layout)
+    BananaBar3Button:UpdateAllVisible()
+    BananaBar3Button:LoadAllPos()
+    BananaBar3Button:UpdateAllArrows()
+    BananaBar3Button:UpdateAllButtonFrame(not self.db.profile.hidebuttonframes)
+    BananaBar3Button:UpdateAllButtonBack(not self.db.profile.hidebuttonback)
+    BananaBar3Button:UpdateAllScale(self.db.profile.scale / 100)
+    BananaBar3Button:EnableAllDeadSymbol(self.db.profile.markdead)
+    BananaBar3Button:UpdateAllExtraInfo(self.db.profile.showextrainfo)
 
     for index = 1, BANANA_MAX_BUTTONS, 1 do
         self.Buttons[index]:SetVisible(self.db.profile.showbutton[index])
     end
-    BananaBar2:UpdateActions()
+    BananaBar3:UpdateActions()
     --self:Debug("mobsettings?");
 
     for zone, mobs in pairs(self.db.profile.mobsettings) do
@@ -2533,12 +2541,12 @@ function BananaBar2:ProfileUpdated(layout)
     end
     -- self.metro:ChangeMetroRate("BananaUpdate",self.db.profile.updaterate); todo
 
-    BananaBar2AssistButton:UpdateAllVisible()
-    BananaBar2AssistButton:LoadAllPos()
-    BananaBar2AssistButton:UpdateAllArrows()
-    BananaBar2AssistButton:UpdateAllScale(self.db.profile.scaleassist / 100)
+    BananaBar3AssistButton:UpdateAllVisible()
+    BananaBar3AssistButton:LoadAllPos()
+    BananaBar3AssistButton:UpdateAllArrows()
+    BananaBar3AssistButton:UpdateAllScale(self.db.profile.scaleassist / 100)
 end
-function BananaBar2:SetTooltipButton(button)
+function BananaBar3:SetTooltipButton(button)
     if not button and not self.TooltipButton then
         -- kein button vorher, kein button nachher
         return
@@ -2547,7 +2555,7 @@ function BananaBar2:SetTooltipButton(button)
     if button and self.TooltipButton then
         -- tooltip update
         self.TooltipButton = button
-        BananaBar2:UpdateTooltip()
+        BananaBar3:UpdateTooltip()
         return
     end
 
@@ -2558,7 +2566,7 @@ function BananaBar2:SetTooltipButton(button)
     else
         -- neuer button
         self.TooltipButton = button
-        BananaBar2:UpdateTooltip()
+        BananaBar3:UpdateTooltip()
         GameTooltip:Show()
     end
 end
@@ -2576,7 +2584,7 @@ local tooltip_sort_array = {
     [0] = {[0] = 0} --pet
 }
 
-function BananaBar2:UpdateTooltip()
+function BananaBar3:UpdateTooltip()
     if self.TooltipButton then
         --GameTooltip:Show()
         if self.layoutmode then
@@ -2629,9 +2637,9 @@ function BananaBar2:UpdateTooltip()
             GameTooltip:AddLine(UnitName(t.info_unit), 0.7, 0.7, 0.7)
             --GameTooltip:AddLine(UnitName(t.info_unit), 0.9, 0.9, 0.9)
 			
-			SecureActionQueue:FrameSetAttribute(BananaBar2.Buttons[id].frame, "unit", UnitName(t.info_unit))
-			SecureActionQueue:FrameSetAttribute(BananaBar2.Buttons[id].frame, "type1", "target")
-			self:Debug("Tooltip Bouton attribut unit:"..BananaBar2.Buttons[id].frame:GetAttribute("unit") or "<nil>")
+			SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "unit", UnitName(t.info_unit))
+			SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "type1", "target")
+			self:Debug("Tooltip Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
 			
 			
             local i
@@ -2663,7 +2671,7 @@ function BananaBar2:UpdateTooltip()
     end
 end
 
-function BananaBar2:AddToolTipLines(class, col)
+function BananaBar3:AddToolTipLines(class, col)
     local i
     for i = 1, tooltip_sort_array[class][0], 1 do
         GameTooltip:AddLine(UnitName(tooltip_sort_array[class][i]), col.r, col.g, col.b)
@@ -2672,7 +2680,7 @@ end
 
 --CT_RAPTGroupUnitButton
 
-function BananaBar2:BananaUpdate()
+function BananaBar3:BananaUpdate()
     local show = false
     if GetNumGroupMembers() ~= 0 then
         if self.db.profile.showinraid then
@@ -2690,24 +2698,24 @@ function BananaBar2:BananaUpdate()
 
     if show ~= self.ShowButtons then
         self.ShowButtons = show
-        BananaBar2Button:UpdateAllVisible()
+        BananaBar3Button:UpdateAllVisible()
     end
 
     show = (UnitInRaid("player") and self.db.profile.showraidinfo) or self.db.profile.showraidinfoall
 
     if show ~= self.ShowRaidInfo then
         self.ShowRaidInfo = show
-        BananaBar2AssistButton:UpdateAllVisible()
+        BananaBar3AssistButton:UpdateAllVisible()
     end
 
-    BananaBar2:UpdateTooltip()
+    BananaBar3:UpdateTooltip()
 
     --debugprofilestart()
-    BananaBar2:Scan()
+    BananaBar3:Scan()
 
     targets = {}
     for guid, info in pairs(self.TARGETS) do
-        if BananaBar2:TableCount(info.from) > 0 and info.symbol == nil and UnitCanAttack("PLAYER", info.info_unit) then
+        if BananaBar3:TableCount(info.from) > 0 and info.symbol == nil and UnitCanAttack("PLAYER", info.info_unit) then
             table.insert(targets, guid)
         elseif info.symbol == nil and self.AURAINFO[guid] ~= nil and self.AURAINFO[guid].EndTime == nil then
             table.insert(targets, guid)
@@ -2717,10 +2725,10 @@ function BananaBar2:BananaUpdate()
     table.sort(
         targets,
         function(c1, c2)
-            if BananaBar2:FromCount(self.TARGETS[c1].from) == BananaBar2:FromCount(self.TARGETS[c2].from) then
+            if BananaBar3:FromCount(self.TARGETS[c1].from) == BananaBar3:FromCount(self.TARGETS[c2].from) then
                 return c1 > c2
             end
-            return BananaBar2:FromCount(self.TARGETS[c1].from) > BananaBar2:FromCount(self.TARGETS[c2].from)
+            return BananaBar3:FromCount(self.TARGETS[c1].from) > BananaBar3:FromCount(self.TARGETS[c2].from)
         end
     )
     local index = BANANA_RAIDSYMBOL_BUTTON_COUNT + 1
@@ -2734,7 +2742,7 @@ function BananaBar2:BananaUpdate()
             local guid = self.TARGETMARKS[but]
             local t = self.TARGETS[guid]
 
-            self.Buttons[but]:SetCount(BananaBar2:FromCount(t.from))
+            self.Buttons[but]:SetCount(BananaBar3:FromCount(t.from))
             self.Buttons[but]:SetDead(t.info_dead)
             self.Buttons[but]:SetHuntersmark(t.has_huntersmark)
 
@@ -2839,7 +2847,7 @@ function BananaBar2:BananaUpdate()
 
     if self.SetSymbolsOnNextUpdate then
         self.SetSymbolsOnNextUpdate = false
-        if not BananaBar2:CanSetSymbols() then
+        if not BananaBar3:CanSetSymbols() then
             self:Print("Autoset symbols fail, cant set symbols")
             return
         end
@@ -2849,13 +2857,13 @@ function BananaBar2:BananaUpdate()
     local t2 = GetTime()
 end
 
-function BananaBar2:SetSymbolsKeyPressed()
+function BananaBar3:SetSymbolsKeyPressed()
     self:Debug("Autoset symbols...")
     self.SetSymbolsOnNextUpdate = true
 end
 
-function BananaBar2:AutoSetSymbols(combatOnly)
-    if not BananaBar2:CanSetSymbols() then
+function BananaBar3:AutoSetSymbols(combatOnly)
+    if not BananaBar3:CanSetSymbols() then
         return
     end
     targets = {}
@@ -2867,7 +2875,7 @@ function BananaBar2:AutoSetSymbols(combatOnly)
         else
             loop = loop + 1
             if
-                BananaBar2:FromCount(info.from) > 0 and info.symbol == nil and UnitCanAttack("PLAYER", info.info_unit) and
+                BananaBar3:FromCount(info.from) > 0 and info.symbol == nil and UnitCanAttack("PLAYER", info.info_unit) and
                     info.symbol == nil
              then
                 if UnitAffectingCombat(info.info_unit) or combatOnly == false then
@@ -2889,7 +2897,7 @@ function BananaBar2:AutoSetSymbols(combatOnly)
                         else
                             if self.TARGETMARKS[j] == nil then
                                 self:Print("Setting Symbol " .. L[("symbolname" .. j)] .. " on " .. info.info_name .." (".. UnitGUID(info.info_unit)..")")
-                                BananaBar2:PlaySet()
+                                BananaBar3:PlaySet()
                                 SetRaidTarget(info.info_unit, j)
                                 self.IGNOREMARKS[j] = 1
                                 self.IGNOREMOBS[guid] = 1
@@ -2915,7 +2923,7 @@ function BananaBar2:AutoSetSymbols(combatOnly)
     --                        for j=1,8,1 do
     --                            if search and self.TSRB[j].used==0 and self.TSRA[j].used==0 then
     --                                if self.db.profile.mobsettings[GetLocale()].byname[name][j] then
-    --                                	BananaBar2:PlaySet();
+    --                                	BananaBar3:PlaySet();
     --                                    self:Print("Setting Symbol "..L[("symbolname"..j)].." on "..name);
     --                                    SetRaidTarget(uid,j);
     --                                    self.TSRA[j].used = 1;
@@ -2930,20 +2938,20 @@ function BananaBar2:AutoSetSymbols(combatOnly)
     --    end
 end
 
-function BananaBar2:Get_mobsetting(zone, name, setting)
+function BananaBar3:Get_mobsetting(zone, name, setting)
     local v = self.db.profile.mobsettings[zone][name][setting] or false
-    --BananaBar2:Print("Get_mobsetting '"..zone.."' '"..name.."' '"..setting.."' '"..tostring(v).."'");
+    --BananaBar3:Print("Get_mobsetting '"..zone.."' '"..name.."' '"..setting.."' '"..tostring(v).."'");
     return v
 end
 
-function BananaBar2:Set_mobsetting(v, zone, name, setting)
-    --BananaBar2:Print("Set_mobsetting '"..zone.."' '"..name.."' '"..setting.."' '"..tostring(v).."'");
+function BananaBar3:Set_mobsetting(v, zone, name, setting)
+    --BananaBar3:Print("Set_mobsetting '"..zone.."' '"..name.."' '"..setting.."' '"..tostring(v).."'");
     self.db.profile.mobsettings[zone][name][setting] = v
 end
---/script BananaBar2:AddNewMob("Area51","Bar");
---/script BananaBar2:Print(GetRealZoneText());
---/script BananaBar2:Print(GetRealZoneText().." /// "..GetZoneText());
-function BananaBar2:AddNewMob(zone, name)
+--/script BananaBar3:AddNewMob("Area51","Bar");
+--/script BananaBar3:Print(GetRealZoneText());
+--/script BananaBar3:Print(GetRealZoneText().." /// "..GetZoneText());
+function BananaBar3:AddNewMob(zone, name)
     local id = self.db.profile.mobsettings
     if not self.db.profile.mobsettings[zone] then
         self.db.profile.mobsettings[zone] = {}
@@ -2956,16 +2964,16 @@ function BananaBar2:AddNewMob(zone, name)
     AddOptionEntry(zone, name)
 end
 
-function BananaBar2:CHAT_MSG_ADDON(prefix, message, messagetype, sender)
+function BananaBar3:CHAT_MSG_ADDON(prefix, message, messagetype, sender)
     if prefix == "CTRA" then
-    --BananaBar2:Print("M:"..message.."<:>"..messagetype.."<:>"..sender);
+    --BananaBar3:Print("M:"..message.."<:>"..messagetype.."<:>"..sender);
     end
 end
-function BananaBar2:ZoneText()
+function BananaBar3:ZoneText()
     return GetRealZoneText() or "Unknown"
 end
 
-function BananaBar2:UPDATE_MOUSEOVER_UNIT(a1, a2, a3)
+function BananaBar3:UPDATE_MOUSEOVER_UNIT(a1, a2, a3)
     if UnitExists("mouseover") then
         if UnitCanAttack("player", "mouseover") and (not UnitIsCivilian("mouseover")) then
             if not UnitIsPlayer("mouseover") then
@@ -2997,10 +3005,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = L["autosymbolsoncombat"],
                     desc = L["autosymbolsoncombatdesc"],
                     get = function(info)
-                        return BananaBar2:Get_mobsetting(zone, name, "sscombat")
+                        return BananaBar3:Get_mobsetting(zone, name, "sscombat")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sscombat")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sscombat")
                     end,
                     order = 110
                 },
@@ -3010,10 +3018,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = L["autosymbolsonmouseover"],
                     desc = L["autosymbolsonmouseoverdesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "ssmo")
+                        return BananaBar3:Get_mobsetting(zone, name, "ssmo")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "ssmo")
+                        BananaBar3:Set_mobsetting(v, zone, name, "ssmo")
                     end,
                     order = 120
                 },
@@ -3027,10 +3035,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = "|c" .. BANANA_SYMBOL_COLOR1 .. L["symbolname1"] .. "|r",
                     desc = L["autosymboldesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "sym1")
+                        return BananaBar3:Get_mobsetting(zone, name, "sym1")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sym1")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sym1")
                     end,
                     order = 201
                 },
@@ -3039,10 +3047,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = "|c" .. BANANA_SYMBOL_COLOR2 .. L["symbolname2"] .. "|r",
                     desc = L["autosymboldesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "sym2")
+                        return BananaBar3:Get_mobsetting(zone, name, "sym2")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sym2")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sym2")
                     end,
                     order = 202
                 },
@@ -3051,10 +3059,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = "|c" .. BANANA_SYMBOL_COLOR3 .. L["symbolname3"] .. "|r",
                     desc = L["autosymboldesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "sym3")
+                        return BananaBar3:Get_mobsetting(zone, name, "sym3")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sym3")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sym3")
                     end,
                     order = 203
                 },
@@ -3063,10 +3071,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = "|c" .. BANANA_SYMBOL_COLOR4 .. L["symbolname4"] .. "|r",
                     desc = L["autosymboldesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "sym4")
+                        return BananaBar3:Get_mobsetting(zone, name, "sym4")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sym4")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sym4")
                     end,
                     order = 204
                 },
@@ -3075,10 +3083,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = "|c" .. BANANA_SYMBOL_COLOR5 .. L["symbolname5"] .. "|r",
                     desc = L["autosymboldesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "sym5")
+                        return BananaBar3:Get_mobsetting(zone, name, "sym5")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sym5")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sym5")
                     end,
                     order = 205
                 },
@@ -3087,10 +3095,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = "|c" .. BANANA_SYMBOL_COLOR6 .. L["symbolname6"] .. "|r",
                     desc = L["autosymboldesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "sym6")
+                        return BananaBar3:Get_mobsetting(zone, name, "sym6")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sym6")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sym6")
                     end,
                     order = 206
                 },
@@ -3099,10 +3107,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = "|c" .. BANANA_SYMBOL_COLOR7 .. L["symbolname7"] .. "|r",
                     desc = L["autosymboldesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "sym7")
+                        return BananaBar3:Get_mobsetting(zone, name, "sym7")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sym7")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sym7")
                     end,
                     order = 207
                 },
@@ -3111,10 +3119,10 @@ function AddOptionEntry(zone, name, mobid)
                     name = "|c" .. BANANA_SYMBOL_COLOR8 .. L["symbolname8"] .. "|r",
                     desc = L["autosymboldesc"],
                     get = function()
-                        return BananaBar2:Get_mobsetting(zone, name, "sym8")
+                        return BananaBar3:Get_mobsetting(zone, name, "sym8")
                     end,
                     set = function(info, v)
-                        BananaBar2:Set_mobsetting(v, zone, name, "sym8")
+                        BananaBar3:Set_mobsetting(v, zone, name, "sym8")
                     end,
                     order = 208
                 }
@@ -3124,22 +3132,22 @@ function AddOptionEntry(zone, name, mobid)
 end
 
 
-function BananaBar2:Get_action_part_mouse(action)
-    local a = BananaBar2:Get_action(action)
+function BananaBar3:Get_action_part_mouse(action)
+    local a = BananaBar3:Get_action(action)
     self:Debug("Set_action_part_mouse "..action.." "..(math.floor(a / 8)+10).." "..a);
     return math.floor(a / 8)+10
 end
 
-function BananaBar2:Set_action_part_mouse(action, v)
-    local a = BananaBar2:Get_action(action)
+function BananaBar3:Set_action_part_mouse(action, v)
+    local a = BananaBar3:Get_action(action)
     a = bit.mod(a, 8) + (8 * (v - 10))
     self:Debug("Set_action_part_mouse "..action.." "..v.." "..a);
-    BananaBar2:Set_action(action, a)
+    BananaBar3:Set_action(action, a)
 end
 
 
-function BananaBar2:Get_action_part(action, x)
-    local a = BananaBar2:Get_action(action)
+function BananaBar3:Get_action_part(action, x)
+    local a = BananaBar3:Get_action(action)
     if x == 1 then
         return bit.band(a, 1) ~= 0
     end
@@ -3152,8 +3160,8 @@ function BananaBar2:Get_action_part(action, x)
     return math.floor(a / 8) == (x - 10)
 end
 
-function BananaBar2:Set_action_part(action, x, v)
-    local a = BananaBar2:Get_action(action)
+function BananaBar3:Set_action_part(action, x, v)
+    local a = BananaBar3:Get_action(action)
     if x == 1 then
         if v then
             a = bit.bor(a, 1)
@@ -3175,24 +3183,24 @@ function BananaBar2:Set_action_part(action, x, v)
     else
         a = bit.mod(a, 8) + (8 * (x - 10))
     end
-    BananaBar2:Set_action(action, a)
+    BananaBar3:Set_action(action, a)
 end
 
-function BananaBar2:PlaySet()
+function BananaBar3:PlaySet()
     PlaySoundFile(BANANA_SOUND_SET)
 end
-function BananaBar2:PlayRemove()
+function BananaBar3:PlayRemove()
     PlaySoundFile(BANANA_SOUND_REMOVE)
 end
-function BananaBar2:PlayRemoveAll()
+function BananaBar3:PlayRemoveAll()
     PlaySoundFile(BANANA_SOUND_REMOVE_ALL)
 end
 
-function BananaBar2:PlayError()
+function BananaBar3:PlayError()
     PlaySoundFile(BANANA_SOUND_ERROR)
 end
 
-function BananaBar2:FindSpellIdByTexture(searchtex)
+function BananaBar3:FindSpellIdByTexture(searchtex)
     local searchid = 1
     local tex
     local resultid = nil
@@ -3207,27 +3215,27 @@ function BananaBar2:FindSpellIdByTexture(searchtex)
     return nil
 end
 
-function BananaBar2:OnClick()
+function BananaBar3:OnClick()
     PlaySoundFile("Interface\\AddOns\\BananaBarClassic\\Sound\\2hh.mp3")
 end
 
-function BananaBar2:OnTooltipUpdate()
+function BananaBar3:OnTooltipUpdate()
     Tablet:SetHint("")
 end
 
-function BananaBar2:BananaCursor()
-    if BananaBar2.Dragging then
-        if BananaBar2.DragPreparing then
+function BananaBar3:BananaCursor()
+    if BananaBar3.Dragging then
+        if BananaBar3.DragPreparing then
             local x, y = GetCursorPosition()
             x = x - self.DragCursorPosX
             y = y - self.DragCursorPosY
             dist = math.sqrt(x * x + y * y)
 
-            if BananaBar2.DragMouseButton == "LeftButton" and dist > 10 then
-                BananaBar2.DragPreparing = false
-            elseif BananaBar2.DragMouseButton == "RightButton" and dist > 20 then
-                BananaBar2.CancelTimer(self.BananaCursorTimer)
-                BananaBar2.Dragging = false
+            if BananaBar3.DragMouseButton == "LeftButton" and dist > 10 then
+                BananaBar3.DragPreparing = false
+            elseif BananaBar3.DragMouseButton == "RightButton" and dist > 20 then
+                BananaBar3.CancelTimer(self.BananaCursorTimer)
+                BananaBar3.Dragging = false
                 self:Print("Starting Layoutmode")
                 self:BananaSetCursor(nil)
                 self:Set_layoutmode(true)
@@ -3256,7 +3264,7 @@ function BananaBar2:BananaCursor()
                 self:BananaSetCursor(BANANA_RAID_CURSORS_GREY[9])
             end
         end
-    elseif BananaBar2.MouseOverPainting then
+    elseif BananaBar3.MouseOverPainting then
         self:BananaSetCursor("Interface\\AddOns\\BananaBarClassic\\Images\\raidiconcursor")
         self:MouseOverTargeting()
     elseif self.ShowMouseSymbol then
@@ -3273,8 +3281,8 @@ function BananaBar2:BananaCursor()
     end
 end
 
-function BananaBar2:SearchDown()
-    if BananaBar2.Dragging or BananaBar2.MouseOverPainting then
+function BananaBar3:SearchDown()
+    if BananaBar3.Dragging or BananaBar3.MouseOverPainting then
         return
     end
     --self:Print("Changing mouse cursor when over marked mob now.");
@@ -3282,25 +3290,25 @@ function BananaBar2:SearchDown()
     self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 0.1, self)
 end
 
-function BananaBar2:SearchUp()
+function BananaBar3:SearchUp()
     if self.ShowMouseSymbol then
         --self:Print("No more changing mouse cursor when over marked mob now.");
         self.ShowMouseSymbol = false
-        BananaBar2.CancelTimer(self.BananaCursorTimer)
+        BananaBar3.CancelTimer(self.BananaCursorTimer)
     end
 end
 
 local targetingsymbol = 1
-function BananaBar2:MouseOverTargeting()
+function BananaBar3:MouseOverTargeting()
     --self:Print("MouseOverTargeting")
     if UnitExists("MOUSEOVER") then
         if targetingsymbol > 8 then
-            BananaBar2:Print("alle symbole verbraucht");
+            BananaBar3:Print("alle symbole verbraucht");
             return
         end
 
-        if not BananaBar2:IsAutoSymbolTarget("MOUSEOVER") then
-            BananaBar2:Print("not BananaBar2:CanSetSymbolOn");
+        if not BananaBar3:IsAutoSymbolTarget("MOUSEOVER") then
+            BananaBar3:Print("not BananaBar3:CanSetSymbolOn");
             return
         end
 
@@ -3326,8 +3334,8 @@ function BananaBar2:MouseOverTargeting()
             local realSymbol = self:Get_buttonorder("symbolordermouse",targetingsymbol)
             self:Debug("symbolordermouse "..targetingsymbol.." -> "..realSymbol)
 
-            BananaBar2:PlaySet()
-            BananaBar2:Print("Set Symbol " .. L[("symbolname" .. realSymbol)] .. " on " .. UnitName("MOUSEOVER"))
+            BananaBar3:PlaySet()
+            BananaBar3:Print("Set Symbol " .. L[("symbolname" .. realSymbol)] .. " on " .. UnitName("MOUSEOVER"))
             SetRaidTarget("MOUSEOVER", realSymbol)
             targetingduplist[guid] = realSymbol
             targetingsymbol = targetingsymbol + 1
@@ -3337,7 +3345,7 @@ function BananaBar2:MouseOverTargeting()
     end
 end
 
-function BananaBar2:GetMobSettings(zone, name)
+function BananaBar3:GetMobSettings(zone, name)
     if not self.db.profile.mobsettings[zone] then
         self.db.profile.mobsettings[zone] = {}
     end
@@ -3349,16 +3357,16 @@ function BananaBar2:GetMobSettings(zone, name)
 
     return self.db.profile.mobsettings[zone][name]
 end
-function BananaBar2:MouseOverSymbolsDown()
-    if BananaBar2.Dragging then
+function BananaBar3:MouseOverSymbolsDown()
+    if BananaBar3.Dragging then
         -- dont start, dragging in progress
-        --BananaBar2:Print("dragging in progress, not painting");
+        --BananaBar3:Print("dragging in progress, not painting");
     elseif self.ShowMouseSymbol then
         -- dont start, dragging in progress
-        --BananaBar2:Print("searching in progress, not painting");
+        --BananaBar3:Print("searching in progress, not painting");
     else
         -- start mouseoverpainting
-        BananaBar2.MouseOverPainting = true
+        BananaBar3.MouseOverPainting = true
         self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 1, self)
 
         targetingsymbol = 1
@@ -3366,26 +3374,26 @@ function BananaBar2:MouseOverSymbolsDown()
     end
 end
 
-function BananaBar2:MouseOverSymbolsUp()
-    if BananaBar2.MouseOverPainting then
-        BananaBar2.CancelTimer(self.BananaCursorTimer)
+function BananaBar3:MouseOverSymbolsUp()
+    if BananaBar3.MouseOverPainting then
+        BananaBar3.CancelTimer(self.BananaCursorTimer)
         self:BananaSetCursor(nil)
     end
-    BananaBar2.MouseOverPainting = false
+    BananaBar3.MouseOverPainting = false
 end
 
-function BananaBar2:DragPrepare(dragStartButton, mouseButton)
-    if BananaBar2.MouseOverPainting then
-        --BananaBar2:Print("painting in progress, not dragging");
+function BananaBar3:DragPrepare(dragStartButton, mouseButton)
+    if BananaBar3.MouseOverPainting then
+        --BananaBar3:Print("painting in progress, not dragging");
         -- painting in progress
     elseif self.ShowMouseSymbol then
-        --BananaBar2:Print("searching in progress, not dragging");
+        --BananaBar3:Print("searching in progress, not dragging");
         -- painting in progress
     else
-        BananaBar2.Dragging = true
-        BananaBar2.DragPreparing = true
-        BananaBar2.DragStartButton = dragStartButton
-        BananaBar2.DragMouseButton = mouseButton
+        BananaBar3.Dragging = true
+        BananaBar3.DragPreparing = true
+        BananaBar3.DragStartButton = dragStartButton
+        BananaBar3.DragMouseButton = mouseButton
         self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 0.1, self)
         local x, y = GetCursorPosition()
         self.DragCursorPosX = x
@@ -3393,21 +3401,21 @@ function BananaBar2:DragPrepare(dragStartButton, mouseButton)
     end
 end
 
-function BananaBar2:DragStop(dragStopButton, mouseButton)
-    if BananaBar2.Dragging then
-        BananaBar2.Dragging = false
-        BananaBar2.CancelTimer(self.BananaCursorTimer)
+function BananaBar3:DragStop(dragStopButton, mouseButton)
+    if BananaBar3.Dragging then
+        BananaBar3.Dragging = false
+        BananaBar3.CancelTimer(self.BananaCursorTimer)
         self:BananaSetCursor(nil)
-        if BananaBar2.DragPreparing then
+        if BananaBar3.DragPreparing then
             --self:Debug("drag not started, preparing only")
             return
         end
         if dragStopButton == nil or dragStopButton.AssistButton then
             --self:Debug("drag from "..self.DragStartButton.ButtonId.." to nothing")
             if UnitExists("MOUSEOVER") then
-                BananaBar2:DragButtonOnUnit(self.DragStartButton, mouseButton)
+                BananaBar3:DragButtonOnUnit(self.DragStartButton, mouseButton)
             else
-                local unit = BananaBar2:GetUnitBySymbol(self.DragStartButton.ButtonId)
+                local unit = BananaBar3:GetUnitBySymbol(self.DragStartButton.ButtonId)
                 if unit then
                     SetRaidTarget(unit, 0)
                     PlayRemove()
@@ -3417,32 +3425,32 @@ function BananaBar2:DragStop(dragStopButton, mouseButton)
             --self:Debug("no drag")
         else
             --self:Debug("drag from "..self.DragStartButton.ButtonId.." to "..dragStopButton.ButtonId)
-            BananaBar2:ChangeSymbol(self.DragStartButton.ButtonId, dragStopButton.ButtonId)
+            BananaBar3:ChangeSymbol(self.DragStartButton.ButtonId, dragStopButton.ButtonId)
         end
     end
 end
 
-function BananaBar2:DragButtonOnUnit(button, mouseButton)
+function BananaBar3:DragButtonOnUnit(button, mouseButton)
     if GetRaidTargetIndex("MOUSEOVER") == button.ButtonId then
-        BananaBar2:PlayRemove()
+        BananaBar3:PlayRemove()
         SetRaidTarget("MOUSEOVER", 0)
     else
         if GetRaidTargetIndex("MOUSEOVER") then
             local old = GetRaidTargetIndex("MOUSEOVER")
             if self.TARGETMARKS[old] then
-                BananaBar2:ChangeSymbol(old, button.ButtonId)
+                BananaBar3:ChangeSymbol(old, button.ButtonId)
             else
                 SetRaidTarget("MOUSEOVER", button.ButtonId)
-                BananaBar2:PlaySet()
+                BananaBar3:PlaySet()
             end
         else
             SetRaidTarget("MOUSEOVER", button.ButtonId)
-            BananaBar2:PlaySet()
+            BananaBar3:PlaySet()
         end
     end
 end
 
-function BananaBar2:InitChatFrame()
+function BananaBar3:InitChatFrame()
     if not self.DebugChatFrame then
         local i = 1
         while _G["ChatFrame" .. i] do
@@ -3460,23 +3468,23 @@ function BananaBar2:InitChatFrame()
     end
 end
 
-function BananaBar2:Debug(value)
+function BananaBar3:Debug(value)
     self:InitChatFrame()
 
     if self:Get_showdebugmessages() then
-        BananaBar2:Print(self.DebugChatFrame, "[Dbg] "..dump(value))
+        BananaBar3:Print(self.DebugChatFrame, "[Dbg] "..dump(value))
     end
 end
-function BananaBar2:Dump(name, value)
+function BananaBar3:Dump(name, value)
     self:InitChatFrame()
-    if BananaBar2:Get_showdebugmessages() then
-        BananaBar2:Print(self.DebugChatFrame, "[Dmp] "..name .. ": " .. dump(value))
+    if BananaBar3:Get_showdebugmessages() then
+        BananaBar3:Print(self.DebugChatFrame, "[Dmp] "..name .. ": " .. dump(value))
     end
 end
 
-function BananaBar2:Dump2(name, value)
+function BananaBar3:Dump2(name, value)
     self:InitChatFrame()
-    BananaBar2:Print(self.DebugChatFrame, "[Dmp] "..name .. ": " .. dump(value))
+    BananaBar3:Print(self.DebugChatFrame, "[Dmp] "..name .. ": " .. dump(value))
 end
 
 function dump(o)
@@ -3498,11 +3506,11 @@ function dump(o)
     return tostring(o)
 end
 
-function BananaBar2:IsActive()
+function BananaBar3:IsActive()
     return true
 end
 
-function BananaBar2:TableCount(list)
+function BananaBar3:TableCount(list)
     local count = 0
     for key in pairs(list) do
         count = count + 1
@@ -3510,7 +3518,7 @@ function BananaBar2:TableCount(list)
     return count
 end
 
-function BananaBar2:FromCount(list)
+function BananaBar3:FromCount(list)
     local count = 0
     for key in pairs(list) do
         if key ~= "MOUSEOVER" then
@@ -3520,7 +3528,7 @@ function BananaBar2:FromCount(list)
     return count
 end
 
-function BananaBar2:AssistScan(i, target, unit, raidIndex)
+function BananaBar3:AssistScan(i, target, unit, raidIndex)
     local tooltipInfo1 = nil
     local tooltipInfo2 = nil
 	
@@ -3528,66 +3536,66 @@ function BananaBar2:AssistScan(i, target, unit, raidIndex)
     self.AssistButtons[i].AssistTarget = target
 
     if unit then
-        if BananaBar2.AssistButtons[i].frame:GetAttribute("unit") ~= target then
-            --BananaBar2:Print("set b"..i.."="..(target or "<nil>").." old="..(BananaBar2.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"));
-            --self:Debug("set b"..i.."="..(target or "<nil>").." old="..(BananaBar2.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"))
-			SecureActionQueue:FrameSetAttribute(BananaBar2.AssistButtons[i].frame, "unit", target)
-            SecureActionQueue:FrameSetAttribute(BananaBar2.AssistButtons[i].frame, "type2", "menu")
-            SecureActionQueue:FrameSetAttribute(BananaBar2.AssistButtons[i].frame, "*type1", "target")
+        if BananaBar3.AssistButtons[i].frame:GetAttribute("unit") ~= target then
+            --BananaBar3:Print("set b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"));
+            --self:Debug("set b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"))
+			SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "unit", target)
+            SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "type2", "menu")
+            SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "*type1", "target")
         	
 			self:Debug(GetRaidTargetIndex(unit))
 			for i = 1, 8, 1 do
 			 
-			SecureActionQueue:FrameSetAttribute(BananaBar2.Buttons[i].frame, "unit", target)
-            SecureActionQueue:FrameSetAttribute(BananaBar2.Buttons[i].frame, "type1", "target")
+			SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[i].frame, "unit", target)
+            SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[i].frame, "type1", "target")
 			end
 
-			--SecureActionQueue:FrameSetAttribute(BananaBar2.BananaBarButton1, "unit", target)
-            --SecureActionQueue:FrameSetAttribute(BananaBar2.BananaBarButton1, "*type1", "target")
-		--BananaBar2.AssistButtons[i].frame.menu = BananaShowTargetDropDown;
+			--SecureActionQueue:FrameSetAttribute(BananaBar3.BananaBarButton1, "unit", target)
+            --SecureActionQueue:FrameSetAttribute(BananaBar3.BananaBarButton1, "*type1", "target")
+		--BananaBar3.AssistButtons[i].frame.menu = BananaShowTargetDropDown;
         end
     else
-        if BananaBar2.AssistButtons[i].frame:GetAttribute("unit") ~= "" then
-            --BananaBar2:Print("clr b"..i.."="..(target or "<nil>").." old="..(BananaBar2.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"));
-			--self:Debug("set b"..i.."="..(target or "<nil>").." old="..(BananaBar2.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"))
-            SecureActionQueue:FrameSetAttribute(BananaBar2.AssistButtons[i].frame, "unit", nil)
-            SecureActionQueue:FrameSetAttribute(BananaBar2.AssistButtons[i].frame, "type2", nil)
-            SecureActionQueue:FrameSetAttribute(BananaBar2.AssistButtons[i].frame, "*type1", nil)
+        if BananaBar3.AssistButtons[i].frame:GetAttribute("unit") ~= "" then
+            --BananaBar3:Print("clr b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"));
+			--self:Debug("set b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"))
+            SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "unit", nil)
+            SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "type2", nil)
+            SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "*type1", nil)
 			
-			--SecureActionQueue:FrameSetAttribute(BananaBar2.Buttons[8].frame, "unit", target)
-            --SecureActionQueue:FrameSetAttribute(BananaBar2.Buttons[8].frame, "*type1", "target")
-        --BananaBar2.AssistButtons[i].frame.menu = nil;
+			--SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[8].frame, "unit", target)
+            --SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[8].frame, "*type1", "target")
+        --BananaBar3.AssistButtons[i].frame.menu = nil;
         end
     end
 
     if UnitExists(unit) then
         --self:Debug(i.." "..unit.." "..target.." "..(raidIndex or "nil"))
-        BananaBar2.AssistButtons[i].AssistUnit = unit
-        BananaBar2.AssistButtons[i].AssistTarget = target
+        BananaBar3.AssistButtons[i].AssistUnit = unit
+        BananaBar3.AssistButtons[i].AssistTarget = target
 		
         local name, rank, subgroup, level, class, fileName, zone, online, isDead = GetRaidRosterInfo(raidIndex)
 
         if not online then
-            BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_OFFLINE)
+            BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_OFFLINE)
             tooltipInfo1 = "Offline"
             tooltipInfo2 = nil
         elseif UnitIsGhost(unit) then
-            BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_GHOST)
+            BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_GHOST)
             tooltipInfo1 = "Ghost released"
             tooltipInfo2 = nil
         elseif isDead then
-            BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_DEAD)
+            BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_DEAD)
             tooltipInfo1 = "Dead"
             tooltipInfo2 = nil
         elseif UnitIsAFK(unit) then
-            BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_AWAY)
+            BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_AWAY)
             tooltipInfo1 = "<AFK>"
             tooltipInfo2 = nil
         else
             if UnitExists(target) then
                 if UnitIsDead(target) then
                     --self:Debug("UnitIsDead")
-                    BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_X)
+                    BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_X)
                     tooltipInfo1 = "has selected a dead target"
                     tooltipInfo2 = UnitName(target)
                 elseif UnitCanAttack(unit, target) then
@@ -3596,47 +3604,47 @@ function BananaBar2:AssistScan(i, target, unit, raidIndex)
                     tooltipInfo2 = UnitName(target)
                     local rti = GetRaidTargetIndex(target)
                     if rti then
-                        BananaBar2.AssistButtons[i]:SetButtonSymbol(rti)
+                        BananaBar3.AssistButtons[i]:SetButtonSymbol(rti)
                     else
-                        BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_ENEMY)
+                        BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_ENEMY)
                     end
                 else
                     tooltipInfo1 = "has selected an friendly target"
                     tooltipInfo2 = UnitName(target)
 
                     if fileName == "PRIEST" then
-                        BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_PRIEST)
+                        BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_PRIEST)
                     elseif fileName == "PALADIN" then
-                        BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_PALADIN)
+                        BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_PALADIN)
                     elseif fileName == "SHAMAN" then
-                        BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_SHAMAN)
+                        BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_SHAMAN)
                     elseif fileName == "DRUID" then
-                        BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_DRUID)
+                        BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_DRUID)
                     else
                         local rti = GetRaidTargetIndex(target)
                         if rti then
-                            BananaBar2.AssistButtons[i]:SetButtonSymbol(rti)
+                            BananaBar3.AssistButtons[i]:SetButtonSymbol(rti)
                         else
-                            BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_FRIEND)
+                            BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_FRIEND)
                         end
                     end
                 end
             else
                 --self:Debug("NotExists")
-                BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_X)
+                BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_X)
                 tooltipInfo1 = "has nothing selected"
                 tooltipInfo2 = nil
             end
         end
     else
-        BananaBar2.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_NULL)
+        BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_NULL)
         
 		tooltipInfo1 = nil
         tooltipInfo2 = nil
     end
-    BananaBar2.AssistButtons[i]:SetButtonName2("") -- MT ehemals
-    BananaBar2.AssistButtons[i].TooltipInfo1 = tooltipInfo1
-    BananaBar2.AssistButtons[i].TooltipInfo2 = tooltipInfo2
+    BananaBar3.AssistButtons[i]:SetButtonName2("") -- MT ehemals
+    BananaBar3.AssistButtons[i].TooltipInfo1 = tooltipInfo1
+    BananaBar3.AssistButtons[i].TooltipInfo2 = tooltipInfo2
 end
 
 local gruppen = {
@@ -3650,7 +3658,7 @@ local gruppen = {
     [8] = {count = 0}
 }
 
-function BananaBar2:AssistScanning()
+function BananaBar3:AssistScanning()
     gruppen = {
         [1] = {count = 0},
         [2] = {count = 0},
@@ -3681,7 +3689,7 @@ function BananaBar2:AssistScanning()
     end
 end
 
-function BananaBar2:GetUnitsToScan()
+function BananaBar3:GetUnitsToScan()
     local units = {}
     if UnitInRaid("player") then
         for unitNumber = 1, 40, 1 do
@@ -3709,7 +3717,7 @@ function BananaBar2:GetUnitsToScan()
     return units
 end
 
-function BananaBar2:Scan()
+function BananaBar3:Scan()
     self:ResetScanBlock()
 
     self:AssistScanning()
@@ -3724,7 +3732,7 @@ function BananaBar2:Scan()
         local type = auraTypes[value.DummySpellId]
         local realDur = GetTime() - value.StartTime
         if realDur > type.Duration + 5 then
-            --BananaBar2:Print("remove "..key)
+            --BananaBar3:Print("remove "..key)
             self.AURAINFO[key] = nil
         else
             self:AddGuidToList(key, value.Name)
@@ -3732,25 +3740,25 @@ function BananaBar2:Scan()
     end
 end
 
-function BananaBar2:ResetScanBlock(block)
+function BananaBar3:ResetScanBlock(block)
     self.TARGETS = {}
     self.TARGETMARKS = {}
 end
 
-function BananaBar2:ScanUnit(unit, source)
+function BananaBar3:ScanUnit(unit, source)
     if source == "" then
         source = nil
     end
 
     if UnitExists(unit) then
-        --BananaBar2:Print("ScanUnit "..unit);
+        --BananaBar3:Print("ScanUnit "..unit);
         local rti = GetRaidTargetIndex(unit)
 
         self:AddTargetToList(rti, unit, source)
     end
 end
 
-function BananaBar2:AddTargetToList(rti, unit, source)
+function BananaBar3:AddTargetToList(rti, unit, source)
     local guid = UnitGUID(unit)
 
     if rti then
@@ -3778,7 +3786,7 @@ function BananaBar2:AddTargetToList(rti, unit, source)
     end
 end
 
-function BananaBar2:AddGuidToList(guid, name)
+function BananaBar3:AddGuidToList(guid, name)
     if self.TARGETS[guid] == nil then
         self.TARGETS[guid] = {}
         self.TARGETS[guid].from = {}
@@ -3794,7 +3802,7 @@ function BananaBar2:AddGuidToList(guid, name)
     end
 end
 
-function BananaBar2:FindSpellId(unit)
+function BananaBar3:FindSpellId(unit)
     --self:Print("FindSpellId: "..unit)
     local iIterator = 1
     local debuffName,
@@ -3824,7 +3832,7 @@ function BananaBar2:FindSpellId(unit)
     return nil
 end
 
-function BananaBar2:UnitHasHuntersMark(unit)
+function BananaBar3:UnitHasHuntersMark(unit)
     local iIterator = 1
     local debuffName, debuffTexture, debuffApplications, debuffDispelType = UnitDebuff(unit, iIterator)
     while (debuffTexture) do
@@ -3837,7 +3845,7 @@ function BananaBar2:UnitHasHuntersMark(unit)
     return false
 end
 
-function BananaBar2:IsAutoSymbolTarget(unit)
+function BananaBar3:IsAutoSymbolTarget(unit)
     if UnitCanAttack("player", unit) and (not UnitIsCivilian(unit)) then
         return true
     else
@@ -3848,7 +3856,7 @@ function BananaBar2:IsAutoSymbolTarget(unit)
     --UnitIsCorpse
 end
 
-function BananaBar2:CanSetSymbols()
+function BananaBar3:CanSetSymbols()
     if UnitInRaid("player") then
         if UnitIsGroupAssistant("player") or UnitIsGroupLeader("player") then
             return true
@@ -3861,42 +3869,42 @@ function BananaBar2:CanSetSymbols()
     return false
 end
 
-function BananaBar2:ChangeSymbol(indexFrom, indexTo)
-    local unit1 = BananaBar2:GetUnitBySymbol(indexFrom)
-    local unit2 = BananaBar2:GetUnitBySymbol(indexTo)
+function BananaBar3:ChangeSymbol(indexFrom, indexTo)
+    local unit1 = BananaBar3:GetUnitBySymbol(indexFrom)
+    local unit2 = BananaBar3:GetUnitBySymbol(indexTo)
     if unit1 then
         if unit2 then
             --swap
             SetRaidTarget(unit1, indexTo)
             SetRaidTarget(unit2, indexFrom)
-            BananaBar2:PlaySet()
-            BananaBar2:PlayRemove()
+            BananaBar3:PlaySet()
+            BananaBar3:PlayRemove()
         else
             --move
             SetRaidTarget(unit1, indexTo)
-            BananaBar2:PlaySet()
-            BananaBar2:PlayRemove()
+            BananaBar3:PlaySet()
+            BananaBar3:PlayRemove()
         end
     else
         if unit2 then
             --move
             SetRaidTarget(unit2, indexFrom)
-            BananaBar2:PlaySet()
-            BananaBar2:PlayRemove()
+            BananaBar3:PlaySet()
+            BananaBar3:PlayRemove()
         else
-            BananaBar2:PlayError()
+            BananaBar3:PlayError()
         end
     end
 end
 
-function BananaBar2:GetUnitBySymbol(index)
+function BananaBar3:GetUnitBySymbol(index)
     if self.TARGETMARKS[index] then
         return self.TARGETS[self.TARGETMARKS[index]].info_unit
     end
     return nil
 end
 
-function BananaBar2:SetSymbol(index,Targetunitname)
+function BananaBar3:SetSymbol(index,Targetunitname)
 	u="target"
 		
 		if UnitExists(u) then 
@@ -3904,7 +3912,7 @@ function BananaBar2:SetSymbol(index,Targetunitname)
 		end
 	
 	if GetRaidTargetIndex("target") == index then
-        BananaBar2:PlayRemove()
+        BananaBar3:PlayRemove()
         SetRaidTarget("target", 0)
 		self:Debug("Remove targetname sur "..Targetunitname)	
 	else
@@ -3912,11 +3920,11 @@ function BananaBar2:SetSymbol(index,Targetunitname)
 		if Targetuniname  then
 		self:Debug("index targetname N:"..index.."sur "..Targetunitname)
         end
-		BananaBar2:PlaySet()
+		BananaBar3:PlaySet()
     end
 end
 
-function BananaBar2:SetOrRemoveSymbol()
+function BananaBar3:SetOrRemoveSymbol()
     if not UnitExists("target") then
         Banana_TargetRaidSymbol(index)
         if not UnitExists("target") then
@@ -3931,7 +3939,7 @@ function BananaBar2:SetOrRemoveSymbol()
         Banana_PlayRemove1()
     else
         SetRaidTarget("TARGET", index)
-        BananaBar2:PlaySet()
+        BananaBar3:PlaySet()
     end
     Banana_UpdateStatus()
 end

@@ -1,5 +1,5 @@
 local AceLocale = LibStub:GetLibrary("AceLocale-3.0");
-local L = AceLocale:NewLocale("BananaBar2", "deDE", false);
+local L = AceLocale:NewLocale("BananaBar3", "deDE", false);
 
 if not L then return end
 
@@ -14,11 +14,11 @@ if not L then return end
 
 
 -- Short name of the Addon, should normally not be translated
-L.addonname                       = "BananaBar2";
+L.addonname                       = "BananaBar3";
 
 -- Long name of the Addon, the word BananaBarClassic should normally not be translated, 
 -- the appendix "Raid Symbols” can be translated
-L.addonnamelong                   = "BananaBar2 Raid Symbole";
+L.addonnamelong                   = "BananaBar3 Raid Symbole";
 
         
 -- Texts in the WOW Key binding Dialog
