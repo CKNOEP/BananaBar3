@@ -2454,8 +2454,10 @@ end
 function BananaBar3:ExecuteAction(button, clicktype,Targetunitname)
     local action = self.Actions[clicktype]
     --self:Debug("bouton" .. self.TooltipButton.ButtonId)
+	
+	if action then
 	self:Debug("Action:"..action.."-- clicktype:"..clicktype)
-    
+    end
 	
 	if not action then
         self:Debug("No Action for clicktype " .. clicktype)
