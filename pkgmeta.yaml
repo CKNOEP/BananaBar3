@@ -1,0 +1,13 @@
+package-as: BananaBar3
+enable-nolib-creation: no
+manual-changelog: CHANGES.txt
+license-output: LICENSE
+@file-revision@
+@file-hash@
+ignore:
+ - pkgmeta.yaml
+ Author:@project-author@
+ Révision:@project-revision@
+ Version:@project-version@
+ Date:@project-revision@
+ 
