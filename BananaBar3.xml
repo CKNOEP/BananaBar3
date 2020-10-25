@@ -30,7 +30,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentArrow1" file="Interface\AddOns\BananaBarClassic\Images\ArrowMetal1" hidden="true">
+				<Texture name="$parentArrow1" file="Interface\AddOns\BananaBar3\Images\ArrowMetal1" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -42,7 +42,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentArrow2" file="Interface\AddOns\BananaBarClassic\Images\ArrowMetal2" hidden="true">
+				<Texture name="$parentArrow2" file="Interface\AddOns\BananaBar3\Images\ArrowMetal2" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -54,7 +54,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentArrow3" file="Interface\AddOns\BananaBarClassic\Images\ArrowMetal3" hidden="true">
+				<Texture name="$parentArrow3" file="Interface\AddOns\BananaBar3\Images\ArrowMetal3" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -66,7 +66,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentArrow4" file="Interface\AddOns\BananaBarClassic\Images\ArrowMetal4" hidden="true">
+				<Texture name="$parentArrow4" file="Interface\AddOns\BananaBar3\Images\ArrowMetal4" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -78,7 +78,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentStopwatch" file="Interface\AddOns\BananaBarClassic\Images\stopwatch" hidden="true">
+				<Texture name="$parentStopwatch" file="Interface\AddOns\BananaBar3\Images\stopwatch" hidden="true">
 					<Color r="1" g="1" b="1" a="0.8" />
 					<Size>
 						<AbsDimension x="36" y="36" />
@@ -91,7 +91,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentSubIcon" file="Interface\AddOns\BananaBarClassic\Images\rp_offline2" hidden="true">
+				<Texture name="$parentSubIcon" file="Interface\AddOns\BananaBar3\Images\rp_offline2" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -105,7 +105,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentButtonback" file="Interface\AddOns\BananaBarClassic\Images\buttonback" hidden="false"  frameLevel="500">
+				<Texture name="$parentButtonback" file="Interface\AddOns\BananaBar3\Images\buttonback" hidden="false"  frameLevel="500">
 					<Color a="0.75" r="0.25" g="0.25" b="0.25" />
 				</Texture>
 			</Layer>
@@ -137,7 +137,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentHuntersmarkSymbol" file="Interface\AddOns\BananaBarClassic\Images\HuntermarkArrow" hidden="false" frameLevel="504">
+				<Texture name="$parentHuntersmarkSymbol" file="Interface\AddOns\BananaBar3\Images\HuntermarkArrow" hidden="false" frameLevel="504">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -149,7 +149,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentDeadSymbol" file="Interface\AddOns\BananaBarClassic\Images\Dead" hidden="true" frameLevel="505">
+				<Texture name="$parentDeadSymbol" file="Interface\AddOns\BananaBar3\Images\Dead" hidden="true" frameLevel="505">
 					<Size>
 						<AbsDimension x="24" y="24" />
 					</Size>
@@ -265,7 +265,7 @@
 		</NormalTexture>
 		<!-- schwarz goldener rahmen -->
 		<!-- Interface\Buttons\UI-Quickslot-Depress -->
-		<PushedTexture file="Interface\AddOns\BananaBarClassic\Images\Pressed" />
+		<PushedTexture file="Interface\AddOns\BananaBar3\Images\Pressed" />
 		<!-- mouseover -->
 		<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square" />
 	</Button>
@@ -287,7 +287,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentArrow1" file="Interface\AddOns\BananaBarClassic\Images\ArrowMetal1" hidden="true">
+				<Texture name="$parentArrow1" file="Interface\AddOns\BananaBar3\Images\ArrowMetal1" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -299,7 +299,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentArrow2" file="Interface\AddOns\BananaBarClassic\Images\ArrowMetal2" hidden="true">
+				<Texture name="$parentArrow2" file="Interface\AddOns\BananaBar3\Images\ArrowMetal2" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -311,7 +311,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentArrow3" file="Interface\AddOns\BananaBarClassic\Images\ArrowMetal3" hidden="true">
+				<Texture name="$parentArrow3" file="Interface\AddOns\BananaBar3\Images\ArrowMetal3" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -323,7 +323,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentArrow4" file="Interface\AddOns\BananaBarClassic\Images\ArrowMetal4" hidden="true">
+				<Texture name="$parentArrow4" file="Interface\AddOns\BananaBar3\Images\ArrowMetal4" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -361,7 +361,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentDeadSymbol" file="Interface\AddOns\BananaBarClassic\Images\Dead" hidden="true">
+				<Texture name="$parentDeadSymbol" file="Interface\AddOns\BananaBar3\Images\Dead" hidden="true">
 					<Size>
 						<AbsDimension x="32" y="32" />
 					</Size>
@@ -479,7 +479,7 @@
 		</NormalTexture>
 		<!-- schwarz goldener rahmen -->
 		<!-- Interface\Buttons\UI-Quickslot-Depress -->
-		<PushedTexture file="Interface\AddOns\BananaBarClassic\Images\Pressed" />
+		<PushedTexture file="Interface\AddOns\BananaBar3\Images\Pressed" />
 		<!-- mouseover -->
 		<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square" />
 	</Button>
