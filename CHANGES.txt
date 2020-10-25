@@ -1,4 +1,8 @@
 2020-10-24
+Majors corrections
+- images are not showing, or displayed a green square instead, the path was wrong
+
+2020-10-24
 Minors corrections
 -Translate Target in Local GB
 -issue to error LUA in debug messages
