@@ -75,7 +75,7 @@ function BananaBar3Button:init(addon,name)
     self.HealthBar = getglobal(self.FrameName.."HealthBar");   
     self.SubIcon =  getglobal(self.FrameName.."SubIcon");  
     self.Cooldown =  getglobal(self.FrameName.."Cooldown");  
-    self.Cooldown:SetSwipeTexture("Interface\\AddOns\\BananaBarClassic\\Images\\Swite_Circle.blp",0,0,0,0.5);
+    self.Cooldown:SetSwipeTexture("Interface\\AddOns\\BananaBar3\\Images\\Swite_Circle.blp",0,0,0,0.5);
     self.Cooldown:SetUseCircularEdge(true)
     self.Cooldown:SetAlpha(0.7);
     self.Cooldown:SetReverse(true)
@@ -111,7 +111,7 @@ function BananaBar3Button:init(addon,name)
     
     self.HealthBar:SetValue(0)
     --self.HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar");
-    self.HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBarClassic\\Images\\Chess128N");
+    self.HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBar3\\Images\\Chess128N");
     self.HealthBar:SetStatusBarColor(0,1,0,1);                    
 
     self.dead = false;
@@ -700,7 +700,7 @@ function BananaBar3Button:UpdateAllButtonFrame(show)
             showButtonFrame = true;
         else
             BananaBarAllButtons[i].NormalTexture:SetAlpha(0);
-            BananaBarAllButtons[i].frame:SetPushedTexture("Interface\\AddOns\\BananaBarClassic\\Images\\Pressed");            
+            BananaBarAllButtons[i].frame:SetPushedTexture("Interface\\AddOns\\BananaBar3\\Images\\Pressed");            
             showButtonFrame = false;
         end
     end

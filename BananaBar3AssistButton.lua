@@ -104,7 +104,7 @@ function BananaBar3AssistButton:init(addon,name)
 		self.HealthBar:Hide();
 		self.HealthBar:SetValue(0)
 		--self.HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar");
-		self.HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBarClassic\\Images\\Chess128N");
+		self.HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBar3\\Images\\Chess128N");
 		self.HealthBar:SetStatusBarColor(0,1,0,1);                    
 
 		self.dead = false;
@@ -608,7 +608,7 @@ function BananaBar3AssistButton:UpdateAllButtonFrame(show)
             showButtonFrame = true;
         else
             BananaBarAllAssistButtons[i].NormalTexture:SetAlpha(0);
-            BananaBarAllAssistButtons[i].frame:SetPushedTexture("Interface\\AddOns\\BananaBarClassic\\Images\\Pressed");            
+            BananaBarAllAssistButtons[i].frame:SetPushedTexture("Interface\\AddOns\\BananaBar3\\Images\\Pressed");            
             showButtonFrame = false;
         end
     end

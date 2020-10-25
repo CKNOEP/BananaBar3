@@ -23,63 +23,63 @@ BANANA_RAID_TARGET_X =
 
 BANANA_RAID_CURSORS =
 {
-    [1] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs1",
-    [2] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs2",
-    [3] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs3",
-    [4] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs4",
-    [5] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs5",
-    [6] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs6",
-    [7] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs7",
-    [8] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs8",
-    [9] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs9", --hunter's mark
+    [1] = "Interface\\AddOns\\BananaBar3\\Images\\rs1",
+    [2] = "Interface\\AddOns\\BananaBar3\\Images\\rs2",
+    [3] = "Interface\\AddOns\\BananaBar3\\Images\\rs3",
+    [4] = "Interface\\AddOns\\BananaBar3\\Images\\rs4",
+    [5] = "Interface\\AddOns\\BananaBar3\\Images\\rs5",
+    [6] = "Interface\\AddOns\\BananaBar3\\Images\\rs6",
+    [7] = "Interface\\AddOns\\BananaBar3\\Images\\rs7",
+    [8] = "Interface\\AddOns\\BananaBar3\\Images\\rs8",
+    [9] = "Interface\\AddOns\\BananaBar3\\Images\\rs9", --hunter's mark
 }
 BANANA_RAID_CURSORS_GREY =
 {
-    [1] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs1x",
-    [2] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs2x",
-    [3] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs3x",
-    [4] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs4x",
-    [5] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs5x",
-    [6] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs6x",
-    [7] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs7x",
-    [8] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs8x",
-    [9] = "Interface\\AddOns\\BananaBarClassic\\Images\\rs9x", --hunter's mark
+    [1] = "Interface\\AddOns\\BananaBar3\\Images\\rs1x",
+    [2] = "Interface\\AddOns\\BananaBar3\\Images\\rs2x",
+    [3] = "Interface\\AddOns\\BananaBar3\\Images\\rs3x",
+    [4] = "Interface\\AddOns\\BananaBar3\\Images\\rs4x",
+    [5] = "Interface\\AddOns\\BananaBar3\\Images\\rs5x",
+    [6] = "Interface\\AddOns\\BananaBar3\\Images\\rs6x",
+    [7] = "Interface\\AddOns\\BananaBar3\\Images\\rs7x",
+    [8] = "Interface\\AddOns\\BananaBar3\\Images\\rs8x",
+    [9] = "Interface\\AddOns\\BananaBar3\\Images\\rs9x", --hunter's mark
 }
 
 
 
-BANANA_OVL_GREEN		 = "Interface\\AddOns\\BananaBarClassic\\Images\\OverlayGreen66";
-BANANA_OVL_RED		 	 = "Interface\\AddOns\\BananaBarClassic\\Images\\OverlayRed66";
-BANANA_OVL_YELLOW		 = "Interface\\AddOns\\BananaBarClassic\\Images\\OverlayYellow66";
-BANANA_OVL_MAGENTA		 = "Interface\\AddOns\\BananaBarClassic\\Images\\OverlayMagenta66";
+BANANA_OVL_GREEN		 = "Interface\\AddOns\\BananaBar3\\Images\\OverlayGreen66";
+BANANA_OVL_RED		 	 = "Interface\\AddOns\\BananaBar3\\Images\\OverlayRed66";
+BANANA_OVL_YELLOW		 = "Interface\\AddOns\\BananaBar3\\Images\\OverlayYellow66";
+BANANA_OVL_MAGENTA		 = "Interface\\AddOns\\BananaBar3\\Images\\OverlayMagenta66";
 
-BANANA_TEXTURE_NULL      = "Interface\\AddOns\\BananaBarClassic\\Images\\null";
-BANANA_TEXTURE_X         = "Interface\\AddOns\\BananaBarClassic\\Images\\x";
-BANANA_TEXTURE_ENEMY  	 = "Interface\\AddOns\\BananaBarClassic\\Images\\rp_enemy";
-BANANA_TEXTURE_FRIEND	 = "Interface\\AddOns\\BananaBarClassic\\Images\\rp_friend";
-BANANA_TEXTURE_OFFLINE   = "Interface\\AddOns\\BananaBarClassic\\Images\\rp_offline";
-BANANA_TEXTURE_OFFLINE2  = "Interface\\AddOns\\BananaBarClassic\\Images\\rp_offline2";
-BANANA_TEXTURE_AWAY      = "Interface\\AddOns\\BananaBarClassic\\Images\\rp_away";
-BANANA_TEXTURE_DEAD      = "Interface\\AddOns\\BananaBarClassic\\Images\\rp_dead";
-BANANA_TEXTURE_GHOST      = "Interface\\AddOns\\BananaBarClassic\\Images\\rp_ghost";
+BANANA_TEXTURE_NULL      = "Interface\\AddOns\\BananaBar3\\Images\\null";
+BANANA_TEXTURE_X         = "Interface\\AddOns\\BananaBar3\\Images\\x";
+BANANA_TEXTURE_ENEMY  	 = "Interface\\AddOns\\BananaBar3\\Images\\rp_enemy";
+BANANA_TEXTURE_FRIEND	 = "Interface\\AddOns\\BananaBar3\\Images\\rp_friend";
+BANANA_TEXTURE_OFFLINE   = "Interface\\AddOns\\BananaBar3\\Images\\rp_offline";
+BANANA_TEXTURE_OFFLINE2  = "Interface\\AddOns\\BananaBar3\\Images\\rp_offline2";
+BANANA_TEXTURE_AWAY      = "Interface\\AddOns\\BananaBar3\\Images\\rp_away";
+BANANA_TEXTURE_DEAD      = "Interface\\AddOns\\BananaBar3\\Images\\rp_dead";
+BANANA_TEXTURE_GHOST      = "Interface\\AddOns\\BananaBar3\\Images\\rp_ghost";
 
-BANANA_TEXTURE_DRUID     = "Interface\\AddOns\\BananaBarClassic\\Images\\healer_druid";
-BANANA_TEXTURE_PRIEST     = "Interface\\AddOns\\BananaBarClassic\\Images\\healer_priest";
-BANANA_TEXTURE_SHAMAN     = "Interface\\AddOns\\BananaBarClassic\\Images\\healer_shaman";
-BANANA_TEXTURE_PALADIN     = "Interface\\AddOns\\BananaBarClassic\\Images\\healer_paladin";
+BANANA_TEXTURE_DRUID     = "Interface\\AddOns\\BananaBar3\\Images\\healer_druid";
+BANANA_TEXTURE_PRIEST     = "Interface\\AddOns\\BananaBar3\\Images\\healer_priest";
+BANANA_TEXTURE_SHAMAN     = "Interface\\AddOns\\BananaBar3\\Images\\healer_shaman";
+BANANA_TEXTURE_PALADIN     = "Interface\\AddOns\\BananaBar3\\Images\\healer_paladin";
 
 
-BANANA_TEXTURE_RAIDICONS_FLAT = "Interface\\AddOns\\BananaBarClassic\\Images\\RaidTargetingIconsFlat";
+BANANA_TEXTURE_RAIDICONS_FLAT = "Interface\\AddOns\\BananaBar3\\Images\\RaidTargetingIconsFlat";
 BANANA_TEXTURE_RAIDICONS      = "Interface\\TargetingFrame\\UI-RaidTargetingIcons";
 
 
-BANANA_TEXTURE_HUNTERSMARK    = "Interface\\AddOns\\BananaBarClassic\\Images\\HuntermarkArrow";
-BANANA_TEXTURE_MINIMAPICON 	  = "Interface\\AddOns\\BananaBarClassic\\Images\\BananaBar64"
+BANANA_TEXTURE_HUNTERSMARK    = "Interface\\AddOns\\BananaBar3\\Images\\HuntermarkArrow";
+BANANA_TEXTURE_MINIMAPICON 	  = "Interface\\AddOns\\BananaBar3\\Images\\BananaBar64"
 
-BANANA_SOUND_SET			= "Interface\\AddOns\\BananaBarClassic\\Sound\\BananaSetSymbol.mp3"
-BANANA_SOUND_REMOVE			= "Interface\\AddOns\\BananaBarClassic\\Sound\\BananaPlop1.mp3"
-BANANA_SOUND_REMOVE_ALL		= "Interface\\AddOns\\BananaBarClassic\\Sound\\BananaPlop8.mp3"
-BANANA_SOUND_ERROR 			= "Interface\\AddOns\\BananaBarClassic\\Sound\\BananaNo.mp3"
+BANANA_SOUND_SET			= "Interface\\AddOns\\BananaBar3\\Sound\\BananaSetSymbol.mp3"
+BANANA_SOUND_REMOVE			= "Interface\\AddOns\\BananaBar3\\Sound\\BananaPlop1.mp3"
+BANANA_SOUND_REMOVE_ALL		= "Interface\\AddOns\\BananaBar3\\Sound\\BananaPlop8.mp3"
+BANANA_SOUND_ERROR 			= "Interface\\AddOns\\BananaBar3\\Sound\\BananaNo.mp3"
 
 BANANA_ABILITY_HUNTER_SNIPERSHOT = "Interface\\Icons\\Ability_Hunter_SniperShot";
 

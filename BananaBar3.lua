@@ -29,7 +29,7 @@ BINDING_NAME_BananaBar3_BINDING_SEARCH = L["binding_search"]
 BananaBar3.name = L["addonname"]
 BananaBar3.version = "2.0.3";
 BananaBar3.date = "2020-05-27T22:53:58Z";
-BananaBar3.hasIcon = "Interface\\Addons\\BananaBarClassic\\Images\\BananaBar64"
+BananaBar3.hasIcon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 BananaBar3.defaultMinimapPosition = 170
 
 
@@ -2773,7 +2773,7 @@ function BananaBar3:BananaUpdate()
                     self.Buttons[but].HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
                 else
                     self.Buttons[but].HealthBar:SetStatusBarTexture(
-                        "Interface\\AddOns\\BananaBarClassic\\Images\\Chess128N"
+                        "Interface\\AddOns\\BananaBar3\\Images\\Chess128N"
                     )
                     self.Buttons[but].HealthBar:SetValue(current)
                 end
@@ -2802,7 +2802,7 @@ function BananaBar3:BananaUpdate()
 
                 --self.Buttons[but].HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar");
                 self.Buttons[but].HealthBar:SetStatusBarTexture(
-                    "Interface\\AddOns\\BananaBarClassic\\Images\\Chess128N"
+                    "Interface\\AddOns\\BananaBar3\\Images\\Chess128N"
                 )
                 self.Buttons[but].HealthBar:SetStatusBarColor(0, 1, 0, 1)
                 self.Buttons[but].HealthBar:SetMinMaxValues(0, t.info_healthmax)
@@ -3218,7 +3218,7 @@ function BananaBar3:FindSpellIdByTexture(searchtex)
 end
 
 function BananaBar3:OnClick()
-    PlaySoundFile("Interface\\AddOns\\BananaBarClassic\\Sound\\2hh.mp3")
+    PlaySoundFile("Interface\\AddOns\\BananaBar3\\Sound\\2hh.mp3")
 end
 
 function BananaBar3:OnTooltipUpdate()
@@ -3267,7 +3267,7 @@ function BananaBar3:BananaCursor()
             end
         end
     elseif BananaBar3.MouseOverPainting then
-        self:BananaSetCursor("Interface\\AddOns\\BananaBarClassic\\Images\\raidiconcursor")
+        self:BananaSetCursor("Interface\\AddOns\\BananaBar3\\Images\\raidiconcursor")
         self:MouseOverTargeting()
     elseif self.ShowMouseSymbol then
         if UnitExists("MOUSEOVER") then
@@ -3320,7 +3320,7 @@ function BananaBar3:MouseOverTargeting()
         local ms = self:GetMobSettings(zone, name)
 
         if not ms then
-            self:BananaSetCursor("Interface\\AddOns\\BananaBarClassic\\Images\\raidiconcursorno")
+            self:BananaSetCursor("Interface\\AddOns\\BananaBar3\\Images\\raidiconcursorno")
             return
         end
         local guid = UnitGUID("MOUSEOVER")
@@ -3329,7 +3329,7 @@ function BananaBar3:MouseOverTargeting()
 
         if rti == 0 then
             if (targetingduplist[guid]) then
-                self:BananaSetCursor("Interface\\AddOns\\BananaBarClassic\\Images\\raidiconcursorno")
+                self:BananaSetCursor("Interface\\AddOns\\BananaBar3\\Images\\raidiconcursorno")
                 return
             end
 
@@ -3342,7 +3342,7 @@ function BananaBar3:MouseOverTargeting()
             targetingduplist[guid] = realSymbol
             targetingsymbol = targetingsymbol + 1
         else
-            self:BananaSetCursor("Interface\\AddOns\\BananaBarClassic\\Images\\raidiconcursorno")
+            self:BananaSetCursor("Interface\\AddOns\\BananaBar3\\Images\\raidiconcursorno")
         end
     end
 end
