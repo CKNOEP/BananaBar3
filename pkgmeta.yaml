@@ -1,8 +1,8 @@
 package-as: BananaBar3
 enable-nolib-creation: no
 manual-changelog: CHANGES.txt
-Author:@project-author@
-Révision:@project-revision@
-Version:@project-version@
-Date:@project-revision@
+@project-author@
+@project-revision@
+@project-version@
+@project-revision@
  
