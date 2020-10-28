@@ -4,9 +4,14 @@
 ## Version: "3.0.0" 
 ## Notes: BananaBar is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
 ## X-ReleaseDate: "2020-10-20T22:53:58Z"
-## X-Email: bananabar@jendro.de
+## X-Email: lancetre at intenebris dot org
+## X-Credits: cknoep, ladygaga-sulfuron-eu, gogalugum, bordeaux  
 ## X-Category: UnitFrame
 ## X-Embeds: Ace3
+## X-Localizations: enUS, frFR, deDE
+## X-Author-Guild: Club Med
+## X-Author-Server: Sulfuron EU
+## X-Author-Faction: Alliance
 ## OptionalDeps: Ace3
 ## DefaultState: Enabled
 ## LoadOnDemand: 0

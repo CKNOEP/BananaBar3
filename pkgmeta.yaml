@@ -3,10 +3,9 @@ enable-nolib-creation: no
 manual-changelog: CHANGES.txt
 @file-revision@
 @file-hash@
-ignore:
- - pkgmeta.yaml
- Author:@project-author@
- Révision:@project-revision@
- Version:@project-version@
- Date:@project-revision@
+
+Author:@project-author@
+Révision:@project-revision@
+Version:@project-version@
+Date:@project-revision@
  
