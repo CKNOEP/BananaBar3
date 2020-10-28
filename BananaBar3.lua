@@ -3560,8 +3560,8 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
 		if uniT == nil then
 		  --self:UnregisterAllEvents();
 		else
-		self:Debug("unit target de player reglé sur " .. uniT.." : " ..UnitName(uniT).." par "..name)
-		self:Debug("Le bouton symbol N°"..symbolID.." est reglé sur " .. uniT.." : " ..UnitName(uniT).." par "..name)
+		--self:Debug("unit target de player reglé sur " .. uniT.." : " ..UnitName(uniT).." par "..name)
+		--self:Debug("Le bouton symbol N°"..symbolID.." est reglé sur " .. uniT.." : " ..UnitName(uniT).." par "..name)
 		end
 	
 	
