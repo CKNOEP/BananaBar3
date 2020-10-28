@@ -1,3 +1,5 @@
+
+
 --ActionButtonTemplate
 
 
@@ -37,12 +39,14 @@ function BananaBar3Button:init(addon,name)
 	BananaBarAllButtons[BananaBarButtonNameCounter] = self;
     BananaBarButtonNameCounter = BananaBarButtonNameCounter +1;
     --self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3ButtonTemplate","SecureActionButtonTemplate"); 
-    self.frame = CreateFrame("Button",self.FrameName,UIParent,"BananaBar3ButtonTemplate" , "SecureActionButtonTemplate"); 	
+    self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3ButtonTemplate" , "SecureActionButtonTemplate"); 	
 			
 	--self.Addon:Debug(self.FrameName.."unit"..self.Unit.."target")
-		SecureActionQueue:FrameSetAttribute(self.frame,"unit", "target")
-		SecureActionQueue:FrameSetAttribute(self.frame,"type1", "target")
-	    
+		--SecureActionQueue:FrameSetAttribute(self.frame,"unit", "target")
+		--self.frame:SetAttribute("type1", "macro")
+		--self.frame:SetAttribute("macrotext", "/target "..self.Unit)  
+		self.frame:SetAttribute("*type1", "target")
+		--SecureActionQueue:FrameSetAttribute(self.frame,"*type1", "target")
 		self.frame:EnableMouse(true)
    
 	
@@ -51,9 +55,7 @@ function BananaBar3Button:init(addon,name)
 	
 
 	self.selected = false;
-    
-				
-	self.frame.Id="1"
+    self.frame.Id="1"
     self.frame:SetPoint("CENTER",0,0)
     self.frame:Hide();
     self.Addon:Print("initFrame ",self.FrameName);
@@ -118,7 +120,7 @@ function BananaBar3Button:init(addon,name)
     self.showDead = false;
     self:SetHuntersmark(false);
 
-    self.frame:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonDown", "MiddleButtonUp");
+    --self.frame:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonDown", "MiddleButtonUp");
 	self.frame:SetScript("OnLoad", function(frame) self:OnLoad(frame) end)
 	--self.frame:SetScript("OnClick", function(frame,button) self:OnClick(button, frame) end)
 	self.frame:SetScript("OnMouseUp", function(frame,button) self:OnMouseUp(button, frame) end)
@@ -126,10 +128,11 @@ function BananaBar3Button:init(addon,name)
 	self.frame:SetScript("OnEnter", function(frame,button) self:OnEnter(button, frame) end)
 	self.frame:SetScript("OnLeave", function(frame,button) self:OnLeave(button, frame) end)
 
-
-
+    
 
 end
+
+ --  self.Addon:Debug(PlayerMenu(1).frame.."unit"..self.Unit.."target")
 
 -- Functions
 
@@ -352,14 +355,14 @@ function BananaBar3Button:OnLoad(frame)
 end
 
 function BananaBar3Button:OnClick(mouseButton)
-	--self.Addon:Debug("Click quoi:"..self.FrameName.." "..(mouseButton or 'null'));
+	self.Addon:Debug("Click quoi:"..self.FrameName.." "..(mouseButton or 'null'));
 	--self.Addon:Debug(BananaBar3Button:GetClickType(mouseButton));
 
 	
     if not self.Addon.layoutmode then
 	    local  clicktype = BananaBar3Button:GetClickType(mouseButton);
 	    u="target"
-		
+		--u = BananaBar3.AssistButtons[i].frame:GetAttribute("unit")
 		if UnitExists(u) then 
 		Targetunitname=UnitName(u)
 		end
@@ -397,19 +400,19 @@ function BananaBar3Button:OnMouseDown(mouseButton, frame)
     else
     	BananaBar3:DragPrepare(self,mouseButton);
     local  clicktype = BananaBar3Button:GetClickType(mouseButton);
-	if  mouseButton == "RightButton" then -- Target Unit
-          self.Addon:ExecuteAction(self, clicktype); 
-        elseif mouseButton == "LeftButton" then -- Set Target
-          self.Addon:ExecuteAction(self, clicktype, Targetunitname);  
-        elseif mouseButton == "MiddleButton" then -- Config Menu
-           self.Addon:ExecuteAction(self, clicktype);  
-        elseif mouseButton == "Button4" then
-            self.Addon:Set_layoutmode(false);
-        elseif mouseButton == "Button5" then
-            
-        else
-            --self.Addon:Debug("OnMouseDown:"..self.FrameName.." "..(mouseButton or 'null')); 
-    end
+		if  mouseButton == "RightButton" then -- Target Unit
+			  self.Addon:ExecuteAction(self, clicktype); 
+		elseif mouseButton == "LeftButton" then -- Set Target
+			  --self.Addon:ExecuteAction(self, clicktype, Targetunitname);  
+		elseif mouseButton == "MiddleButton" then -- Config Menu
+			   self.Addon:ExecuteAction(self, clicktype);  
+		elseif mouseButton == "Button4" then
+				self.Addon:Set_layoutmode(false);
+		elseif mouseButton == "Button5" then
+				
+		else
+				--self.Addon:Debug("OnMouseDown:"..self.FrameName.." "..(mouseButton or 'null')); 
+		end
 	end
 end
 function BananaBar3Button:OnMouseUp(mouseButton, frame)

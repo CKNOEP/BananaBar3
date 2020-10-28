@@ -2639,9 +2639,9 @@ function BananaBar3:UpdateTooltip()
             GameTooltip:AddLine(UnitName(t.info_unit), 0.7, 0.7, 0.7)
             --GameTooltip:AddLine(UnitName(t.info_unit), 0.9, 0.9, 0.9)
 			
-			SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "unit", UnitName(t.info_unit))
-			SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "type1", "target")
-			self:Debug("Tooltip Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
+			--SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "unit", UnitName(t.info_unit))
+			--SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "type1", "target")
+			--self:Debug("Tooltip Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
 			
 			
             local i
@@ -3536,21 +3536,63 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
 	
     self.AssistButtons[i].AssistUnit = unit
     self.AssistButtons[i].AssistTarget = target
+	--UU=BananaBar3.AssistButtons[i].frame:GetAttribute("unit")
+	--if UU then 	BananaBar3:Print(i.."//"..UU.."//"..target.."//"..unit) else  BananaBar3:Print("UU nill") end
+    
+	
+	local name, rank = GetRaidRosterInfo(i)
+	
+	if name  then
+		local symbolID = GetRaidTargetIndex("raid" .. i .. "target") or "pas de symbol"
+		--self:Debug("Player "..i.." : "..name)
+		--self:Debug("La cible de "..name.. " is " .. (UnitInRaid("RAID" .. i .. "TARGET") and "" or "not ") .. "in your raid group.")
+		self:Debug("La cible de "..name.. " est marquée du symbol N° " .. symbolID)
+	
+	--si un joueur cible un NPC qui est marqué change l'attibution target du bouton 
+	if symbolID ~= "pas de symbol"  then
+			
+	    BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", "RAID" .. i .. "TARGET")
+        BananaBar3.Buttons[symbolID].frame:SetAttribute("*type1", "target")
+		
 
-    if unit then
+	
+		local uniT = BananaBar3.Buttons[symbolID].frame:GetAttribute("unit");
+		if uniT == nil then
+		  --self:UnregisterAllEvents();
+		else
+		self:Debug("unit target de player reglé sur " .. uniT.." : " ..UnitName(uniT).." par "..name)
+		self:Debug("Le bouton symbol N°"..symbolID.." est reglé sur " .. uniT.." : " ..UnitName(uniT).." par "..name)
+		end
+	
+	
+	end
+
+	end	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	if unit then
         if BananaBar3.AssistButtons[i].frame:GetAttribute("unit") ~= target then
             --BananaBar3:Print("set b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"));
             --self:Debug("set b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"))
+			--BananaBar3:Print(i)
 			SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "unit", target)
             SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "type2", "menu")
             SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "*type1", "target")
         	
-			self:Debug(GetRaidTargetIndex(unit))
-			for i = 1, 8, 1 do
+			if GetRaidTargetIndex(unit) then self:Debug("unit: "..GetRaidTargetIndex(unit)) end
+			
+			--for i = 1, 8, 1 do
 			 
-			SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[i].frame, "unit", target)
-            SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[i].frame, "type1", "target")
-			end
+			--SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[i].frame, "unit", target)
+            --SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[i].frame, "*type1", "target")
+			--end
 
 			--SecureActionQueue:FrameSetAttribute(BananaBar3.BananaBarButton1, "unit", target)
             --SecureActionQueue:FrameSetAttribute(BananaBar3.BananaBarButton1, "*type1", "target")
@@ -3558,7 +3600,7 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
         end
     else
         if BananaBar3.AssistButtons[i].frame:GetAttribute("unit") ~= "" then
-            --BananaBar3:Print("clr b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"));
+           -- BananaBar3:Print(i)
 			--self:Debug("set b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"))
             SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "unit", nil)
             SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "type2", nil)
@@ -3601,7 +3643,7 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
                     tooltipInfo1 = "has selected a dead target"
                     tooltipInfo2 = UnitName(target)
                 elseif UnitCanAttack(unit, target) then
-                    --self:Debug("UnitCanAttack")
+                    --self:Debug("UnitCanAttack : unit :"..unit.." target"..UnitName(target))
                     tooltipInfo1 = "has selected an enemy target"
                     tooltipInfo2 = UnitName(target)
                     local rti = GetRaidTargetIndex(target)
@@ -3613,7 +3655,7 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
                 else
                     tooltipInfo1 = "has selected an friendly target"
                     tooltipInfo2 = UnitName(target)
-
+					--self:Debug("UnitFriendly: unit :"..unit.." target"..target)
                     if fileName == "PRIEST" then
                         BananaBar3.AssistButtons[i]:SetButtonTexture(BANANA_TEXTURE_PRIEST)
                     elseif fileName == "PALADIN" then
@@ -3686,8 +3728,11 @@ function BananaBar3:AssistScanning()
     for i = 1, 8, 1 do
         --j=0
 		for j = 0, 4, 1 do
-            self:AssistScan(i * 5 + j - 4, "RAID" .. gruppen[i][j] .. "TARGET", "RAID" .. gruppen[i][j], gruppen[i][j])
-        end
+            
+		  --AssistScan     (i            , target                             , unit                   , raidIndex)
+			self:AssistScan(i * 5 + j - 4, "RAID" .. gruppen[i][j] .. "TARGET", "RAID" .. gruppen[i][j], gruppen[i][j])
+        
+		end
     end
 end
 
@@ -3723,7 +3768,7 @@ function BananaBar3:Scan()
     self:ResetScanBlock()
 
     self:AssistScanning()
-
+	 --BananaBar3:Print("scan ASSIT")
     local unitsToScan = self:GetUnitsToScan()
 
     for unit, unitparent in pairs(unitsToScan) do
@@ -3743,7 +3788,8 @@ function BananaBar3:Scan()
 end
 
 function BananaBar3:ResetScanBlock(block)
-    self.TARGETS = {}
+    --BananaBar3:Print("reset scan")
+	self.TARGETS = {}
     self.TARGETMARKS = {}
 end
 
@@ -3872,7 +3918,8 @@ function BananaBar3:CanSetSymbols()
 end
 
 function BananaBar3:ChangeSymbol(indexFrom, indexTo)
-    local unit1 = BananaBar3:GetUnitBySymbol(indexFrom)
+    --BananaBar3:Print("Change Symbol from "..indexFrom.." to "..indextTo);
+	local unit1 = BananaBar3:GetUnitBySymbol(indexFrom)
     local unit2 = BananaBar3:GetUnitBySymbol(indexTo)
     if unit1 then
         if unit2 then
@@ -3901,7 +3948,8 @@ end
 
 function BananaBar3:GetUnitBySymbol(index)
     if self.TARGETMARKS[index] then
-        return self.TARGETS[self.TARGETMARKS[index]].info_unit
+        BananaBar3:Print("Symbol"..self.TARGETS[self.TARGETMARKS[index]].info_unit);
+		return self.TARGETS[self.TARGETMARKS[index]].info_unit
     end
     return nil
 end

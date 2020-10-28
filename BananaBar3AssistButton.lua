@@ -45,14 +45,9 @@ function BananaBar3AssistButton:init(addon,name)
 	
 		self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3AssistButtonTemplate","SecureActionButtonTemplate"); 
 		
-		
-		
- 
 		SecureActionQueue:FrameSetAttribute(self.frame,"type2", "menu")
 		SecureActionQueue:FrameSetAttribute(self.frame,"*type1", "target")
-		
-		
-		
+				
 
 		self.frame.menu = BananaShowTargetDropDown;
 
@@ -256,14 +251,14 @@ function BananaBar3AssistButton:OnClick(mouseButton)
 	--self.Addon:Debug("Click:"..self.FrameName.." "..mouseButton);
     if not self.Addon.layoutmode then
 	    local  clicktype = BananaBar3AssistButton:GetClickType(mouseButton);
-		--self.Addon:Print(clicktype);
+		--self.Addon:print(clicktype);
 		if clicktype == 8 then
 			if self.AssistUnit then
-				TargetUnit(self.AssistUnit);
+			--	
 			end
 		elseif clicktype == 0 then
 			if self.AssistTarget then
-				TargetUnit(self.AssistTarget);
+			--	
 			end
 		end
 	    --self.Addon:ExecuteAction(self, clicktype);
