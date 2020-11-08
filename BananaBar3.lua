@@ -3393,9 +3393,9 @@ function BananaBar3:DragPrepare(dragStartButton, mouseButton)
         --BananaBar3:Print("searching in progress, not dragging");
         -- painting in progress
     else
-        BananaBar3:Print("Dragging Mode", mouseButton);
+        --BananaBar3:Print("Dragging Mode", mouseButton);
 		local  clicktype = BananaBar3Button:GetClickType(mouseButton)
-		BananaBar3:Print("Clicktype:"..clicktype)
+		--BananaBar3:Print("Clicktype:"..clicktype)
 		if clicktype == 10 then
 			BananaBar3.Dragging = true
 			BananaBar3.DragPreparing = true
