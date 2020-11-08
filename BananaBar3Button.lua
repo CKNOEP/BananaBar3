@@ -398,7 +398,8 @@ function BananaBar3Button:OnMouseDown(mouseButton, frame)
         end
         return;
     else
-    	BananaBar3:DragPrepare(self,mouseButton);
+    	
+		BananaBar3:DragPrepare(self,mouseButton);
     local  clicktype = BananaBar3Button:GetClickType(mouseButton);
 		if  mouseButton == "RightButton" then -- Target Unit
 			  self.Addon:ExecuteAction(self, clicktype); 

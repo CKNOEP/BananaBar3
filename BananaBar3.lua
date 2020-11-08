@@ -2483,7 +2483,7 @@ function BananaBar3:ExecuteAction(button, clicktype,Targetunitname)
         SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "*type1", "target")
 		end
 		
-		self:Debug("Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
+		--self:Debug("Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
 		--BananaBar3.AssistButtons[i].frame:GetAttribute("unit")	
 	
 	elseif action == "action_setTargetsymbol" then
@@ -3392,15 +3392,20 @@ function BananaBar3:DragPrepare(dragStartButton, mouseButton)
         --BananaBar3:Print("searching in progress, not dragging");
         -- painting in progress
     else
-        BananaBar3.Dragging = true
-        BananaBar3.DragPreparing = true
-        BananaBar3.DragStartButton = dragStartButton
-        BananaBar3.DragMouseButton = mouseButton
-        self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 0.1, self)
-        local x, y = GetCursorPosition()
-        self.DragCursorPosX = x
-        self.DragCursorPosY = y
-    end
+        BananaBar3:Print("Dragging Mode", mouseButton);
+		local  clicktype = BananaBar3Button:GetClickType(mouseButton)
+		BananaBar3:Print("Clicktype:"..clicktype)
+		if clicktype == 10 then
+			BananaBar3.Dragging = true
+			BananaBar3.DragPreparing = true
+			BananaBar3.DragStartButton = dragStartButton
+			BananaBar3.DragMouseButton = mouseButton
+			self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 0.1, self)
+			local x, y = GetCursorPosition()
+			self.DragCursorPosX = x
+			self.DragCursorPosY = y
+		end
+	end
 end
 
 function BananaBar3:DragStop(dragStopButton, mouseButton)
