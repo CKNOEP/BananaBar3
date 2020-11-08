@@ -27,8 +27,8 @@ BINDING_NAME_BananaBar3_BINDING_KEY = L["binding_key"]
 BINDING_NAME_BananaBar3_BINDING_SEARCH = L["binding_search"]
 
 BananaBar3.name = L["addonname"]
-BananaBar3.version = "2.0.3";
-BananaBar3.date = "2020-05-27T22:53:58Z";
+BananaBar3.version = "3.0.9";
+BananaBar3.date = "2020-08-11 T22:53:58Z";
 BananaBar3.hasIcon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 BananaBar3.defaultMinimapPosition = 170
 
@@ -1665,7 +1665,8 @@ function BananaBar3:OnInitialize()
     --self.dewdrop = AceLibrary("Dewdrop-2.0")
 
     --self:RegisterChatCommand("bb2", options);
-
+	self:Print("\124cffFF0000Bannabar 3 by Lädygaga-Sulfuron EU Loaded\124r")
+	
     self.Buttons = {}
     for i = 1, BANANA_MAX_BUTTONS, 1 do
         self:Debug("create new button ".."Nr"..i);

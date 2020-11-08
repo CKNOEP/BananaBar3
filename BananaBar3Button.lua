@@ -58,7 +58,7 @@ function BananaBar3Button:init(addon,name)
     self.frame.Id="1"
     self.frame:SetPoint("CENTER",0,0)
     self.frame:Hide();
-    self.Addon:Print("initFrame ",self.FrameName);
+    --self.Addon:Print("initFrame ",self.FrameName);s
 
     self.TargetSymbol = getglobal(self.FrameName.."TargetSymbol");
     self.Icon = getglobal(self.FrameName.."Icon");
