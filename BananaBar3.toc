@@ -1,7 +1,7 @@
-## Interface: 11305
+r## Interface: 11306
 ## Title: BananaBar3 Raid Symbols Classic |cff7fff7f-Ace3-|r
 ## Author: Bordeaux , Lädygaga-Sulfuron
-## Version: "3.0.8" 
+## Version: "3.0." 
 ## Notes: BananaBar is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
 ## X-ReleaseDate: "2020-10-20T22:53:58Z"
 ## X-Email: lancetre at intenebris dot org
@@ -9,7 +9,7 @@
 ## X-Category: UnitFrame
 ## X-Embeds: Ace3
 ## X-Localizations: enUS, frFR, deDE
-## X-Author-Guild: Club Med
+## X-Author-Guild: In Tenebris
 ## X-Author-Server: Sulfuron EU
 ## X-Author-Faction: Alliance
 ## OptionalDeps: Ace3
