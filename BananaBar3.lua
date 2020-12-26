@@ -1,4 +1,4 @@
-﻿BananaBar3 =
+BananaBar3 =
     LibStub("AceAddon-3.0"):NewAddon(
     "BananaBar3",
     "AceConsole-3.0",
@@ -1330,71 +1330,71 @@ local defaults = {
             Nr1 = {
                 DockDir = 0,
                 DockTo = "",
-                y = -232.4001067109999,
-                x = 0
+                y = -561,
+                x = 830
             },
             Nr2 = {
-                DockDir = 3,
+                DockDir = 4,
                 DockTo = "Nr1",
                 y = 0,
                 x = 0
             },
             Nr3 = {
-                DockDir = 3,
+                DockDir = 4,
                 DockTo = "Nr2",
                 y = 0,
                 x = 0
             },
             Nr4 = {
-                DockDir = 3,
+                DockDir = 4,
                 DockTo = "Nr3",
                 y = 0,
                 x = 0
             },
             Nr5 = {
-                DockDir = 3,
+                DockDir = 4,
                 DockTo = "Nr4",
                 y = 0,
                 x = 0
             },
             Nr6 = {
-                DockDir = 3,
+                DockDir = 4,
                 DockTo = "Nr5",
                 y = 0,
                 x = 0
             },
             Nr7 = {
-                DockDir = 3,
+                DockDir = 4,
                 DockTo = "Nr6",
                 y = 0,
                 x = 0
             },
             Nr8 = {
-                DockDir = 3,
+                DockDir = 4,
                 DockTo = "Nr7",
                 y = 0,
                 x = 0
             },
             Nr9 = {
-                DockDir = 1,
+                DockDir = 4,
                 DockTo = "Nr1",
                 y = 0,
                 x = 0
             },
             Nr10 = {
-                DockDir = 1,
+                DockDir = 4,
                 DockTo = "Nr9",
                 y = 0,
                 x = 0
             },
             Nr11 = {
-                DockDir = 1,
+                DockDir = 4,
                 DockTo = "Nr10",
                 y = 0,
                 x = 0
             },
             Nr12 = {
-                DockDir = 1,
+                DockDir = 4,
                 DockTo = "Nr11",
                 y = 0,
                 x = 0

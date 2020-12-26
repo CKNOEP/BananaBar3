@@ -355,7 +355,7 @@ function BananaBar3Button:OnLoad(frame)
 end
 
 function BananaBar3Button:OnClick(mouseButton)
-	self.Addon:Debug("Click quoi:"..self.FrameName.." "..(mouseButton or 'null'));
+	--self.Addon:Debug("Click quoi:"..self.FrameName.." "..(mouseButton or 'null'));
 	--self.Addon:Debug(BananaBar3Button:GetClickType(mouseButton));
 
 	
