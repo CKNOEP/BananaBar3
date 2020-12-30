@@ -3,7 +3,7 @@ r## Interface: 11306
 ## Author: Bordeaux , Lädygaga-Sulfuron
 ## Version: "3.1.0" 
 ## Notes: BananaBar is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
-## X-ReleaseDate: "2020-10-20T22:53:58Z"
+## X-ReleaseDate: "2020-12-30T22:53:58Z"
 ## X-Email: lancetre at intenebris dot org
 ## X-Credits: cknoep, ladygaga-sulfuron-eu, gogalugum, bordeaux  
 ## X-Category: UnitFrame
