@@ -668,6 +668,31 @@ function BananaBar3Button:UpdateAllScale(scale)
     end
 end
 
+function BananaBar3Button:ShiftX(ShiftXscale)
+    for i = 1, BananaBarButtonNameCounter-1, 1 do
+       
+		local point, relativeTo, relativePoint, xOfs, yOfs = BananaBarAllButtons[i].Count:GetPoint()
+		--xOfs then self:Debug(xOfs) end
+		--self:Debug(yOfs)		
+		--self:Debug(point)
+		
+		BananaBarAllButtons[i].Count:SetPoint(point, relativeTo, relativePoint, ShiftXscale, yOfs);
+			
+    end
+end
+function BananaBar3Button:ShiftY(ShiftYscale)
+    for i = 1, BananaBarButtonNameCounter-1, 1 do
+       
+		local point, relativeTo, relativePoint, xOfs, yOfs = BananaBarAllButtons[i].Count:GetPoint()
+		--xOfs then self:Debug(xOfs) end
+		--self:Debug(yOfs)		
+		--self:Debug(point)
+		
+		BananaBarAllButtons[i].Count:SetPoint(point, relativeTo, relativePoint, xOfs, ShiftYscale);
+				
+    end
+end
+
 function BananaBar3Button:UndockAll()
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i]:Dock(BANANA_DOCK_NONE);

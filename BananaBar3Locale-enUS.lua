@@ -90,11 +90,17 @@ L.huntersmark                     = "Hunter's Mark";
 L.layoutmode                      = "Activate layoutmode";
 L.layoutmodedesc                  = "Activetes the layoutmode.Use it to move and group buttons.";
 
-
+-- Show count if zero
+L.showzerotarget				  = "Hide the counter when = Zero";
+L.showzerotargetdesc			  = "Hide counter when no player targets the target";
 
 -- scale the normal BananaBar3 button size
 L.scale                           = "Scale"; 
 L.scaledesc                       = "Scale the buttons from 10% to 200%"; 
+L.shiftX						  = "Décalage X du compteur";
+L.shiftY						  = "Décalage Y du compteur";
+L.shiftXdesc					  = "Décalage X du compteur";
+L.shiftYdesc					  = "Décalage Y du compteur";
 
 -- scale the 40 buttons of the raid overview panel
 L.scaleassist                     = "Scale assist buttons"; 

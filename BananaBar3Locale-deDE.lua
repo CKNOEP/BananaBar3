@@ -95,10 +95,19 @@ L.layoutmodedesc                  = "Aktiviert den Modus in dem BananaBar Button
 -- scale the normal BananaBarClassic button size
 L.scale                           = "Skalierung";	
 L.scaledesc                       = "Button Skalierung zwischen 10% und 200% einstellen";	
-        
+L.shiftX						  = "Décalage X du compteur";
+L.shiftY						  = "Décalage Y du compteur";
+L.shiftXdesc					  = "Décalage X du compteur";
+L.shiftYdesc					  = "Décalage Y du compteur";       
+
 -- scale the 40 buttons of the raid overview panel
 L.scaleassist                     = "Skalierung der RaidInfo Buttons"; 
 L.scaleassistdesc                 = "Skalierung der RaidInfo Buttons zwischen 10% und 200% einstellen"; 
+
+-- Show count if zero
+L.showzerotarget				  = "Blenden Sie den Zähler aus, wenn = Nul";
+L.showzerotargetdesc			  = "Zähler ausblenden, wenn kein Spieler das Ziel anvisiert";
+
 
 -- reset everything to the defaults, except the settings in the submenu "mobsettings”        
 L.reset                           = "Einstellungen zurücksetzen";	

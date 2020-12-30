@@ -327,6 +327,7 @@ options = {
             type = "group",
             name = L["design"],
             desc = L["designdesc"],
+			order = 10,
             args = {
                 scale = {
                     type = "range",
@@ -344,6 +345,38 @@ options = {
                     step = 1,
                     order = 1
                 },
+				shiftCountX = {
+                    type = "range",
+                    width = "full",
+                    name = L["shiftX"],
+                    desc = L["shiftXdesc"],
+                    get = function()
+                        return BananaBar3:Get_shiftCountX()
+                    end,
+                    set = function(info, v)
+                        BananaBar3:Set_shiftCountX(v)
+                    end,
+                    min = -15,
+                    max = 15,
+                    step = 1,
+                    order = 2,
+                },
+				shiftCountY = {
+                    type = "range",
+                    width = "full",
+                    name = L["shiftY"],
+                    desc = L["shiftYdesc"],
+                    get = function()
+                        return BananaBar3:Get_shiftCountY()
+                    end,
+                    set = function(info, v)
+                        BananaBar3:Set_shiftCountY(v)
+                    end,
+                    min = -15,
+                    max = 40,
+                    step = 1,
+                    order = 2,
+                },
                 scaleassist = {
                     type = "range",
                     width = "full",
@@ -358,7 +391,7 @@ options = {
                     min = 10,
                     max = 200,
                     step = 1,
-                    order = 1
+                    order = 11,
                 },
                 hideunused = {
                     type = "toggle",
@@ -371,7 +404,7 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_hideunused(v)
                     end,
-                    order = 2
+                    order = 16,
                 },
                 hideframes = {
                     type = "toggle",
@@ -384,9 +417,9 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_hidebuttonframes(v)
                     end,
-                    order = 3
+                    order = 13,
                 },
-                hideframes = {
+				hideback = {
                     type = "toggle",
                     width = "full",
                     name = L["hidebuttonback"],
@@ -397,7 +430,7 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_hidebuttonback(v)
                     end,
-                    order = 3
+                    order = 14
                 },
                 markdead = {
                     type = "toggle",
@@ -410,7 +443,22 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_markdead(v)
                     end,
-                    order = 4
+                    order = 15,
+                },
+				
+				showzerotarget = {
+                    type = "toggle",
+                    width = "full",
+                    name = L["showzerotarget"],
+                    desc = L["showzerotargetdesc"],
+                    get = function()
+						return BananaBar3:Get_showzerotarget()
+					end,	
+                    set = function(info, v)
+						BananaBar3:Set_showzerotarget(v)
+   
+					end,
+					order = 12,
                 },
                 showinraid = {
                     type = "toggle",
@@ -423,7 +471,7 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_showinraid(v)
                     end,
-                    order = 20
+                    order = 20,
                 },
                 showinparty = {
                     type = "toggle",
@@ -436,7 +484,7 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_showinparty(v)
                     end,
-                    order = 21
+                    order = 21,
                 },
                 showoutofgroup = {
                     type = "toggle",
@@ -449,7 +497,7 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_showoutofgroup(v)
                     end,
-                    order = 22
+                    order = 22,
                 },
                 showraidinfoall = {
                     type = "toggle",
@@ -462,7 +510,7 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_showraidinfoall(v)
                     end,
-                    order = 23
+                    order = 23,
                 },
                 showraidinfo = {
                     type = "toggle",
@@ -475,7 +523,7 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_showraidinfo(v)
                     end,
-                    order = 23
+                    order = 23,
                 },
                 showextrainfo = {
                     type = "toggle",
@@ -488,7 +536,7 @@ options = {
                     set = function(info, v)
                         BananaBar3:Set_showextrainfo(v)
                     end,
-                    order = 24
+                    order = 24,
                 }
             }
         },
@@ -496,7 +544,7 @@ options = {
             type = "group",
             name = L["showbutton"],
             desc = L["showbuttondesc"],
-            order = 10,
+            order = 20,
             args = {
                 button1 = {
                     type = "toggle",
@@ -1307,6 +1355,8 @@ local defaults = {
         showoutofgroup = true,
         showraidinfo = true,
         showextrainfo = false,
+		showzerotarget = true,	
+
         actions = {
             action_setsymbol = 8,
 			action_setTargetsymbol = 0,
@@ -1330,8 +1380,8 @@ local defaults = {
             Nr1 = {
                 DockDir = 0,
                 DockTo = "",
-                y = -561,
-                x = 830
+                y = -558,
+                x = 683
             },
             Nr2 = {
                 DockDir = 4,
@@ -1352,8 +1402,8 @@ local defaults = {
                 x = 0
             },
             Nr5 = {
-                DockDir = 4,
-                DockTo = "Nr4",
+                DockDir = 1,
+                DockTo = "Nr1",
                 y = 0,
                 x = 0
             },
@@ -1377,12 +1427,12 @@ local defaults = {
             },
             Nr9 = {
                 DockDir = 4,
-                DockTo = "Nr1",
+                DockTo = "Nr8",
                 y = 0,
                 x = 0
             },
             Nr10 = {
-                DockDir = 4,
+                DockDir = 3,
                 DockTo = "Nr9",
                 y = 0,
                 x = 0
@@ -1394,7 +1444,7 @@ local defaults = {
                 x = 0
             },
             Nr12 = {
-                DockDir = 4,
+                DockDir = 1,
                 DockTo = "Nr11",
                 y = 0,
                 x = 0
@@ -2179,7 +2229,7 @@ function BananaBar3:Set_showbutton(index, value)
 end
 
 ------------------------------------------
---- scale
+--- scale $ move
 ------------------------------------------
 
 function BananaBar3:Set_scale(value)
@@ -2190,6 +2240,26 @@ end
 function BananaBar3:Get_scale()
     return self.db.profile.scale
 end
+
+function BananaBar3:Set_shiftCountX(value)
+    self.db.profile.shiftCountX = value
+    BananaBar3Button:ShiftX(self.db.profile.shiftCountX)
+end
+
+function BananaBar3:Get_shiftCountX()
+    return self.db.profile.shiftCountX
+end
+
+function BananaBar3:Set_shiftCountY(value)
+    self.db.profile.shiftCountY = value
+    BananaBar3Button:ShiftY(self.db.profile.shiftCountY)
+end
+
+function BananaBar3:Get_shiftCountY()
+    return self.db.profile.shiftCountY
+end
+
+
 
 ------------------------------------------
 --- scaleassist
@@ -2219,7 +2289,7 @@ function BananaBar3:Get_updaterate()
 end
 
 ------------------------------------------
---- hidebuttonframes
+--- hidebuttonframes & back
 ------------------------------------------
 
 function BananaBar3:Set_hidebuttonframes(value)
@@ -2266,7 +2336,20 @@ function BananaBar3:Set_showinraid(v)
     self.db.profile.showinraid = v
     BananaBar3Button:UpdateAllVisible()
 end
+------------------------------------------
+--- showzerotarget
+------------------------------------------
 
+function BananaBar3:Get_showzerotarget()
+    return self.db.profile.showzerotarget
+end
+
+function BananaBar3:Set_showzerotarget(v)
+    self.db.profile.showzerotarget = v
+    --BananaBar3Button:UpdateAllButtonZero(not self.db.profile.showzerotarget)
+	BananaBar3Button:UpdateAllVisible()
+	--BananaBar3Button:UpdateAllButtonFrame(not self.db.profile.hidebuttonframes)
+end
 ------------------------------------------
 --- showinparty
 ------------------------------------------
@@ -2524,6 +2607,8 @@ end
 function BananaBar3:ProfileUpdated(layout)
     BananaBar3Button:UpdateAllVisible()
     BananaBar3Button:LoadAllPos()
+	BananaBar3Button:ShiftY(self.db.profile.shiftCountY)
+	BananaBar3Button:ShiftX(self.db.profile.shiftCountX)	
     BananaBar3Button:UpdateAllArrows()
     BananaBar3Button:UpdateAllButtonFrame(not self.db.profile.hidebuttonframes)
     BananaBar3Button:UpdateAllButtonBack(not self.db.profile.hidebuttonback)
@@ -2825,8 +2910,17 @@ function BananaBar3:BananaUpdate()
         else
             self.Buttons[but]:SetSheepSymbol(null)
             self.Buttons[but]:SetTimer(0, 0)
-            self.Buttons[but]:SetCount(nil)
-            self.Buttons[but]:SetDead(false)
+            --To do : mettre une condition pour afficher le compteur quand egal à zéro
+			-- if showzerocounter=true then 0 else nil
+			j = self:Get_showzerotarget()
+            
+			if j == true then
+					self.Buttons[but]:SetCount(0)
+				else
+					self.Buttons[but]:SetCount(nil)			
+			end
+			
+			self.Buttons[but]:SetDead(false)
             self.Buttons[but]:SetHuntersmark(false)
             self.Buttons[but].HealthBar:SetValue(0)
             self.Buttons[but]:SetMobName(nil)
@@ -2834,7 +2928,6 @@ function BananaBar3:BananaUpdate()
             self.Buttons[but]:SetStopwatch(false)
             
 
-			
 			
 			if but > BANANA_RAIDSYMBOL_BUTTON_COUNT then
                 self.Buttons[but]:SetButtonSymbolExtra(nil)

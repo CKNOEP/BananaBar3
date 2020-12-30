@@ -106,11 +106,17 @@ L.huntersmark                     = "Marque du chasseur";
 L.layoutmode                      = "Modifier les cadres";
 L.layoutmodedesc                  = "Active le mode Modification des cadres.Utilisez-le pour déplacer et regrouper les boutons";
 
-
+-- Show count if zero
+L.showzerotarget				  = "Masquer le compteur quand = Zéro";
+L.showzerotargetdesc			  = "Masquer le compteur quand aucun joueur cible la cible";
 
 -- scale the normal BananaBar3 button size
 L.scale                           = "échelle"; 
 L.scaledesc                       = "Échelle des boutons de 10% à 200%"; 
+L.shiftX						  = "Décalage X du compteur";
+L.shiftY						  = "Décalage Y du compteur";
+L.shiftXdesc					  = "Décalage X du compteur";
+L.shiftYdesc					  = "Décalage Y du compteur";
 
 -- scale the 40 buttons of the raid overview panel
 L.scaleassist                     = "Boutons de modification de l'échelle"; 

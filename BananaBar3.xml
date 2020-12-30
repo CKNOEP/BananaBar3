@@ -178,9 +178,9 @@
 				<!-- schrift, unten rechtsbündig -->
 				<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT">
 					<Anchors>
-						<Anchor point="BOTTOMRIGHT">
+						<Anchor point="BOTTOM">
 							<Offset>
-								<AbsDimension x="-2" y="2" />
+								<AbsDimension x="0" y="-15" />
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -396,9 +396,9 @@
 				<!-- schrift, unten rechtsbündig -->
 				<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT">
 					<Anchors>
-						<Anchor point="BOTTOMRIGHT">
+						<Anchor point="BOTTOM">
 							<Offset>
-								<AbsDimension x="-2" y="2" />
+								<AbsDimension x="0" y="-15" />
 							</Offset>
 						</Anchor>
 					</Anchors>
