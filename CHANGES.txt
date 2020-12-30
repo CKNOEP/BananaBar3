@@ -1,3 +1,5 @@
+2020-12-30
+new image for dead target , movable count, option to show count when count is null
 2020-10-24
 Majors corrections
 - images are not showing, or displayed a green square instead, the path was wrong
