@@ -105,7 +105,9 @@ L.shiftYdesc					  = "Décalage Y du compteur";
 -- scale the 40 buttons of the raid overview panel
 L.scaleassist                     = "Scale assist buttons"; 
 L.scaleassistdesc                 = "Scale assist buttons the buttons from 10% to 200%"; 
-
+-- in the layoutmode you can move, seperate and concatenate buttons        
+L.grayscale                      = "put with grayscale  symbol with no target";
+L.grayscaledesc                  = "put with grayscale  symbol with no target";
 -- reset everything to the defaults, except the settings in the submenu "mobsettings"        
 L.reset                           = "Reset"; 
 L.resetdesc                       = "reset all settings of the current profile"; 

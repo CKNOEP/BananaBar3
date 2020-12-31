@@ -138,6 +138,8 @@ end
 
 function BananaBar3Button:SetButtonSymbol(index, unit)
     BananaBar3Button:SetSymbolTexture(self.Icon,index);
+	
+	self.Addon:Print("initFrame: index ",index,"  unit:", unit, " icon :",self.Icon);
 end
 
 function BananaBar3Button:SetStopwatch(set)
@@ -150,6 +152,7 @@ end
 
 function BananaBar3Button:SetButtonSymbolExtra(unit, icon)
     BananaBar3Button:SetSymbolTexture(self.Icon,0, unit, icon);
+	
 end
 
 function BananaBar3Button:SetSheepSymbol(icon)
@@ -176,19 +179,22 @@ function BananaBar3Button:SetTimer(start, seconds)
 end
 
 function BananaBar3Button:SetSymbolTexture(frame, index, unit, icon)
-    if unit then
-        if unit == "none" then
+
+	
+	if unit then
+        
+		if unit == "none" then
             if icon then
                 frame:SetTexture(icon);            
                 frame:SetTexCoord(0, 1, 0, 1);
                 return;
             end
-
-            SetPortraitTexture(frame,"player")
-            frame:SetTexCoord(0, 1, 0, 1);
+		
             return;
         else
-            SetPortraitTexture(frame,unit)
+        
+		
+		SetPortraitTexture(frame,unit)
             frame:SetTexCoord(0, 1, 0, 1);
             return;
         end
@@ -197,29 +203,40 @@ function BananaBar3Button:SetSymbolTexture(frame, index, unit, icon)
         frame:SetTexture(nil);
         return;
     end
-    if index >= 9 then
+    if index >= 9  then
+		
         --frame:SetTexture(BANANA_TEXTURE_HUNTERSMARK);            
         --frame:SetTexCoord(0, 1, 0, 1);
     else
         frame:SetTexture(BANANA_TEXTURE_RAIDICONS);            
-        frame:SetTexCoord(
+        --grayscale option
+		--self.Addon:Print("initFrame: ", frame, "index : ",index,"  unit:", unit,"  icone: ",icone);
+		
+		frame:SetDesaturated(1);
+		frame:SetVertexColor(0.5, 0.5, 0.5);
+		
+		frame:SetTexCoord(
             UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordLeft, 
             UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordRight, 
             UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordTop, 
             UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordBottom
         );
+
     end
+
 end
 
 
 function BananaBar3Button:SetTargetSymbol(index)
-    if index <= 0 then
+    
+	if index <= 0 then
         self.TargetSymbol:Hide();            
         BananaBar3Button:SetSymbolTexture(self.TargetSymbol,index);
     else
         BananaBar3Button:SetSymbolTexture(self.TargetSymbol,index);
         self.TargetSymbol:Show();            
     end
+
 end
 
 
@@ -591,12 +608,29 @@ function BananaBar3Button:GetMoveFrame()
     return nil;
 end
 
-function BananaBar3Button:SetCount(number)
+function BananaBar3Button:SetCount(number,but)
     if number then
         self.Count:SetText(tostring(number));
     else
         self.Count:SetText("");
     end
+
+	if number >=1 then
+    
+		BananaBarAllButtons[but].Icon:SetDesaturated();
+		BananaBarAllButtons[but].Icon:SetVertexColor(1, 1, 1);
+	
+	end
+	
+	for bt =  1, 8, 1 do
+		--self.Addon:Debug("Count bt ".. bt.. " : ".. tostring(BananaBarAllButtons[bt].Count));
+		if BananaBarAllButtons[bt].Count == tostring(0) then
+		BananaBarAllButtons[bt].Icon:SetDesaturated(1);
+		BananaBarAllButtons[bt].Icon:SetVertexColor(0.5, 0.5, 0.5);
+		end
+	end
+	
+	
 end
 
 
@@ -734,6 +768,31 @@ function BananaBar3Button:UpdateAllButtonFrame(show)
         end
     end
 end
+function BananaBar3Button:GrayscaleAllButtonFrame(show)
+    if show then 
+	--self:Debug(show);
+	end	
+	for i = 1, 8, 1 do
+        if show then
+            BananaBarAllButtons[i].Icon:SetDesaturated();
+			BananaBarAllButtons[i].Icon:SetVertexColor(1, 1, 1);
+               
+            grayscale = true;
+        else
+            BananaBarAllButtons[i].Icon:SetDesaturated(1);
+			BananaBarAllButtons[i].Icon:SetVertexColor(0.5, 0.5, 0.5);
+            
+            grayscale = false;
+        end
+    end
+end
+
+
+
+
+
+
+
 function BananaBar3Button:UpdateAllButtonBack(show)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         if show then

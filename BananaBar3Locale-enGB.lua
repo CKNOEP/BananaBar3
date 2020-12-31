@@ -109,7 +109,9 @@ L.layoutmodedesc                  = "Activetes the layoutmode.Use it to move and
 -- Show count if zero
 L.showzerotarget				  = "Hide the counter when = Zero";
 L.showzerotargetdesc			  = "Hide counter when no player targets the target";
-
+-- in the layoutmode you can move, seperate and concatenate buttons        
+L.grayscale                      = "put with grayscale  symbol with no target";
+L.grayscaledesc                  = "put with grayscale  symbol with no target";
 
 -- scale the normal BananaBar3 button size
 L.scale                           = "Scale"; 

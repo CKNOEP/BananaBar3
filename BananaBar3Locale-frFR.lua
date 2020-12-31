@@ -102,9 +102,13 @@ L.symbolname8                     = RAID_TARGET_8;
 L.huntersmark                     = "Marque du chasseur";
 
 -- menu entry to activate the layout mode
--- in the layoutmode you can move, seperate and concatenate buttons        
+--grayscale symbol if not targeting
 L.layoutmode                      = "Modifier les cadres";
 L.layoutmodedesc                  = "Active le mode Modification des cadres.Utilisez-le pour déplacer et regrouper les boutons";
+
+-- in the layoutmode you can move, seperate and concatenate buttons        
+L.grayscale                      = "grise les symboles non-ciblé";
+L.grayscaledesc                  = "Affiche en niveau de gris les symboles non-ciblé";
 
 -- Show count if zero
 L.showzerotarget				  = "Masquer le compteur quand = Zéro";

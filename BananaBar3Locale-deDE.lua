@@ -107,7 +107,9 @@ L.scaleassistdesc                 = "Skalierung der RaidInfo Buttons zwischen 10
 -- Show count if zero
 L.showzerotarget				  = "Blenden Sie den Zähler aus, wenn = Nul";
 L.showzerotargetdesc			  = "Zähler ausblenden, wenn kein Spieler das Ziel anvisiert";
-
+-- in the layoutmode you can move, seperate and concatenate buttons        
+L.grayscale                      = "put with grayscale  symbol with no target";
+L.grayscaledesc                  = "put with grayscale  symbol with no target";
 
 -- reset everything to the defaults, except the settings in the submenu "mobsettings”        
 L.reset                           = "Einstellungen zurücksetzen";	

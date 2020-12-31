@@ -78,6 +78,19 @@ options = {
             end,
             order = 5
         },
+		greyscale = {
+            type = "toggle",
+            name = L["grayscale"],
+            width = "full",
+            desc = L["grayscaledesc"],
+            get = function()
+                return BananaBar3:Get_grayscale()
+            end,
+            set = function(info, v)
+                BananaBar3:Set_grayscale(v)
+            end,
+            order = 5
+        },
         autosetcombat = {
             type = "toggle",
             width = "full",
@@ -2274,6 +2287,20 @@ function BananaBar3:Get_scaleassist()
     return self.db.profile.scaleassist
 end
 
+
+------------------------------------------
+--- set with grayscale  symbol with no target
+------------------------------------------
+
+function BananaBar3:Set_grayscale(value)
+    self.db.profile.grayscale = value
+    BananaBar3Button:GrayscaleAllButtonFrame(not self.db.profile.grayscale)
+end
+
+function BananaBar3:Get_grayscale()
+    return self.db.profile.grayscale
+end
+
 ------------------------------------------
 --- updaterate
 ------------------------------------------
@@ -2610,6 +2637,7 @@ function BananaBar3:ProfileUpdated(layout)
 	BananaBar3Button:ShiftY(self.db.profile.shiftCountY)
 	BananaBar3Button:ShiftX(self.db.profile.shiftCountX)	
     BananaBar3Button:UpdateAllArrows()
+    BananaBar3Button:GrayscaleAllButtonFrame(not self.db.profile.grayscale)	
     BananaBar3Button:UpdateAllButtonFrame(not self.db.profile.hidebuttonframes)
     BananaBar3Button:UpdateAllButtonBack(not self.db.profile.hidebuttonback)
     BananaBar3Button:UpdateAllScale(self.db.profile.scale / 100)
@@ -2826,11 +2854,26 @@ function BananaBar3:BananaUpdate()
     end
 
     for but = 1, BANANA_MAX_BUTTONS, 1 do
-        if self.TARGETMARKS[but] then
+        
+		--Updategrayscale
+		    local guid = self.TARGETMARKS[but]
+            local t = self.TARGETS[guid]
+            if t then
+			--self:Debug("Count bt ".. but.. " : ".. BananaBar3:FromCount(t.from));
+			else
+				if BananaBar3:Get_grayscale() then
+				self.Buttons[but].Icon:SetDesaturated(1);
+				self.Buttons[but].Icon:SetVertexColor(0.5, 0.5, 0.5);
+				end
+			end
+			
+		
+		if self.TARGETMARKS[but] then
             local guid = self.TARGETMARKS[but]
             local t = self.TARGETS[guid]
 
-            self.Buttons[but]:SetCount(BananaBar3:FromCount(t.from))
+            self.Buttons[but]:SetCount(BananaBar3:FromCount(t.from),but)
+			
             self.Buttons[but]:SetDead(t.info_dead)
             self.Buttons[but]:SetHuntersmark(t.has_huntersmark)
 
