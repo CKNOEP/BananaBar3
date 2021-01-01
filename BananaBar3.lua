@@ -27,8 +27,8 @@ BINDING_NAME_BananaBar3_BINDING_KEY = L["binding_key"]
 BINDING_NAME_BananaBar3_BINDING_SEARCH = L["binding_search"]
 
 BananaBar3.name = L["addonname"]
-BananaBar3.version = "3.0.9";
-BananaBar3.date = "2020-08-11 T22:53:58Z";
+BananaBar3.version = "3.1.3";
+BananaBar3.date = "2021-01-01 T22:53:58Z";
 BananaBar3.hasIcon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 BananaBar3.defaultMinimapPosition = 170
 
@@ -2894,10 +2894,17 @@ function BananaBar3:BananaUpdate()
                 local max = aura.Duration * 100
                 local current = max - math.floor((GetTime() - self.AURAINFO[guid].StartTime) * 100)
 
-                self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 1)
+                --green
+				--self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 1)
+				--red
+				self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 90/100)          
+				self.Buttons[but].HealthBar:z(0, 1000)
+    
+				self.Buttons[but].HealthBarSpark:SetStatusBarColor(1, 1, 1, 90/100)          
+				self.Buttons[but].HealthBarSpark:SetMinMaxValues(0, 1000)
 
-                self.Buttons[but].HealthBar:SetMinMaxValues(0, 1000)
-                if current > 1000 then
+	
+				if current > 1000 then
                     self.Buttons[but].HealthBar:SetValue(1000)
                     self.Buttons[but].HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
                 else
@@ -2929,14 +2936,41 @@ function BananaBar3:BananaUpdate()
                 self.Buttons[but]:SetSheepSymbol(null)
                 self.Buttons[but]:SetTimer(0, 0)
 
-                --self.Buttons[but].HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar");
-                self.Buttons[but].HealthBar:SetStatusBarTexture(
-                    "Interface\\AddOns\\BananaBar3\\Images\\Chess128N"
-                )
-                self.Buttons[but].HealthBar:SetStatusBarColor(0, 1, 0, 1)
+                self.Buttons[but].HealthBarSpark:SetStatusBarTexture("Interface\\AddOns\\BananaBar3\\Images\\UI-CastingBar-Spark")
+				self.Buttons[but].HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar");
+                
+				--self.Buttons[but].HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBar3\\Images\\Chess128N")
+                
+				self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 100/100)         
                 self.Buttons[but].HealthBar:SetMinMaxValues(0, t.info_healthmax)
                 self.Buttons[but].HealthBar:SetValue(t.info_health)
-                if but > BANANA_RAIDSYMBOL_BUTTON_COUNT then
+                
+				self.Buttons[but].HealthBarSpark:SetStatusBarColor(1, 1, 1, 40/100)         
+                self.Buttons[but].HealthBarSpark:SetMinMaxValues(0, t.info_healthmax)
+                self.Buttons[but].HealthBarSpark:SetValue(t.info_healthmax)		
+				
+				-- Spark effect in Top of  Healthbar
+				if self.Buttons[but].HealthBarSpark:GetValue() then
+				local valueH = t.info_health
+				local valueM = t.info_healthmax
+				
+				--self:Print("value healt mob..." .. valueH .."/"..valueM.." YOfset "..(32*(valueH/valueM))-32)
+				local point, relativeTo, relativePoint, xOfs, yOfs = self.Buttons[but].HealthBarSpark:GetPoint()
+				shiftyOfs = ((valueH / valueM) * 32) - 32 + 18
+				self.Buttons[but].HealthBarSpark:SetPoint(point, relativeTo, relativePoint, xOfs, shiftyOfs);
+				--self:Print(point..relativePoint)
+				end
+				
+				if t.info_health == t.info_healthmax then
+				self.Buttons[but].HealthBarSpark:Hide();
+				
+				else
+				self.Buttons[but].HealthBarSpark:Show();
+				
+				
+				end
+				
+				if but > BANANA_RAIDSYMBOL_BUTTON_COUNT then
                     self.Buttons[but]:SetButtonSymbolExtra(t.info_unit)
                 end
                 --self.Buttons[but]:Cooldown:
@@ -2966,10 +3000,11 @@ function BananaBar3:BananaUpdate()
 			self.Buttons[but]:SetDead(false)
             self.Buttons[but]:SetHuntersmark(false)
             self.Buttons[but].HealthBar:SetValue(0)
+            self.Buttons[but].HealthBarSpark:SetValue(0)			
             self.Buttons[but]:SetMobName(nil)
             self.Buttons[but]:SetSelected(false)
             self.Buttons[but]:SetStopwatch(false)
-            
+            --self.Buttons[but].HealthBarSpark:SetPoint("BOTTOMLEFT", 22.5, 18);
 
 			
 			if but > BANANA_RAIDSYMBOL_BUTTON_COUNT then

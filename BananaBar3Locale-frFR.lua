@@ -59,8 +59,8 @@ L.order_symbols_desc		     = "1er symbole utilisé, changez l'ordre ici";
 
 -- the submenu where you can find all the settings corresponding to all visual effects
 -- of bananabar. For example "Hide buttons"; "button size"; "show button frames" etc.
-L.design                          = "Paramètres visibles";
-L.designdesc                      = "Paramètres visibles";
+L.design                          = "Paramètres visibilités";
+L.designdesc                      = "Paramètres visibilités";
 
 -- hide buttons that are currently not used (no mob has this target)
 -- buttons will also be hidden if no party member has targeted the mob 
@@ -107,8 +107,8 @@ L.layoutmode                      = "Modifier les cadres";
 L.layoutmodedesc                  = "Active le mode Modification des cadres.Utilisez-le pour déplacer et regrouper les boutons";
 
 -- in the layoutmode you can move, seperate and concatenate buttons        
-L.grayscale                      = "grise les symboles non-ciblé";
-L.grayscaledesc                  = "Affiche en niveau de gris les symboles non-ciblé";
+L.grayscale                      = "Griser les symboles non-ciblés";
+L.grayscaledesc                  = "Affiche en niveau de gris les symboles qui ne sont pas ciblés";
 
 -- Show count if zero
 L.showzerotarget				  = "Masquer le compteur quand = Zéro";

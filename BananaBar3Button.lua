@@ -74,7 +74,9 @@ function BananaBar3Button:init(addon,name)
     self.Buttonback = getglobal(self.FrameName.."Buttonback");   
     
     self.Stopwatch = getglobal(self.FrameName.."Stopwatch");   
-    self.HealthBar = getglobal(self.FrameName.."HealthBar");   
+    self.HealthBar = getglobal(self.FrameName.."HealthBar");
+    self.HealthBarSpark = getglobal(self.FrameName.."HealthBarSpark"); 	
+
     self.SubIcon =  getglobal(self.FrameName.."SubIcon");  
     self.Cooldown =  getglobal(self.FrameName.."Cooldown");  
     self.Cooldown:SetSwipeTexture("Interface\\AddOns\\BananaBar3\\Images\\Swite_Circle.blp",0,0,0,0.5);
@@ -114,7 +116,13 @@ function BananaBar3Button:init(addon,name)
     self.HealthBar:SetValue(0)
     --self.HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar");
     self.HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBar3\\Images\\Chess128N");
-    self.HealthBar:SetStatusBarColor(0,1,0,1);                    
+    self.HealthBar:SetStatusBarColor(1, 0, 0, 75/100);                   
+    
+	self.HealthBarSpark:SetValue(0)
+    self.HealthBarSpark:SetStatusBarTexture("Interface\\CastingBar\\UI-CastingBar-Spark");
+    self.HealthBarSpark:SetStatusBarColor(1, 1, 1, 40/100); 
+
+
 
     self.dead = false;
     self.showDead = false;
@@ -135,6 +143,34 @@ end
  --  self.Addon:Debug(PlayerMenu(1).frame.."unit"..self.Unit.."target")
 
 -- Functions
+
+
+-----------------------------
+--Essai set swipe color
+--------------------------
+--local f = CreateFrame("FRAME")
+--f:SetWidth(32)
+--f:SetHeight(32)
+--f:SetPoint("CENTER")
+ 
+--local cdFrame = CreateFrame("Cooldown", "MyCdFrame", f,  "CooldownFrameTemplate")
+--cdFrame:SetAllPoints(f)
+--cdFrame:SetSwipeTexture(1, 1, 1)
+
+ 
+--local texture = f:CreateTexture(nil, "BACKGROUND")
+--texture:SetAllPoints(f)
+--texture:SetTexCoord(0,0,0,0)
+--texture:SetTexture(132242)
+ 
+--f:Show()
+
+ 
+--MyCdFrame:SetCooldown(GetTime(), 20)
+--MyCdFrame:SetCooldown(GetTime(), 10)
+
+---------
+
 
 function BananaBar3Button:SetButtonSymbol(index, unit)
     BananaBar3Button:SetSymbolTexture(self.Icon,index);
@@ -350,16 +386,16 @@ function BananaBar3Button:Dock(direction, other)
 
     if direction == BANANA_DOCK_TOP then
         --self.Addon:Debug("Docking "..self.FrameName.." on top of "..other.FrameName)
-    	self.frame:SetPoint("BOTTOM", other.frame, "TOP",0,2);
+    	self.frame:SetPoint("BOTTOM", other.frame, "TOP",0,4);
     elseif direction == BANANA_DOCK_RIGHT then
         --self.Addon:Debug("Docking "..self.FrameName.." at the right side of "..other.FrameName)
-    	self.frame:SetPoint("LEFT", other.frame, "RIGHT",2,0);
+    	self.frame:SetPoint("LEFT", other.frame, "RIGHT",4,0);
     elseif direction == BANANA_DOCK_BOTTOM then
         --self.Addon:Debug("Docking "..self.FrameName.." at the bottom of "..other.FrameName)
-    	self.frame:SetPoint("TOP", other.frame, "BOTTOM",0,-2);
+    	self.frame:SetPoint("TOP", other.frame, "BOTTOM",0,-4);
     elseif direction == BANANA_DOCK_LEFT then
         --self.Addon:Debug("Docking "..self.FrameName.." at the left side of "..other.FrameName)
-    	self.frame:SetPoint("RIGHT", other.frame, "LEFT",-2,0);
+    	self.frame:SetPoint("RIGHT", other.frame, "LEFT",-4,0);
     elseif direction == BANANA_DOCK_NONE then
         --self.Addon:Debug("UnDocking "..self.FrameName)
     else        
@@ -611,16 +647,23 @@ end
 function BananaBar3Button:SetCount(number,but)
     if number then
         self.Count:SetText(tostring(number));
-    else
+		if number >=1 then
+		
+			BananaBarAllButtons[but].Icon:SetDesaturated();
+			BananaBarAllButtons[but].Icon:SetVertexColor(1, 1, 1);
+		
+		end	    
+	else
         self.Count:SetText("");
-    end
-
-	if number >=1 then
     
-		BananaBarAllButtons[but].Icon:SetDesaturated();
-		BananaBarAllButtons[but].Icon:SetVertexColor(1, 1, 1);
+
+	
+	
+	
 	
 	end
+
+
 	
 	for bt =  1, 8, 1 do
 		--self.Addon:Debug("Count bt ".. bt.. " : ".. tostring(BananaBarAllButtons[bt].Count));
@@ -687,10 +730,12 @@ function BananaBar3Button:UpdateAllExtraInfo(show)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
 		if show then
 			BananaBarAllButtons[i].HealthBar:Show();
-			BananaBarAllButtons[i].MobName:Show();
+			BananaBarAllButtons[i].HealthBarSpark:Show();
+			--BananaBarAllButtons[i].MobName:Show();
 		else
 			BananaBarAllButtons[i].HealthBar:Hide();
-			BananaBarAllButtons[i].MobName:Hide();
+			BananaBarAllButtons[i].HealthBarSpark:Hide();
+			--BananaBarAllButtons[i].MobName:Hide();
 		end
     end
 end
@@ -805,7 +850,8 @@ end
 
 function BananaBar3Button:SetMobName(name)
     if name then
-        self.MobName:SetText(name);
+        --self.MobName:SetText(name);
+		self.MobName:SetText("");
     else
         self.MobName:SetText("");
     end

@@ -239,8 +239,18 @@
 					</Anchor>
 				</Anchors>
 			</Cooldown>
-			<StatusBar name="$parentHealthBar" minValue="0" maxValue="100" defaultValue="90" hidden="false" orientation="HORIZONTAL" drawLayer="ARTWORK" textureSubLevel="6">
-				<Size x="100" y="10" />
+			<StatusBar name="$parentHealthBarSpark" minValue="0" maxValue="100" defaultValue="90" hidden="false" orientation="VERTICAL" drawLayer="ARTWORK" textureSubLevel="6">
+				<Size x="32" y="32" />
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="TOPCENTER">
+						<Offset>
+							<AbsDimension x="22.5" y="18" />
+						</Offset>
+					</Anchor>
+			</Anchors>
+			</StatusBar>
+			<StatusBar name="$parentHealthBar" minValue="0" maxValue="100" defaultValue="90" hidden="false" orientation="VERTICAL" drawLayer="ARTWORK" textureSubLevel="6">
+				<Size x="3" y="32" />
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
 						<Offset>
