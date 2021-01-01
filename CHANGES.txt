@@ -1,3 +1,5 @@
+2020-12-31
+Option grayscale symbol when they are not targeted 
 2020-12-30
 new image for dead target , movable count, option to show count when count is null
 2020-10-24
