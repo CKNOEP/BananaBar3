@@ -1,3 +1,5 @@
+2021-01-07
+Drag and drop to set target
 2020-12-31
 Option grayscale symbol when they are not targeted 
 2020-12-30
