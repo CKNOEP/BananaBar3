@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 2021-01-07
 Drag and drop to set target
+=======
+2020-01-01
+Add new Healthbar, so cool
+>>>>>>> 86a16f4bb9a8a1ba399a5872fe04a14164f4b8a0
 2020-12-31
 Option grayscale symbol when they are not targeted 
 2020-12-30
