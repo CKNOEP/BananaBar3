@@ -41,20 +41,12 @@ function BananaBar3Button:init(addon,name)
     --self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3ButtonTemplate","SecureActionButtonTemplate"); 
     self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3ButtonTemplate" , "SecureActionButtonTemplate"); 	
 			
-	--self.Addon:Debug(self.FrameName.."unit"..self.Unit.."target")
-		--SecureActionQueue:FrameSetAttribute(self.frame,"unit", "target")
-		--self.frame:SetAttribute("type1", "macro")
-		--self.frame:SetAttribute("macrotext", "/target "..self.Unit)  
 		self.frame:SetAttribute("*type1", "target")
-		--SecureActionQueue:FrameSetAttribute(self.frame,"*type1", "target")
 		self.frame:EnableMouse(true)
    
 	
     self.frame:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp", "Button4Up", "Button5Up");
-	
-	
-
-	self.selected = false;
+		self.selected = false;
     self.frame.Id="1"
     self.frame:SetPoint("CENTER",0,0)
     self.frame:Hide();
@@ -114,10 +106,10 @@ function BananaBar3Button:init(addon,name)
     self.visible = true;
     
     self.HealthBar:SetValue(0)
-    --self.HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar");
-    self.HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBar3\\Images\\Chess128N");
-    self.HealthBar:SetStatusBarColor(1, 0, 0, 75/100);                   
-    
+    self.HealthBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar");
+    --self.HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBar3\\Images\\Chess128N");
+	self.HealthBar:SetStatusBarColor(0, 1, 1)
+	
 	self.HealthBarSpark:SetValue(0)
     self.HealthBarSpark:SetStatusBarTexture("Interface\\CastingBar\\UI-CastingBar-Spark");
     self.HealthBarSpark:SetStatusBarColor(1, 1, 1, 40/100); 
@@ -145,31 +137,6 @@ end
 -- Functions
 
 
------------------------------
---Essai set swipe color
---------------------------
---local f = CreateFrame("FRAME")
---f:SetWidth(32)
---f:SetHeight(32)
---f:SetPoint("CENTER")
- 
---local cdFrame = CreateFrame("Cooldown", "MyCdFrame", f,  "CooldownFrameTemplate")
---cdFrame:SetAllPoints(f)
---cdFrame:SetSwipeTexture(1, 1, 1)
-
- 
---local texture = f:CreateTexture(nil, "BACKGROUND")
---texture:SetAllPoints(f)
---texture:SetTexCoord(0,0,0,0)
---texture:SetTexture(132242)
- 
---f:Show()
-
- 
---MyCdFrame:SetCooldown(GetTime(), 20)
---MyCdFrame:SetCooldown(GetTime(), 10)
-
----------
 
 
 function BananaBar3Button:SetButtonSymbol(index, unit)
@@ -188,7 +155,7 @@ end
 
 function BananaBar3Button:SetButtonSymbolExtra(unit, icon)
     BananaBar3Button:SetSymbolTexture(self.Icon,0, unit, icon);
-	
+	--self.Addon:Print("init",self.Icon,0, unit, icon);
 end
 
 function BananaBar3Button:SetSheepSymbol(icon)
@@ -451,21 +418,21 @@ function BananaBar3Button:OnMouseDown(mouseButton, frame)
         end
         return;
     else
-    	
-		BananaBar3:DragPrepare(self,mouseButton);
+    
+	BananaBar3:DragPrepare(self,mouseButton);
     local  clicktype = BananaBar3Button:GetClickType(mouseButton);
 		if  mouseButton == "RightButton" then -- Target Unit
-			  self.Addon:ExecuteAction(self, clicktype); 
-		elseif mouseButton == "LeftButton" then -- Set Target
-			  --self.Addon:ExecuteAction(self, clicktype, Targetunitname);  
-		elseif mouseButton == "MiddleButton" then -- Config Menu
-			   self.Addon:ExecuteAction(self, clicktype);  
-		elseif mouseButton == "Button4" then
+				self.Addon:ExecuteAction(self, clicktype); 
+			elseif mouseButton == "LeftButton" then -- Set Target
+				self.Addon:ExecuteAction(self, clicktype, Targetunitname);  
+			elseif mouseButton == "MiddleButton" then -- Config Menu
+				self.Addon:ExecuteAction(self, clicktype);  
+			elseif mouseButton == "Button4" then
 				self.Addon:Set_layoutmode(false);
-		elseif mouseButton == "Button5" then
-				
-		else
-				--self.Addon:Debug("OnMouseDown:"..self.FrameName.." "..(mouseButton or 'null')); 
+			elseif mouseButton == "Button5" then
+					
+			else
+					--self.Addon:Debug("OnMouseDown:"..self.FrameName.." "..(mouseButton or 'null')); 
 		end
 	end
 end

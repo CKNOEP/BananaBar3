@@ -154,8 +154,8 @@ L.action_setsymbol                = "Définir le symbole de raid ou la marque du
 L.action_setsymboldesc            = "Définir le symbole de raid ou la marque du chasseur sur la cible actuelle";
 
 -- name for the config menu entry in the mouse button settings menu
-L.action_setTargetsymbol                = "Cible le Mob du Symbole (focus)";
-L.action_setTargetsymboldesc            = "Cible le Mob porteur du Symbole";
+L.action_targetsymbol                = "Cible le Mob du Symbole (focus)";
+L.action_targetsymboldesc            = "Cible le Mob porteur du Symbole";
 
 -- setting in the mobsettings menu, if activated this mob will get a symbol
 -- if you press the autosymbols key (binding_key)

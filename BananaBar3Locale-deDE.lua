@@ -138,6 +138,10 @@ L.action_targetdesc               = "Ziel durch Klick auf den Button des entspre
 L.action_setsymbol                = "Symbol setzen";
 L.action_setsymboldesc            = "Setzt das Symbol des entsprechenden Buttons auf des gerade anvisierte Ziel.";
 
+-- name for the config menu entry in the mouse button settings menu
+L.action_targetsymbol                = "Target The Mob with this Symbol";
+L.action_targetsymboldesc            = "Target The Mob with this Symbol ";
+
 -- setting in the mobsettings menu, if activated this mob will get a symbol
 -- if you press the autosymbols key (binding_key)
 L.autosymbolsbyhotkey             = "Automatische setzen von Symbolen durch Hotkey";

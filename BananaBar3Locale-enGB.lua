@@ -153,8 +153,8 @@ L.action_setsymbol                = "Set Raid Symbol or Hunter's Mark";
 L.action_setsymboldesc            = "Set Raid Symbol or Hunter's Mark on the mob you actually targeted";
 
 -- name for the config menu entry in the mouse button settings menu
-L.action_setTargetsymbol                = "Target The Mob with this Symbol";
-L.action_setTargetsymboldesc            = "Target The Mob with this Symbol ";
+L.action_targetsymbol                = "Target The Mob with this Symbol";
+L.action_targetsymboldesc            = "Target The Mob with this Symbol ";
 
 -- setting in the mobsettings menu, if activated this mob will get a symbol
 -- if you press the autosymbols key (binding_key)

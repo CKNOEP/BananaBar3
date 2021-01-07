@@ -131,7 +131,7 @@ options = {
             name = L["mousebutton"],
             desc = L["mousebuttondesc"],
             order = 3,
-            args = {
+           args = {
 
             action_config = {
                 type = "header",
@@ -158,55 +158,14 @@ options = {
                 end,
                 order = 1
             },
-				--config_shift = {
-                --type = "toggle",
-                --width = "half",
-				--name = L["shift"],
-                --desc = L["shiftdesc"],
-                ----get = function()
-                --    return BananaBar3:Get_action_part("action_config", 1)
-                --end,
-                --set = function(info, v)
-                --    BananaBar3:Set_action_part("action_config", 1, v)
-                --end,
-                
-				--order = 2
-            --},
-				--config_control = {
-                --type = "toggle",
-                --width = "half",
-				--name = L["control"],
-                --desc = L["controldesc"],
-                --get = function()
-                --    return BananaBar3:Get_action_part("action_config", 2)
-                --end,
-                --set = function(info, v)
-                --    BananaBar3:Set_action_part("action_config", 2, v)
-                --end,
-               
-			   -- order = 3
-            --},
-				--config_alt = {
-                --type = "toggle",
-                --width = "half",
-				--name = L["alt"],
-                --desc = L["altdesc"],
-                --get = function()
-                --    return BananaBar3:Get_action_part("action_config", 3)
-                --end,
-                --set = function(info, v)
-                --    BananaBar3:Set_action_part("action_config", 3, v)
-                --end,
-                
-				--order = 4
-            --},
-             action_targetsetsymbol = {
+
+             action_targetsymbol = {
                 type = "header",
-                name = L["action_setTargetsymbol"],
-                desc = L["action_setTargetsymboldesc"],
+                name = L["action_targetsymbol"],
+                desc = L["action_targetsymboldesc"],
                 order = 10
             },
-				targetsetsymbol_mouse = {
+				targetsymbol_mouse = {
                 type = "select",
                 width = "full",
                 name = "",
@@ -218,55 +177,14 @@ options = {
                     --[14] = "Mouse 5",
                 },
                 get = function()
-                    return BananaBar3:Get_action_part_mouse("action_setTargetsymbol", v)
+                    return BananaBar3:Get_action_part_mouse("action_targetsymbol", v)
                 end,
                 set = function(info, v)
-                    BananaBar3:Set_action_part_mouse("action_setTargetsymbol", v)
+                    BananaBar3:Set_action_part_mouse("action_targetsymbol", v)
                 end,
                 order = 11
             },
-		--		targetsetsymbol_shift = {
-        --        type = "toggle",
-        --        width = "half",
-        --        name = L["shift"],
-        --        desc = L["shiftdesc"],
-        --        get = function()
-        --            return BananaBar3:Get_action_part("action_setTargetsymbol", 1)
-        --        end,
-        --        set = function(info, v)
-        --            BananaBar3:Set_action_part("action_setTargetsymbol", 1, v)
-        --        end,
-        --        order = 0
-		--		--order = 12
-        --    },
-		--		targetsetsymbol_control = {
-        --        type = "toggle",
-        --        width = "half",
-        --        name = L["control"],
-        --        desc = L["controldesc"],
-        --        get = function()
-        --            return BananaBar3:Get_action_part("action_setTargetsymbol", 2)
-        --        end,
-        --        set = function(info, v)
-        --            BananaBar3:Set_action_part("action_setTargetsymbol", 2, v)
-        --        end,
-        --        order = 0
-		--		--order = 13
-        --    },
-		--		targetsetsymbol_alt = {
-        --        type = "toggle",
-        --        width = "half",
-        --        name = L["alt"],
-        --        desc = L["altdesc"],
-        --        get = function()
-        --            return BananaBar3:Get_action_part("action_setTargetsymbol", 3)
-        --        end,
-        --        set = function(info, v)
-        --            BananaBar3:Set_action_part("action_setTargetsymbol", 3, v)
-        --        end,
-        --        order = 0
-		--		--order = 14
-        --    },
+
              action_setsymbol = {
                 type = "header",
                 name = L["action_setsymbol"],
@@ -292,48 +210,7 @@ options = {
                 end,
                 order = 21
             },
-		--		setsymbol_shift = {
-        --        type = "toggle",
-        --        width = "half",
-        --        name = L["shift"],
-        --        desc = L["shiftdesc"],
-        --        get = function()
-        --            return BananaBar3:Get_action_part("action_setsymbol", 1)
-        --        end,
-        --        set = function(info, v)
-        --            BananaBar3:Set_action_part("action_setsymbol", 1, v)
-        --        end,
-        --        order = 0
-				--order = 22
-        --    },
-		--		setsymbol_control = {
-        --        type = "toggle",
-        --        width = "half",
-        --        name = L["control"],
-        --        desc = L["controldesc"],
-        --        get = function()
-        --            return BananaBar3:Get_action_part("action_setsymbol", 2)
-        --        end,
-        --        set = function(info, v)
-        --            BananaBar3:Set_action_part("action_setsymbol", 2, v)
-        --        end,
-        --        order = 0
-		--		--order = 23
-        --    },
-		--		setsymbol_alt = {
-        --        type = "toggle",
-        --        width = "half",
-        --        name = L["alt"],
-        --        desc = L["altdesc"],
-        --        get = function()
-        --            return BananaBar3:Get_action_part("action_setsymbol", 3)
-        --        end,
-        --        set = function(info, v)
-        --            BananaBar3:Set_action_part("action_setsymbol", 3, v)
-        --        end,
-        --        order = 0
-		--		--order = 24
-        --    },
+	
 		}
        },
         visibility = {
@@ -1372,8 +1249,9 @@ local defaults = {
 
         actions = {
             action_setsymbol = 8,
-			action_setTargetsymbol = 0,
-			action_config = 16
+			action_config = 16,
+			action_targetsymbol = 0
+			
         },
         showbutton = {
             [1] = true,
@@ -2059,7 +1937,7 @@ function BananaBar3:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
         local auratype = auraTypes[dummySpellId];
 
         if eventType == "SPELL_AURA_APPLIED" then
-            BananaBar3:Debug("AURA APPLIED " .. auratype.Name .. " on " .. destName .. " from " .. sourceName .. " Max "..auratype.Duration.." Seconds")
+            BananaBar3:Debug("AURA APPLIED " ..dummySpellId.. auratype.Name .. " on " .. destName .. " from " .. sourceName .. " Max "..auratype.Duration.." Seconds")
             self.AURAINFO[destGUID] = {
                 StartTime = GetTime(),
                 EndTime = nil,
@@ -2562,11 +2440,9 @@ function BananaBar3:Execute_Config()
     LibStub("AceConfigDialog-3.0"):Open("BananaBar3")
 end
 
-function BananaBar3:ExecuteAction(button, clicktype,Targetunitname)
+function BananaBar3:ExecuteAction(button, clicktype)
     local action = self.Actions[clicktype]
-    --self:Debug("bouton" .. self.TooltipButton.ButtonId)
-	
-	if action then
+  	if action then
 	self:Debug("Action:"..action.."-- clicktype:"..clicktype)
     end
 	
@@ -2580,27 +2456,9 @@ function BananaBar3:ExecuteAction(button, clicktype,Targetunitname)
         self:Debug("Config")
 		self:Execute_Config()
     elseif action == "action_setsymbol" then
-		
-		local id = self.TooltipButton.ButtonId
-		 u="target"
-		
-		if UnitExists(u) then 
-		Targetunitname=UnitName(u)
-		
-		BananaBar3:SetSymbol(button.ButtonId,Targetunitname)
-		self:Debug("set symbol sur bouton:"..id.." cible="..Targetunitname)
-		
-		SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "unit", Targetunitname)
-        SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "*type1", "target")
-		end
-		
-		--self:Debug("Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
-		--BananaBar3.AssistButtons[i].frame:GetAttribute("unit")	
-	
-	elseif action == "action_setTargetsymbol" then
-	    local id = self.TooltipButton.ButtonId
-		--self:Debug("Action:"..action.."-- clicktype:"..clicktype.."Target"..Targetunitname)
-		self:Debug("Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
+		BananaBar3:SetSymbol(button.ButtonId)
+		--self:Debug("set symbol sur bouton:"..button)
+			
 	else
         self:Debug("Unknown action" .. " " .. action)
 		self:Debug(Targetname)
@@ -2751,13 +2609,7 @@ function BananaBar3:UpdateTooltip()
         if self.TARGETMARKS[id] then
             local t = self.TARGETS[self.TARGETMARKS[id]]
             GameTooltip:AddLine(UnitName(t.info_unit), 0.7, 0.7, 0.7)
-            --GameTooltip:AddLine(UnitName(t.info_unit), 0.9, 0.9, 0.9)
-			
-			--SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "unit", UnitName(t.info_unit))
-			--SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[id].frame, "type1", "target")
-			--self:Debug("Tooltip Bouton attribut unit:"..BananaBar3.Buttons[id].frame:GetAttribute("unit") or "<nil>")
-			
-			
+          
             local i
             for i in pairs(t.from) do
                 localizedClass, englishClass = UnitClass(i)
@@ -2897,11 +2749,13 @@ function BananaBar3:BananaUpdate()
                 --green
 				--self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 1)
 				--red
-				self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 90/100)          
-				self.Buttons[but].HealthBar:z(0, 1000)
+				--self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 90/100)          
+				self.Buttons[but].HealthBar:SetStatusBarColor(0, 1, 1)
+				self.Buttons[but].HealthBar:SetMinMaxValues(0, 1000)
     
 				self.Buttons[but].HealthBarSpark:SetStatusBarColor(1, 1, 1, 90/100)          
-				self.Buttons[but].HealthBarSpark:SetMinMaxValues(0, 1000)
+	
+	self.Buttons[but].HealthBarSpark:SetMinMaxValues(0, 1000)
 
 	
 				if current > 1000 then
@@ -2941,8 +2795,16 @@ function BananaBar3:BananaUpdate()
                 
 				--self.Buttons[but].HealthBar:SetStatusBarTexture("Interface\\AddOns\\BananaBar3\\Images\\Chess128N")
                 
-				self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 100/100)         
-                self.Buttons[but].HealthBar:SetMinMaxValues(0, t.info_healthmax)
+				
+				if t.info_enemy  then
+				--red
+					self.Buttons[but].HealthBar:SetStatusBarColor(1, 0, 0, 100/100)         
+					else
+					--green
+					self.Buttons[but].HealthBar:SetStatusBarColor(0.52, 1, 0.52)
+				end
+				
+				self.Buttons[but].HealthBar:SetMinMaxValues(0, t.info_healthmax)
                 self.Buttons[but].HealthBar:SetValue(t.info_health)
                 
 				self.Buttons[but].HealthBarSpark:SetStatusBarColor(1, 1, 1, 40/100)         
@@ -3307,8 +3169,10 @@ end
 
 
 function BananaBar3:Get_action_part_mouse(action)
-    local a = BananaBar3:Get_action(action)
-    self:Debug("Set_action_part_mouse "..action.." "..(math.floor(a / 8)+10).." "..a);
+    
+	local a = BananaBar3:Get_action(action)
+    self:Debug("Set_action_part_mouse "..action)
+	--self:Debug("Set_action_part_mouse "..action.." "..(math.floor(a / 8)+10).." "..a);
     return math.floor(a / 8)+10
 end
 
@@ -3565,9 +3429,9 @@ function BananaBar3:DragPrepare(dragStartButton, mouseButton)
         -- painting in progress
     else
         --BananaBar3:Print("Dragging Mode", mouseButton);
-		local  clicktype = BananaBar3Button:GetClickType(mouseButton)
+		--local  clicktype = BananaBar3Button:GetClickType(mouseButton)
 		--BananaBar3:Print("Clicktype:"..clicktype)
-		if clicktype == 10 then
+		--if clicktype == 10 then
 			BananaBar3.Dragging = true
 			BananaBar3.DragPreparing = true
 			BananaBar3.DragStartButton = dragStartButton
@@ -3576,7 +3440,7 @@ function BananaBar3:DragPrepare(dragStartButton, mouseButton)
 			local x, y = GetCursorPosition()
 			self.DragCursorPosX = x
 			self.DragCursorPosY = y
-		end
+		--end
 	end
 end
 
@@ -3586,11 +3450,11 @@ function BananaBar3:DragStop(dragStopButton, mouseButton)
         BananaBar3.CancelTimer(self.BananaCursorTimer)
         self:BananaSetCursor(nil)
         if BananaBar3.DragPreparing then
-            --self:Debug("drag not started, preparing only")
+            self:Debug("drag not started, preparing only")
             return
         end
         if dragStopButton == nil or dragStopButton.AssistButton then
-            --self:Debug("drag from "..self.DragStartButton.ButtonId.." to nothing")
+            self:Debug("drag from "..self.DragStartButton.ButtonId.." to nothing")
             if UnitExists("MOUSEOVER") then
                 BananaBar3:DragButtonOnUnit(self.DragStartButton, mouseButton)
             else
@@ -3601,9 +3465,9 @@ function BananaBar3:DragStop(dragStopButton, mouseButton)
                 end
             end
         elseif dragStopButton == self.DragStartButton then
-            --self:Debug("no drag")
+            self:Debug("no drag")
         else
-            --self:Debug("drag from "..self.DragStartButton.ButtonId.." to "..dragStopButton.ButtonId)
+            self:Debug("drag from "..self.DragStartButton.ButtonId.." to "..dragStopButton.ButtonId)
             BananaBar3:ChangeSymbol(self.DragStartButton.ButtonId, dragStopButton.ButtonId)
         end
     end
@@ -3822,7 +3686,10 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
                 elseif UnitCanAttack(unit, target) then
                     --self:Debug("UnitCanAttack : unit :"..unit.." target"..UnitName(target))
                     tooltipInfo1 = "has selected an enemy target"
-                    tooltipInfo2 = UnitName(target)
+                    --
+					
+					
+					tooltipInfo2 = UnitName(target)
                     local rti = GetRaidTargetIndex(target)
                     if rti then
                         BananaBar3.AssistButtons[i]:SetButtonSymbol(rti)
@@ -4002,6 +3869,7 @@ function BananaBar3:AddTargetToList(rti, unit, source)
         self.TARGETS[guid].info_name = UnitName(unit)
         self.TARGETS[guid].info_dead = UnitIsDead(unit)
         self.TARGETS[guid].info_health = UnitHealth(unit)
+		self.TARGETS[guid].info_enemy = UnitCanAttack("player", unit)
         self.TARGETS[guid].info_healthmax = UnitHealthMax(unit)
         self.TARGETS[guid].has_huntersmark = self:UnitHasHuntersMark(unit)
     end
@@ -4131,22 +3999,15 @@ function BananaBar3:GetUnitBySymbol(index)
     return nil
 end
 
-function BananaBar3:SetSymbol(index,Targetunitname)
-	u="target"
+function BananaBar3:SetSymbol(index)
 		
-		if UnitExists(u) then 
-		Targetunitname=UnitName(u)
-		end
-	
 	if GetRaidTargetIndex("target") == index then
         BananaBar3:PlayRemove()
         SetRaidTarget("target", 0)
-		self:Debug("Remove targetname sur "..Targetunitname)	
+		self:Debug("Remove targetname " .. index)	
 	else
         SetRaidTarget("target", index)
-		if Targetuniname  then
-		self:Debug("index targetname N:"..index.."sur "..Targetunitname)
-        end
+		self:Debug("Set targetname " .. index)			
 		BananaBar3:PlaySet()
     end
 end
