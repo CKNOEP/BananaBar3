@@ -1684,7 +1684,10 @@ function BananaBar3:OnInitialize()
         BananaBar3:Execute_Config()
     end
 
-    self.mouseOverlayFrame = CreateFrame("Frame", "BananaMouseOverlay", UIParent, "SecureActionButtonTemplate")
+    --self.mouseOverlayFrame = CreateFrame("Frame", "BananaMouseOverlay", UIParent, "SecureActionButtonTemplate")
+	self.mouseOverlayFrame = CreateFrame("CheckButton", "BananaMouseOverlay", UIParent, "SecureActionButtonTemplate")
+	-- sipertruk commented
+	--In BananaBar3.lua line 1687 you're creating a "Frame" using "SecureActionButtonTemplate" but it must be a "CheckButton" instead, it might work with a "Frame" but the UI complaints that there's no OnClick script in the object.
 
     self.mouseOverlayFrame:SetFrameStrata("TOOLTIP")
     self.mouseOverlayFrame:SetWidth(32)
@@ -2029,6 +2032,9 @@ function BananaBar3:PLAYER_REGEN_ENABLED(event)
 end
 
 function BananaBar3:OnMouseOverlayUpdate(frame)
+	--You can't do SetPoint() on a secure frame in combat so the secure API is throwing ADDON_ACTION_BLOCKED.
+	if UnitAffectingCombat("player") then return end
+
     local mx, my = GetCursorPosition()
     local uiscale = UIParent:GetEffectiveScale()
     local screenW = GetScreenWidth()
@@ -3461,7 +3467,7 @@ function BananaBar3:DragStop(dragStopButton, mouseButton)
                 local unit = BananaBar3:GetUnitBySymbol(self.DragStartButton.ButtonId)
                 if unit then
                     SetRaidTarget(unit, 0)
-                    PlayRemove()
+                    BananaBar3:PlayRemove()
                 end
             end
         elseif dragStopButton == self.DragStartButton then
@@ -3591,7 +3597,8 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
 	
 	--si un joueur cible un NPC qui est marqué change l'attibution target du bouton 
 	if symbolID ~= "pas de symbol"  then
-			
+		
+		if UnitAffectingCombat("player") then return end	
 	    BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", "RAID" .. i .. "TARGET")
         BananaBar3.Buttons[symbolID].frame:SetAttribute("*type1", "target")
 		
