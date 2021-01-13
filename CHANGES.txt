@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+2021-01-13
+Various issues #4
 2021-01-07
 Drag and drop to set target
 =======
