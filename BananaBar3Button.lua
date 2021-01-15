@@ -585,10 +585,13 @@ end
 
 function BananaBar3Button:UpdateVisible()
     if (self.visible and self.Addon:IsActive() and self.Addon.ShowButtons) or self.Addon.layoutmode then
-        self.frame:Show();
+        
+		--SecureActionQueue:FRAME_VISIBLE(self.frame,show);
+		self.frame:Show();
     else
+		--SecureActionQueue:FRAME_VISIBLE(self.frame,hide);
         self.frame:Hide();
-    end
+	end
 end
 
 function BananaBar3Button:SetVisible(visible)
