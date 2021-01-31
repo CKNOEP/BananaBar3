@@ -19,6 +19,7 @@ local SecureActionQueue = LibStub("SecureActionQueue-2.0")
 
 local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
+local icon = LibStub("LibDBIcon-1.0")
 local actual_settings_version = 4
 
 BINDING_HEADER_BananaBar3_PLUGINNAME = L["addonnamelong"]
@@ -32,7 +33,7 @@ BananaBar3.date = "2021-01-01 T22:53:58Z";
 BananaBar3.hasIcon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 BananaBar3.defaultMinimapPosition = 170
 
-
+BananaBar3.icon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 
 --local options = {
 options = {
@@ -58,12 +59,24 @@ options = {
         reset = {
             name = L["reset"],
             desc = L["resetdesc"],
-            hidden = false,
+            hidden = true,
             width = "full",
             type = "execute",
             func = function()
-                BananaBar3:ResetSettings()
-            end
+                ananaBar3:ResetSettings()
+				LibStub("AceConfigDialog-3.0"):Open("BananaBar3")
+			end
+        },
+		option = {
+            name = L["option"],
+            desc = L["optiondesc"],
+            hidden = true,
+            width = "full",
+            type = "execute",
+            func = function()
+
+				LibStub("AceConfigDialog-3.0"):Open("BananaBar3")
+			end
         },
         layoutmode = {
             type = "toggle",
@@ -1246,7 +1259,7 @@ local defaults = {
         showraidinfo = true,
         showextrainfo = false,
 		showzerotarget = true,	
-
+		MinimapPos = 90,
         actions = {
             action_setsymbol = 8,
 			action_config = 16,
@@ -1256,7 +1269,7 @@ local defaults = {
         showbutton = {
             [1] = true,
             [2] = true,
-            [3] = true,
+			[3] = true,
             [4] = true,
             [5] = true,
             [6] = true,
@@ -1584,7 +1597,7 @@ local defaults = {
     }
 }
 
-LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar3", options, {"bb2", "bb", "bananabar"})
+LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar3", options, {"bb2", "bb3","bb", "bananabar"})
 
 ------------------------------------------
 --- OnInitialize
@@ -1602,12 +1615,17 @@ function BananaBar3:OnInitialize()
     self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 1, self)
 
     AceConfigDialog:AddToBlizOptions("BananaBar3")
+   
 
+	
     --self.dewdrop = AceLibrary("Dewdrop-2.0")
 
     --self:RegisterChatCommand("bb2", options);
 	self:Print("\124cffFF0000Bannabar 3 by Lädygaga-Sulfuron EU Loaded\124r")
 	
+	-- icon MiniMap
+		
+	--
     self.Buttons = {}
     for i = 1, BANANA_MAX_BUTTONS, 1 do
         self:Debug("create new button ".."Nr"..i);
@@ -1670,7 +1688,7 @@ function BananaBar3:OnInitialize()
     --	end
 
     self.frame = CreateFrame("Frame", "BananaBar3DummyFrame")
-    self.frame:Hide()
+    self.frame:Show()
     self.GetIcon = function()
         return BananaBar3.hasIcon
     end

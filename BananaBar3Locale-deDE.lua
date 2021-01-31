@@ -114,7 +114,9 @@ L.grayscaledesc                  = "put with grayscale  symbol with no target";
 -- reset everything to the defaults, except the settings in the submenu "mobsettings”        
 L.reset                           = "Einstellungen zurücksetzen";	
 L.resetdesc                       = "Setzt alle Einstellungen auf die Defaultwerte zurück mit Ausnahme der MobSettings";	
-        
+ -- show option
+L.option                           = "Option"; 
+L.optiondesc                       = "Show Options";        
 -- this message comes up if BananaBarClassic has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults
 L.oldprofilemessage               = "BananaBarClassic hat erkannt das die vorhandenen einstellungen zu einer älteren version von BananaBar gehören die zu der aktuellen inkompatibel ist. Alle Einstellungen wurden auf die Defaultwerte zurückgesetzt.";

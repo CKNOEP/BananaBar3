@@ -1,7 +1,7 @@
 ## Interface: 11307
 ## Title: BananaBar3 Raid Symbols Classic |cff7fff7f-Ace3-|r
 ## Author: Bordeaux , Lädygaga-Sulfuron
-## Version: "3.1.4" 
+## Version: "3.1.6" 
 ## Notes: BananaBar is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
 ## X-ReleaseDate: "2021-07-01T22:53:58Z"
 ## X-Email: lancetre at intenebris dot org
@@ -28,3 +28,4 @@ BananaBar3Button.lua
 BananaBar3AssistButton.lua
 BananaBar3.lua
 Bindings.xml
+MiniMapButton.lua

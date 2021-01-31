@@ -128,6 +128,9 @@ L.scaleassistdesc                 = "Scale assist buttons the buttons from 10% t
 -- reset everything to the defaults, except the settings in the submenu "mobsettings"        
 L.reset                           = "Reset"; 
 L.resetdesc                       = "reset all settings of the current profile"; 
+-- show option
+L.option                           = "Option"; 
+L.optiondesc                       = "Show Options"; 
 
 -- this message comes up if BananaBar3 has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults

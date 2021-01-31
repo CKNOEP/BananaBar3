@@ -130,6 +130,10 @@ L.scaleassistdesc                 = "Boutons de modification de l'échelle 10% t
 L.reset                           = "Réinitialiser"; 
 L.resetdesc                       = "Réinitialiser tous les paramètres du profil actuel"; 
 
+-- show option
+L.option                           = "Option"; 
+L.optiondesc                       = "Show Options"; 
+
 -- this message comes up if BananaBar3 has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults
 L.oldprofilemessage               = "TLes paramètres du profil chargé proviennent d'un ancien BananaBar3  "..
