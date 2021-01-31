@@ -2875,7 +2875,7 @@ function BananaBar3:BananaUpdate()
             self.Buttons[but]:SetTimer(0, 0)
             --To do : mettre une condition pour afficher le compteur quand egal à zéro
 			-- if showzerocounter=true then 0 else nil
-			j = self:Get_showzerotarget()
+			local j = self:Get_showzerotarget()
             
 			if j == true then
 					self.Buttons[but]:SetCount(0)
