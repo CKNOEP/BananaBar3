@@ -8,7 +8,16 @@
 			text = "BannaBar",
             icon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64",
             OnClick = function(_, button)
-                if button == "LeftButton" then LibStub("AceConfigDialog-3.0"):Open("BananaBar3") end
+                if button == "LeftButton" then 
+				
+				
+					if LibStub("AceConfigDialog-3.0"):Open("BananaBar3") then
+						LibStub("AceConfigDialog-3.0"):Close("BananaBar3") 
+					else
+						LibStub("AceConfigDialog-3.0"):Open("BananaBar3") 
+					end
+				
+				end
             end,
             OnTooltipShow = function(tt)
                 tt:AddLine("Bannabar 3")

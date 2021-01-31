@@ -35,8 +35,8 @@ BananaBar3.defaultMinimapPosition = 170
 
 BananaBar3.icon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 
---local options = {
-options = {
+local options = {
+--options = {
     handler = BananaBar3,
     type = "group",
     args = {
