@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+2021-02-02
+Toogle Icon Minimap
 2021-01-31
 Add icon in minimap  and command /bb3 option
 2021-01-13
