@@ -1,11 +1,11 @@
 
 
     local LDB = LibStub("LibDataBroker-1.1", true)
-    local LDBIcon = LDB and LibStub("LibDBIcon-1.0", true)
+    BB3LDBIcon = LDB and LibStub("LibDBIcon-1.0", true)
     if LDB then
-        local BB_MinimapBtn = LDB:NewDataObject("BannaBar", {
+        local BB_MinimapBtn = LDB:NewDataObject("BananaBar3", {
             type = "launcher",
-			text = "BannaBar",
+			text = "BananaBar3",
             icon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64",
             OnClick = function(_, button)
                 if button == "LeftButton" then 
@@ -24,7 +24,10 @@
                 tt:AddLine("|cffffff00Click|r to open the Bannabar settings window.")
             end,
         })
-        if LDBIcon then
-            LDBIcon:Register("BannaBar", BB_MinimapBtn, MinimapPos) -- MinimapPos is a SavedVariable which is set to 90 as default
-        end
+        if BB3LDBIcon then
+            
+			
+			BB3LDBIcon:Register("BananaBar3", BB_MinimapBtn, defaultMinimapPosition) -- MinimapPos is a SavedVariable which is set to 90 as default
+
+		end
     end

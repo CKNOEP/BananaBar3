@@ -111,6 +111,10 @@ L.showzerotargetdesc			  = "Zähler ausblenden, wenn kein Spieler das Ziel anvis
 L.grayscale                      = "put with grayscale  symbol with no target";
 L.grayscaledesc                  = "put with grayscale  symbol with no target";
 
+-- Show Minimap Icon
+L.iconminimap                        = "Show icon Minamp"; 
+L.iconminimapdesc                    = "Show icon Minamp"; 
+
 -- reset everything to the defaults, except the settings in the submenu "mobsettings”        
 L.reset                           = "Einstellungen zurücksetzen";	
 L.resetdesc                       = "Setzt alle Einstellungen auf die Defaultwerte zurück mit Ausnahme der MobSettings";	

@@ -112,7 +112,9 @@ L.showzerotargetdesc			  = "Hide counter when no player targets the target";
 -- in the layoutmode you can move, seperate and concatenate buttons        
 L.grayscale                      = "put with grayscale  symbol with no target";
 L.grayscaledesc                  = "put with grayscale  symbol with no target";
-
+-- Show Minimap Icon
+L.iconminimap                        = "Show icon Minamp"; 
+L.iconminimapdesc                    = "Show icon Minamp"; 
 -- scale the normal BananaBar3 button size
 L.scale                           = "Scale"; 
 L.scaledesc                       = "Scale the buttons from 10% to 200%"; 

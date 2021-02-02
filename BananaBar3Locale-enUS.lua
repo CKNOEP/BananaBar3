@@ -113,7 +113,10 @@ L.reset                           = "Reset";
 L.resetdesc                       = "reset all settings of the current profile"; 
 -- show option
 L.option                           = "Option"; 
-L.optiondesc                       = "Show Options"; 
+L.optiondesc                       = "Show Options";
+-- Show Minimap Icon
+L.iconminimap                        = "Show icon Minamp"; 
+L.iconminimapdesc                    = "Show icon Minamp"; 
 
 -- this message comes up if BananaBar3 has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults

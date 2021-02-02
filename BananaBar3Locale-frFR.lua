@@ -113,7 +113,9 @@ L.grayscaledesc                  = "Affiche en niveau de gris les symboles qui n
 -- Show count if zero
 L.showzerotarget				  = "Masquer le compteur quand = Zéro";
 L.showzerotargetdesc			  = "Masquer le compteur quand aucun joueur cible la cible";
-
+-- Show Minimap Icon
+L.iconminimap                        = "Show icon Minamp"; 
+L.iconminimapdesc                    = "Show icon Minamp"; 
 -- scale the normal BananaBar3 button size
 L.scale                           = "échelle"; 
 L.scaledesc                       = "Échelle des boutons de 10% à 200%"; 

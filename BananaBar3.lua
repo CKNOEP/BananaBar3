@@ -104,6 +104,20 @@ local options = {
             end,
             order = 5
         },
+		iconminimap = {
+            type = "toggle",
+            name = L["iconminimap"],
+            width = "full",
+            desc = L["iconminimapdesc"],
+            get = function()
+                return BananaBar3:Get_iconminimap()
+            end,
+            set = function(info, v)
+                BananaBar3:Set_iconminimap(v)
+			
+			end,
+            order = 5
+        },
         autosetcombat = {
             type = "toggle",
             width = "full",
@@ -2201,6 +2215,24 @@ end
 
 function BananaBar3:Get_grayscale()
     return self.db.profile.grayscale
+end
+------------------------------------------
+--- Toogle Icon on Minimap
+------------------------------------------
+
+function BananaBar3:Set_iconminimap(value)
+    self.db.profile.iconminimap = value
+    --
+	self:Debug(value);
+	if value == false then
+				BB3LDBIcon:Hide("BananaBar3")
+		else
+				BB3LDBIcon:Show("BananaBar3")
+	end
+end
+
+function BananaBar3:Get_iconminimap()
+    return self.db.profile.iconminimap
 end
 
 ------------------------------------------
