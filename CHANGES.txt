@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+2021-02-04
+Hide/show Bannabar Toogle on minimap icon
 2021-02-02
 Toogle Icon Minimap
 2021-01-31

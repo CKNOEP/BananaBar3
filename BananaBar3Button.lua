@@ -46,7 +46,7 @@ function BananaBar3Button:init(addon,name)
    
 	
     self.frame:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp", "Button4Up", "Button5Up");
-		self.selected = false;
+	self.selected = false;
     self.frame.Id="1"
     self.frame:SetPoint("CENTER",0,0)
     self.frame:Hide();
@@ -763,6 +763,17 @@ function BananaBar3Button:UpdateAllVisible()
         BananaBarAllButtons[i]:UpdateVisible();
     end
 end
+function BananaBar3Button:HideAllButton()
+    for i = 1, 12, 1 do
+        
+		if BananaBarAllButtons[i].frame:IsVisible() == true then
+		BananaBarAllButtons[i].frame:Hide();
+		else
+		BananaBarAllButtons[i].frame:Show();
+		end
+		
+    end
+end	
 function BananaBar3Button:EnableAllDeadSymbol(showDead)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i].showDead = showDead;

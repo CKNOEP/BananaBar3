@@ -14,13 +14,15 @@ local L = LibStub("AceLocale-3.0"):GetLocale("BananaBar3")
 
 local BananaBar3AssistButton = LibStub("BananaBar3AssistButton-2.0")
 local BananaBar3Button = LibStub("BananaBar3Button-2.0")
-
 local SecureActionQueue = LibStub("SecureActionQueue-2.0")
-
 local AceConfigDialog = LibStub("AceConfigDialog-3.0")
-
 local icon = LibStub("LibDBIcon-1.0")
+local LDB = LibStub("LibDataBroker-1.1", true)
+local BB3LDBIcon = LDB and LibStub("LibDBIcon-1.0", true)
+   
+
 local actual_settings_version = 4
+
 
 BINDING_HEADER_BananaBar3_PLUGINNAME = L["addonnamelong"]
 BINDING_NAME_BananaBar3_BINDING_MOUSEOVER = L["binding_mouseover"]
@@ -28,7 +30,7 @@ BINDING_NAME_BananaBar3_BINDING_KEY = L["binding_key"]
 BINDING_NAME_BananaBar3_BINDING_SEARCH = L["binding_search"]
 
 BananaBar3.name = L["addonname"]
-BananaBar3.version = "3.1.3";
+BananaBar3.version = "3.1.9";
 BananaBar3.date = "2021-01-01 T22:53:58Z";
 BananaBar3.hasIcon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 BananaBar3.defaultMinimapPosition = 170
@@ -1638,7 +1640,47 @@ function BananaBar3:OnInitialize()
 	self:Print("\124cffFF0000Bannabar 3 by Lädygaga-Sulfuron EU Loaded\124r")
 	
 	-- icon MiniMap
-		
+	 if LDB then
+        local BB_MinimapBtn = LDB:NewDataObject("BananaBar3", {
+            type = "launcher",
+			text = "BananaBar3",
+            icon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64",
+            OnClick = function(_, button)
+                if button == "LeftButton" then 
+				
+				
+					if LibStub("AceConfigDialog-3.0"):Open("BananaBar3") then
+						LibStub("AceConfigDialog-3.0"):Close("BananaBar3") 
+					else
+						LibStub("AceConfigDialog-3.0"):Open("BananaBar3") 
+					end
+				
+				end
+                if button == "RightButton" then 
+				
+						BananaBar3Button:HideAllButton()
+						--BananaBar3Button:UpdateAllVisible()
+						--BananaBar3AssistButton:UpdateAllVisible()
+				
+				end				
+				
+				
+				
+				
+            end,
+            OnTooltipShow = function(tt)
+                tt:AddLine("Bannabar 3  version : |cffffff00"..BananaBar3.version.."|r")
+                tt:AddLine("|cffffff00Click|r left to open the Bannabar settings window.")
+				tt:AddLine("|cffffff00Click|r right to hide/show the Bannabar.")
+            end,
+        })
+        if BB3LDBIcon then
+            
+			
+			BB3LDBIcon:Register("BananaBar3", BB_MinimapBtn, defaultMinimapPosition) -- MinimapPos is a SavedVariable which is set to 90 as default
+
+		end
+    end	
 	--
     self.Buttons = {}
     for i = 1, BANANA_MAX_BUTTONS, 1 do
