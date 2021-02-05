@@ -80,10 +80,13 @@ end
 function SecureActionQueue:FRAME_VISIBLE(frame,show)
     if show then
         --prnt("show"..tostring(show or "<nil>") );
-        frame:Show();
+        if UnitAffectingCombat("player") then return end
+		frame:Show();
     else
         --prnt("hide"..tostring(show or "<nil>") );
-        frame:Hide();
+        --self:Shedule(sheduleid,"FRAME_VISIBLE",frame,false);
+		if UnitAffectingCombat("player") then return end
+		frame:Hide();
     end
 end
 

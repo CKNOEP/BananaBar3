@@ -769,12 +769,13 @@ function BananaBar3Button:HideAllButton()
 	for i = 1, 12, 1 do
     --BananaBarAllButtons[i].frame:Hide();
 		if BananaBarAllButtons[i].frame:IsVisible() == true then
-		--SecureActionQueue:FRAME_VISIBLE(BananaBarAllButtons[i].frame,hide); 
-		BananaBarAllButtons[i].frame:Hide();
+		SecureActionQueue:FRAME_VISIBLE(BananaBarAllButtons[i].frame,hide); 
+		--BananaBarAllButtons[i].frame:Hide();
 		else
 		--BananaBarAllButtons[i].frame:SetVisible(self.db.profile.showbutton[i])
 		--BananaBarAllButtons[i].frame:Show();
-		 BananaBarAllButtons[i]:UpdateVisible();
+		if UnitAffectingCombat("player") then return end	
+		BananaBarAllButtons[i]:UpdateVisible();
 		end	
 	end
 end
