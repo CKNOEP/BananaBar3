@@ -473,9 +473,10 @@ local options = {
                         return BananaBar3:Get_showbutton(1)
                     end,
                     set = function(info, v)
-                        BananaBar3:Set_showbutton(1, v)
+                        BananaBar3.db.profile.showbutton[1] = v
+						BananaBar3:Set_showbutton(1, v)
                     end,
-                    order = 1
+                    order = 1,
                 },
                 button2 = {
                     type = "toggle",
@@ -485,9 +486,10 @@ local options = {
                         return BananaBar3:Get_showbutton(2)
                     end,
                     set = function(info, v)
+						BananaBar3.db.profile.showbutton[2] = v
                         BananaBar3:Set_showbutton(2, v)
                     end,
-                    order = 2
+                    order = 2,
                 },
                 button3 = {
                     type = "toggle",
@@ -497,9 +499,10 @@ local options = {
                         return BananaBar3:Get_showbutton(3)
                     end,
                     set = function(info, v)
+						BananaBar3.db.profile.showbutton[3] = v
                         BananaBar3:Set_showbutton(3, v)
                     end,
-                    order = 3
+                    order = 3,
                 },
                 button4 = {
                     type = "toggle",
@@ -509,9 +512,10 @@ local options = {
                         return BananaBar3:Get_showbutton(4)
                     end,
                     set = function(info, v)
+					    BananaBar3.db.profile.showbutton[4] = v
                         BananaBar3:Set_showbutton(4, v)
                     end,
-                    order = 4
+                    order = 4,
                 },
                 button5 = {
                     type = "toggle",
@@ -521,9 +525,10 @@ local options = {
                         return BananaBar3:Get_showbutton(5)
                     end,
                     set = function(info, v)
+					    BananaBar3.db.profile.showbutton[5] = v
                         BananaBar3:Set_showbutton(5, v)
                     end,
-                    order = 5
+                    order = 5,
                 },
                 button6 = {
                     type = "toggle",
@@ -533,9 +538,10 @@ local options = {
                         return BananaBar3:Get_showbutton(6)
                     end,
                     set = function(info, v)
-                        BananaBar3:Set_showbutton(6, v)
+					BananaBar3.db.profile.showbutton[6] = v                    
+					BananaBar3:Set_showbutton(6, v)
                     end,
-                    order = 6
+                    order = 6,
                 },
                 button7 = {
                     type = "toggle",
@@ -545,9 +551,10 @@ local options = {
                         return BananaBar3:Get_showbutton(7)
                     end,
                     set = function(info, v)
+					    BananaBar3.db.profile.showbutton[7] = v
                         BananaBar3:Set_showbutton(7, v)
                     end,
-                    order = 7
+                    order = 7,
                 },
                 button8 = {
                     type = "toggle",
@@ -557,9 +564,10 @@ local options = {
                         return BananaBar3:Get_showbutton(8)
                     end,
                     set = function(info, v)
-                        BananaBar3:Set_showbutton(8, v)
+                        BananaBar3.db.profile.showbutton[8] = v
+						BananaBar3:Set_showbutton(8, v)
                     end,
-                    order = 8
+                    order = 8,
                 },
                 huntersmarkbutton1 = {
                     type = "toggle",
@@ -569,9 +577,10 @@ local options = {
                         return BananaBar3:Get_showbutton(9)
                     end,
                     set = function(info, v)
-                        BananaBar3:Set_showbutton(9, v)
+						BananaBar3.db.profile.showbutton[9] = v
+						BananaBar3:Set_showbutton(9, v)
                     end,
-                    order = 9
+                    order = 9,
                 },
                 huntersmarkbutton2 = {
                     type = "toggle",
@@ -580,10 +589,13 @@ local options = {
                     get = function()
                         return BananaBar3:Get_showbutton(10)
                     end,
-                    set = function(info, v)
-                        BananaBar3:Set_showbutton(10, v)
+                    
+					set = function(info, v)
+                        --BannaBar3:Print(v)
+						BananaBar3.db.profile.showbutton[10] = v
+						BananaBar3:Set_showbutton(10, v)
                     end,
-                    order = 10
+                    order = 10,
                 },
                 huntersmarkbutton3 = {
                     type = "toggle",
@@ -593,9 +605,10 @@ local options = {
                         return BananaBar3:Get_showbutton(11)
                     end,
                     set = function(info, v)
+						BananaBar3.db.profile.showbutton[11] = v
                         BananaBar3:Set_showbutton(11, v)
                     end,
-                    order = 11
+                    order = 11,
                 },
                 huntersmarkbutton4 = {
                     type = "toggle",
@@ -605,9 +618,10 @@ local options = {
                         return BananaBar3:Get_showbutton(12)
                     end,
                     set = function(info, v)
+						BananaBar3.db.profile.showbutton[12] = v
                         BananaBar3:Set_showbutton(12, v)
                     end,
-                    order = 12
+                    order = 12,
                 }
             }
         },
@@ -1676,9 +1690,17 @@ function BananaBar3:OnInitialize()
         })
         if BB3LDBIcon then
             
-			
+			--self:Print(BananaBar3:Get_iconminimap());
+			if BananaBar3:Get_iconminimap() == true then
 			BB3LDBIcon:Register("BananaBar3", BB_MinimapBtn, defaultMinimapPosition) -- MinimapPos is a SavedVariable which is set to 90 as default
-
+			BB3LDBIcon:Show("BananaBar3")
+			else
+			--BB3LDBIcon:Register("BananaBar3", BB_MinimapBtn, defaultMinimapPosition) -- MinimapPos is a SavedVariable which is set to 90 as default
+			BB3LDBIcon:Hide("BananaBar3")
+			--self:Print("Hide Minimap icon");
+			end
+			
+			
 		end
     end	
 	--
@@ -2195,7 +2217,7 @@ function BananaBar3:Get_showbutton(index)
 end
 
 function BananaBar3:Set_showbutton(index, value)
-    self.db.profile.showbutton[index] = value
+    --self.db.profile.showbutton[index] = value
     self.Buttons[index]:SetVisible(value)
 end
 

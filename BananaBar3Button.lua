@@ -142,7 +142,7 @@ end
 function BananaBar3Button:SetButtonSymbol(index, unit)
     BananaBar3Button:SetSymbolTexture(self.Icon,index);
 	
-	self.Addon:Print("initFrame: index ",index,"  unit:", unit, " icon :",self.Icon);
+	--self.Addon:Print("initFrame: index ",index,"  unit:", unit, " icon :",self.Icon);
 end
 
 function BananaBar3Button:SetStopwatch(set)
@@ -764,16 +764,20 @@ function BananaBar3Button:UpdateAllVisible()
     end
 end
 function BananaBar3Button:HideAllButton()
-    for i = 1, 12, 1 do
-        
+   
+	
+	for i = 1, 12, 1 do
+    --BananaBarAllButtons[i].frame:Hide();
 		if BananaBarAllButtons[i].frame:IsVisible() == true then
+		--SecureActionQueue:FRAME_VISIBLE(BananaBarAllButtons[i].frame,hide); 
 		BananaBarAllButtons[i].frame:Hide();
 		else
-		BananaBarAllButtons[i].frame:Show();
-		end
-		
-    end
-end	
+		--BananaBarAllButtons[i].frame:SetVisible(self.db.profile.showbutton[i])
+		--BananaBarAllButtons[i].frame:Show();
+		 BananaBarAllButtons[i]:UpdateVisible();
+		end	
+	end
+end
 function BananaBar3Button:EnableAllDeadSymbol(showDead)
     for i = 1, BananaBarButtonNameCounter-1, 1 do
         BananaBarAllButtons[i].showDead = showDead;
