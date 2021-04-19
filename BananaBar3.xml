@@ -493,7 +493,7 @@
 		<!-- mouseover -->
 		<HighlightTexture alphaMode="ADD" file="Interface\Buttons\ButtonHilight-Square" />
 	</Button>
-	<Frame name="BananaBarEscapeHookFrame" parent="UIParent" hidden="true">
+	<Frame name="BananaBarEscapeHookFrame" parent="UIParent" inherits="BackdropTemplate" hidden="true">
 		<Size>
 			<AbsDimension x="0" y="0" />
 		</Size>
@@ -515,7 +515,7 @@
 			</OnHide>
 		</Scripts>
 	</Frame>
-	<Frame clampedToScreen="false" name="BananaMtSymbolTemplate" virtual="true" movable="false">
+	<Frame clampedToScreen="false" name="BananaMtSymbolTemplate" inherits="BackdropTemplate" virtual="true" movable="false">
 		<Size>
 			<AbsDimension x="16" y="16" />
 		</Size>

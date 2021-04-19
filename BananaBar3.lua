@@ -30,10 +30,10 @@ BINDING_NAME_BananaBar3_BINDING_KEY = L["binding_key"]
 BINDING_NAME_BananaBar3_BINDING_SEARCH = L["binding_search"]
 
 BananaBar3.name = L["addonname"]
-BananaBar3.version = "3.1.9";
-BananaBar3.date = "2021-01-01 T22:53:58Z";
+BananaBar3.version = "3.2.0";
+BananaBar3.date = "2021-04-18 T22:53:58Z";
 BananaBar3.hasIcon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
-BananaBar3.defaultMinimapPosition = 170
+BananaBar3.defaultMinimapPosition = 180
 
 BananaBar3.icon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 
@@ -61,18 +61,18 @@ local options = {
         reset = {
             name = L["reset"],
             desc = L["resetdesc"],
-            hidden = true,
+            hidden = false,
             width = "full",
             type = "execute",
             func = function()
-                ananaBar3:ResetSettings()
+                BananaBar3:ResetSettings()
 				LibStub("AceConfigDialog-3.0"):Open("BananaBar3")
 			end
         },
 		option = {
             name = L["option"],
             desc = L["optiondesc"],
-            hidden = true,
+            hidden = false,
             width = "full",
             type = "execute",
             func = function()
@@ -148,7 +148,7 @@ local options = {
         },
         mobsettings = {
             type = "group",
-            hidden = true,
+            hidden = false,
             name = L["mobsettings"],
             desc = L["mobsettingsdesc"],
             args = {},
@@ -2150,7 +2150,7 @@ function BananaBar3:OnMouseOverlayUpdate(frame)
     ty = screenHStep * ty -- converts % to actual screenH y
 
     ty = ty - 32
-    tx = tx + 0
+    tx = tx + 20
     --tx = tx + containerFrameOffsetX; -- compensate for container size
     --ty = ty + containerFrameOffsetY; -- compensate for container size
 
@@ -2590,9 +2590,17 @@ end
 ------------------------------------------
 
 function BananaBar3:ResetSettings()
-    --self:ResetDB("profile"); todo
+    
     self.db.profile.settingsversion = actual_settings_version
-    self:ProfileUpdated()
+	local ProfilName = self.db:GetCurrentProfile()
+	print(ProfilName);
+	
+	--self.db:DeleteProfile("Default",true)
+	self.db:ResetDB("Default");
+	--self.db:New("BananaBarClassicData3", defaults, true)
+    --self:ProfileUpdated()
+	ReloadUI();
+	
 end
 
 function BananaBar3:CheckSettingsVersion()
@@ -3052,7 +3060,7 @@ function BananaBar3:AutoSetSymbols(combatOnly)
                             -- skip
                         else
                             if self.TARGETMARKS[j] == nil then
-                                self:Print("Setting Symbol " .. L[("symbolname" .. j)] .. " on " .. info.info_name .." (".. UnitGUID(info.info_unit)..")")
+                                --self:Print("Setting Symbol " .. L[("symbolname" .. j)] .. " on " .. info.info_name .." (".. UnitGUID(info.info_unit)..")")
                                 BananaBar3:PlaySet()
                                 SetRaidTarget(info.info_unit, j)
                                 self.IGNOREMARKS[j] = 1
@@ -3702,23 +3710,52 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
     
 	
 	local name, rank = GetRaidRosterInfo(i)
+	--if name  then print(name..i) end
+
+
+	 
+
 	
 	if name  then
-		local symbolID = GetRaidTargetIndex("raid" .. i .. "target") or "pas de symbol"
+		
+			if IsInRaid() then
+					 --DEFAULT_CHAT_FRAME:AddMessage ("I am in a Raid Group.");
+				symbolID = GetRaidTargetIndex("raid" .. i .. "target") or "pas de symbol"
+			 
+			elseif not IsInRaid() then
+				if IsInGroup() then
+					 --DEFAULT_CHAT_FRAME:AddMessage ("I am in some kind of Group.");
+				symbolID = GetRaidTargetIndex(name.."-target") or "pas de symbol"
+				else
+					 --DEFAULT_CHAT_FRAME:AddMessage ("I am not in any kind of Group.");
+				end
+				 
+			end
+				
+		
+		
+		
 		--self:Debug("Player "..i.." : "..name)
 		--self:Debug("La cible de "..name.. " is " .. (UnitInRaid("RAID" .. i .. "TARGET") and "" or "not ") .. "in your raid group.")
-		self:Debug("La cible de "..name.. " est marquée du symbol N° " .. symbolID)
-	
+		if symbolID then 
+		self:Debug("La cible groupe de "..name.. " est marquée du symbol N° " .. symbolID .." party" .. i-1 .. "target")
+		self:Debug("La cible raid de "..name.. " est marquée du symbol N° " .. symbolID .." raid" .. i .. "target")		
+		end
+
 	--si un joueur cible un NPC qui est marqué change l'attibution target du bouton 
 	if symbolID ~= "pas de symbol"  then
 		
 		if UnitAffectingCombat("player") then return end	
-	    BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", "RAID" .. i .. "TARGET")
-        BananaBar3.Buttons[symbolID].frame:SetAttribute("*type1", "target")
+	    --BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", "RAID" .. i .. "TARGET")
+        --BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", "PARTY" .. i .. "TARGET")
+		BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", name .. "-TARGET")
+		BananaBar3.Buttons[symbolID].frame:SetAttribute("*type1", "target")
 		
 
 	
 		local uniT = BananaBar3.Buttons[symbolID].frame:GetAttribute("unit");
+		--self:Debug("Le bouton symbol N°"..symbolID.." est reglé sur " .. uniT.." : " .." par "..name)
+		
 		if uniT == nil then
 		  --self:UnregisterAllEvents();
 		else
@@ -3937,7 +3974,8 @@ function BananaBar3:Scan()
     local unitsToScan = self:GetUnitsToScan()
 
     for unit, unitparent in pairs(unitsToScan) do
-        self:ScanUnit(unit, unitparent)
+
+		self:ScanUnit(unit, unitparent)
     end
 
     for key, value in pairs(self.AURAINFO) do

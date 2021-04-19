@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+2021-04-19
+Ready TBC Classic, beta test ok
+Add button to reset parameters
 2021-02-04
 Hide/show Bannabar Toogle on minimap icon
 2021-02-02

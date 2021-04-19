@@ -564,15 +564,16 @@ do
 			end
 		end)
 
-		if WOW_PROJECT_ID == WOW_PROJECT_CLASSIC then
-			frame:SetBackdrop({
-				bgFile = [[Interface\DialogFrame\UI-DialogBox-Background-Dark]],
-				edgeFile = [[Interface\DialogFrame\UI-DialogBox-Border]],
-				tile = true,
-				tileSize = 32,
-				edgeSize = 32,
-				insets = { left = 11, right = 11, top = 11, bottom = 11 },
-			})
+		print(WOW_PROJECT_ID)
+		if WOW_PROJECT_ID == 2 then
+			--frame:SetBackdrop({
+			--	bgFile = [[Interface\DialogFrame\UI-DialogBox-Background-Dark]],
+			--	edgeFile = [[Interface\DialogFrame\UI-DialogBox-Border]],
+			--	tile = true,
+			--	tileSize = 32,
+			--	edgeSize = 32,
+			--	insets = { left = 11, right = 11, top = 11, bottom = 11 },
+			--})
 		else
 			local border = CreateFrame("Frame", nil, frame, "DialogBorderDarkTemplate")
 			border:SetAllPoints(frame)

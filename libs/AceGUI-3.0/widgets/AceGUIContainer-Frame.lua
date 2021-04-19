@@ -179,7 +179,7 @@ local PaneBackdrop  = {
 }
 
 local function Constructor()
-	local frame = CreateFrame("Frame", nil, UIParent)
+	local frame = CreateFrame("Frame", nil, UIParent, BackdropTemplateMixin and "BackdropTemplate")
 	frame:Hide()
 
 	frame:EnableMouse(true)
@@ -201,7 +201,7 @@ local function Constructor()
 	closebutton:SetWidth(100)
 	closebutton:SetText(CLOSE)
 
-	local statusbg = CreateFrame("Button", nil, frame)
+	local statusbg = CreateFrame("Button", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
 	statusbg:SetPoint("BOTTOMLEFT", 15, 15)
 	statusbg:SetPoint("BOTTOMRIGHT", -132, 15)
 	statusbg:SetHeight(24)
@@ -225,7 +225,7 @@ local function Constructor()
 	titlebg:SetWidth(100)
 	titlebg:SetHeight(40)
 
-	local title = CreateFrame("Frame", nil, frame)
+	local title = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
 	title:EnableMouse(true)
 	title:SetScript("OnMouseDown", Title_OnMouseDown)
 	title:SetScript("OnMouseUp", MoverSizer_OnMouseUp)
@@ -248,7 +248,7 @@ local function Constructor()
 	titlebg_r:SetWidth(30)
 	titlebg_r:SetHeight(40)
 
-	local sizer_se = CreateFrame("Frame", nil, frame)
+	local sizer_se = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
 	sizer_se:SetPoint("BOTTOMRIGHT")
 	sizer_se:SetWidth(25)
 	sizer_se:SetHeight(25)
@@ -289,7 +289,7 @@ local function Constructor()
 	sizer_e:SetScript("OnMouseUp", MoverSizer_OnMouseUp)
 
 	--Container Support
-	local content = CreateFrame("Frame", nil, frame)
+	local content = CreateFrame("Frame", nil, frame, BackdropTemplateMixin and "BackdropTemplate")
 	content:SetPoint("TOPLEFT", 17, -27)
 	content:SetPoint("BOTTOMRIGHT", -17, 40)
 
