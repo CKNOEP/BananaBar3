@@ -37,8 +37,9 @@ BananaBar3.defaultMinimapPosition = 180
 
 BananaBar3.icon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 
-local options = {
---options = {
+function BananaBar3:getOptions() 
+
+	options = {
     handler = BananaBar3,
     type = "group",
     args = {
@@ -1268,14 +1269,21 @@ local options = {
                     order = 16
                 }
             }
-        }
-    }
-}
+        },
+    
+	profile = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db),
+	},
+	};
+	
+	
+	return options
+
+end
 
 local defaults = {
     profile = {
         mobsettings = {},
-        settingsversion = 0,
+        settingsversion = 4,
         scale = 100,
         scaleassist = 50,
         hideunused = false,
@@ -1627,7 +1635,6 @@ local defaults = {
     }
 }
 
-LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar3", options, {"bb2", "bb3","bb", "bananabar"})
 
 ------------------------------------------
 --- OnInitialize
@@ -1639,13 +1646,22 @@ function BananaBar3:OnInitialize()
     self.IGNOREMOBS = {}
     self.AURAINFO = {}
 
-    self.db = LibStub("AceDB-3.0"):New("BananaBarClassicData3", defaults, true)
-
+    
+	self.db = LibStub("AceDB-3.0"):New("BananaBarClassicData3", defaults)
+	
+	self.option = BananaBar3:getOptions();
+	
+	ProfilesOptions = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
+	
+	LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar3", self.option, {"bb2", "bb3","bb", "bananabar"})
+	LibStub("AceConfig-3.0"):RegisterOptionsTable("Profiles", ProfilesOptions)
+    
+	AceConfigDialog:AddToBlizOptions("BananaBar3",nil,nil,"general")
+	AceConfigDialog:AddToBlizOptions("BananaBar3", "Profiles", "BananaBar3","profile")	
+	
     self.BananaUpdateTimer = self:ScheduleRepeatingTimer("BananaUpdate", self.db.profile.updaterate, self)
     self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 1, self)
-
-    AceConfigDialog:AddToBlizOptions("BananaBar3")
-   
+	
 
 	
     --self.dewdrop = AceLibrary("Dewdrop-2.0")
@@ -1697,7 +1713,7 @@ function BananaBar3:OnInitialize()
 			else
 			--BB3LDBIcon:Register("BananaBar3", BB_MinimapBtn, defaultMinimapPosition) -- MinimapPos is a SavedVariable which is set to 90 as default
 			BB3LDBIcon:Hide("BananaBar3")
-			--self:Print("Hide Minimap icon");
+			--self:Print("Hide Minimap icon"); 
 			end
 			
 			
