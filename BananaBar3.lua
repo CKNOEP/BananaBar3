@@ -37,7 +37,7 @@ BananaBar3.defaultMinimapPosition = 180
 
 BananaBar3.icon = "Interface\\Addons\\BananaBar3\\Images\\BananaBar64"
 
-function BananaBar3:getOptions() 
+function BananaBar3:BBgetOptions() 
 
 	options = {
     handler = BananaBar3,
@@ -1649,14 +1649,14 @@ function BananaBar3:OnInitialize()
     
 	self.db = LibStub("AceDB-3.0"):New("BananaBarClassicData3", defaults)
 	
-	self.option = BananaBar3:getOptions();
+	self.BB3options = BananaBar3:BBgetOptions();
 	
 	ProfilesOptions = LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
 	
-	LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar3", self.option, {"bb2", "bb3","bb", "bananabar"})
-	LibStub("AceConfig-3.0"):RegisterOptionsTable("Profiles", ProfilesOptions)
+	LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar3", BananaBar3:BBgetOptions(), {"bb2", "bb3","bb", "bananabar"})
+	LibStub("AceConfig-3.0"):RegisterOptionsTable("Profiles BB", ProfilesOptions)
     
-	AceConfigDialog:AddToBlizOptions("BananaBar3",nil,nil,"general")
+	AceConfigDialog:AddToBlizOptions("BananaBar3")
 	AceConfigDialog:AddToBlizOptions("BananaBar3", "Profiles", "BananaBar3","profile")	
 	
     self.BananaUpdateTimer = self:ScheduleRepeatingTimer("BananaUpdate", self.db.profile.updaterate, self)
