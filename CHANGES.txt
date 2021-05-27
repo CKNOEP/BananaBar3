@@ -1,4 +1,6 @@
 <<<<<<< HEAD
+2021-05-13
+Profils management
 2021-04-19
 Ready TBC Classic, beta test ok
 Add button to reset parameters
