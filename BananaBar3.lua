@@ -3736,8 +3736,6 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
     
 	
 	local name, rank = GetRaidRosterInfo(i)
-	--if name  then print(name..i) end
-
 
 	
 	if name  then
