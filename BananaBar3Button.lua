@@ -392,6 +392,10 @@ end
 
 function BananaBar3Button:OnMouseDown(mouseButton, frame)
     --self.Addon:Debug("OnMouseDown:"..self.FrameName.." "..(mouseButton or 'null'));
+	
+	--print("OnMouseDown:",self.FrameName,(mouseButton or 'null'),"Sur",Targetunitname)
+	--print(self.ButtonId, BananaBar3.AssistButtons[self.ButtonId].frame:GetAttribute("unit"))
+	--print(UnitName(BananaBar3.AssistButtons[self.ButtonId].frame:GetAttribute("unit")))
 	local  clicktype = BananaBar3Button:GetClickType(mouseButton);
 	    u="target"
 		if UnitExists(u) then 
@@ -422,7 +426,7 @@ function BananaBar3Button:OnMouseDown(mouseButton, frame)
 	BananaBar3:DragPrepare(self,mouseButton);
     local  clicktype = BananaBar3Button:GetClickType(mouseButton);
 		if  mouseButton == "RightButton" then -- Target Unit
-				self.Addon:ExecuteAction(self, clicktype); 
+				self.Addon:ExecuteAction(self, clicktype, self.FrameName, Targetunitname); 
 			elseif mouseButton == "LeftButton" then -- Set Target
 				self.Addon:ExecuteAction(self, clicktype, Targetunitname);  
 			elseif mouseButton == "MiddleButton" then -- Config Menu

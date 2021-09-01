@@ -2578,9 +2578,18 @@ end
 
 function BananaBar3:ExecuteAction(button, clicktype)
     local action = self.Actions[clicktype]
-  	if action then
-	self:Debug("Action:"..action.."-- clicktype:"..clicktype)
-    end
+  	
+	
+	--value = BananaBar3.Buttons[button.ButtonId].frame:GetAttribute("unit");
+	--print ("UID",value)
+	
+	--if value then TargetUnit(value) end
+	
+	
+	if action then
+	--self:Debug("Action:"..action.."-- clicktype:"..clicktype.."bouton"..button)
+   
+   end
 	
 	if not action then
         self:Debug("No Action for clicktype " .. clicktype)
@@ -2609,7 +2618,7 @@ function BananaBar3:ResetSettings()
     
     self.db.profile.settingsversion = actual_settings_version
 	local ProfilName = self.db:GetCurrentProfile()
-	print(ProfilName);
+	--print(ProfilName);
 	
 	--self.db:DeleteProfile("Default",true)
 	self.db:ResetDB("Default");
@@ -2751,7 +2760,8 @@ function BananaBar3:UpdateTooltip()
         GameTooltip:ClearLines()
 
         if self.TARGETMARKS[id] then
-            local t = self.TARGETS[self.TARGETMARKS[id]]
+            
+			local t = self.TARGETS[self.TARGETMARKS[id]]
             GameTooltip:AddLine(UnitName(t.info_unit), 0.7, 0.7, 0.7)
           
             local i
@@ -3729,19 +3739,18 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
 	--if name  then print(name..i) end
 
 
-	 
-
 	
 	if name  then
-		
+	--print(i,name, rank, unit, target, raindex) end	
 			if IsInRaid() then
 					 --DEFAULT_CHAT_FRAME:AddMessage ("I am in a Raid Group.");
 				symbolID = GetRaidTargetIndex("raid" .. i .. "target") or "pas de symbol"
 			 
 			elseif not IsInRaid() then
 				if IsInGroup() then
-					 --DEFAULT_CHAT_FRAME:AddMessage ("I am in some kind of Group.");
+					-- DEFAULT_CHAT_FRAME:AddMessage ("I am in some kind of Group.");
 				symbolID = GetRaidTargetIndex(name.."-target") or "pas de symbol"
+				--print(symbolID)
 				else
 					 --DEFAULT_CHAT_FRAME:AddMessage ("I am not in any kind of Group.");
 				end
@@ -3754,32 +3763,24 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
 		--self:Debug("Player "..i.." : "..name)
 		--self:Debug("La cible de "..name.. " is " .. (UnitInRaid("RAID" .. i .. "TARGET") and "" or "not ") .. "in your raid group.")
 		if symbolID then 
-		self:Debug("La cible groupe de "..name.. " est marquée du symbol N° " .. symbolID .." party" .. i-1 .. "target")
-		self:Debug("La cible raid de "..name.. " est marquée du symbol N° " .. symbolID .." raid" .. i .. "target")		
+		self:Debug("La cible groupe de "..name.. " est symbol N° " .. symbolID .." party" .. i-1 .. "target")
+		--self:Debug("La cible raid de "..name.. " est marquée du symbol N° " .. symbolID .." raid" .. i .. "target")		
 		end
 
 	--si un joueur cible un NPC qui est marqué change l'attibution target du bouton 
 	if symbolID ~= "pas de symbol"  then
 		
-		if UnitAffectingCombat("player") then return end	
+		if UnitAffectingCombat("player") then 
+		
+		--return 
+		end	
 	    --BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", "RAID" .. i .. "TARGET")
         --BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", "PARTY" .. i .. "TARGET")
-		BananaBar3.Buttons[symbolID].frame:SetAttribute("unit", name .. "-TARGET")
-		BananaBar3.Buttons[symbolID].frame:SetAttribute("*type1", "target")
+		SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[symbolID].frame,"unit", name .. "-TARGET")
+		SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[symbolID].frame,"*type1", "target")
+		--print (GetUnitName(name .. "-TARGET"),"cible",self:GetName(BananaBar3.Buttons[symbolID]),symbolID,"=",name .. "-TARGET")
+		--print (UnitGUID(name .. "-TARGET"))
 		
-
-	
-		local uniT = BananaBar3.Buttons[symbolID].frame:GetAttribute("unit");
-		--self:Debug("Le bouton symbol N°"..symbolID.." est reglé sur " .. uniT.." : " .." par "..name)
-		
-		if uniT == nil then
-		  --self:UnregisterAllEvents();
-		else
-		--self:Debug("unit target de player reglé sur " .. uniT.." : " ..UnitName(uniT).." par "..name)
-		--self:Debug("Le bouton symbol N°"..symbolID.." est reglé sur " .. uniT.." : " ..UnitName(uniT).." par "..name)
-		end
-	
-	
 	end
 
 	end	
@@ -3798,6 +3799,7 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
             --self:Debug("set b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"))
 			--BananaBar3:Print(i)
 			SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "unit", target)
+			--SecureActionQueue:FrameSetAttribute(BananaBar3.Buttons[symbolID].frame,"unit", name .. "-TARGET")
             SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "type2", "menu")
             SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "*type1", "target")
         	
@@ -3815,7 +3817,7 @@ function BananaBar3:AssistScan(i, target, unit, raidIndex)
         end
     else
         if BananaBar3.AssistButtons[i].frame:GetAttribute("unit") ~= "" then
-           -- BananaBar3:Print(i)
+           
 			--self:Debug("set b"..i.."="..(target or "<nil>").." old="..(BananaBar3.AssistButtons[i].frame:GetAttribute("unit") or "<nil>"))
             SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "unit", nil)
             SecureActionQueue:FrameSetAttribute(BananaBar3.AssistButtons[i].frame, "type2", nil)
@@ -4018,7 +4020,7 @@ function BananaBar3:ScanUnit(unit, source)
     end
 
     if UnitExists(unit) then
-        --BananaBar3:Print("ScanUnit "..unit);
+        --print("ScanUnit ",unit);
         local rti = GetRaidTargetIndex(unit)
 
         self:AddTargetToList(rti, unit, source)
@@ -4138,7 +4140,7 @@ function BananaBar3:CanSetSymbols()
 end
 
 function BananaBar3:ChangeSymbol(indexFrom, indexTo)
-    --BananaBar3:Print("Change Symbol from "..indexFrom.." to "..indextTo);
+    BananaBar3:Print("Change Symbol from "..indexFrom.." to "..indextTo);
 	local unit1 = BananaBar3:GetUnitBySymbol(indexFrom)
     local unit2 = BananaBar3:GetUnitBySymbol(indexTo)
     if unit1 then
@@ -4175,7 +4177,7 @@ function BananaBar3:GetUnitBySymbol(index)
 end
 
 function BananaBar3:SetSymbol(index)
-		
+	
 	if GetRaidTargetIndex("target") == index then
         BananaBar3:PlayRemove()
         SetRaidTarget("target", 0)
