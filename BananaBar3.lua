@@ -4138,7 +4138,7 @@ function BananaBar3:CanSetSymbols()
 end
 
 function BananaBar3:ChangeSymbol(indexFrom, indexTo)
-    BananaBar3:Print("Change Symbol from "..indexFrom.." to "..indextTo);
+    --BananaBar3:Print("Change Symbol from ",indexFrom," to ",indextTo);
 	local unit1 = BananaBar3:GetUnitBySymbol(indexFrom)
     local unit2 = BananaBar3:GetUnitBySymbol(indexTo)
     if unit1 then
