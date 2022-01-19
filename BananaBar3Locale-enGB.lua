@@ -41,6 +41,12 @@ L.binding_key                     = "Key to set symbols to all accessible mobs";
 -- mob you are hoovering. This can be used to find a specific mob in a group or check the 
 -- symbol of the mob you are searching for 
 L.binding_search                  = "Search for a symbol with mouse over";
+L.binding_search_symbol                 = "Search/scroll symbol for a symbol with mouse over";
+L.binding_set_symbol_after_search		= "Set the symbol proposed by the mouse icon"
+L.binding_save_symbol_per_mobs			= "Save the symbol and associate it with this type of mob" 
+L.binding_search_saved_symbol_per_mobs	= "Search and choose the symbols among saved for this type of mobs"
+
+
 
 
 L.autosetcombat                  = "Auto set symbols on mobs when coming in fight with player";
@@ -131,8 +137,8 @@ L.scaleassistdesc                 = "Scale assist buttons the buttons from 10% t
 L.reset                           = "Reset"; 
 L.resetdesc                       = "reset all settings of the current profile"; 
 -- show option
-L.option                           = "Option"; 
-L.optiondesc                       = "Show Options"; 
+L.binding                          = "Binding"; 
+L.bindingdesc                       = "Show Binding Options"; 
 
 -- this message comes up if BananaBar3 has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults

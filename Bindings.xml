@@ -1,20 +1,41 @@
 <Bindings>
-	<Binding name="BananaBar3_BINDING_MOUSEOVER"  header="BananaBar3_PLUGINNAME" runOnUp="true">
+	<Binding name="BananaBar3_BINDING_MOUSEOVER"  category="Bananabar " header="BananaBar3_PLUGINNAME" runOnUp="true">
 		if ( keystate == "down" ) then
+			
 			BananaBar3:MouseOverSymbolsDown();
 		else
+			
 			BananaBar3:MouseOverSymbolsUp();
 		end
 	</Binding>
-	<Binding name="BananaBar3_BINDING_SEARCH"   runOnUp="true">
-		if ( keystate == "down" ) then
+	<Binding name="BananaBar3_BINDING_SCROLL_DOWN"  category="Bananabar "  runOnUp="false">
+		
+		print ("Scroll Down")
+		
 			BananaBar3:SearchDown();
-		else
-			BananaBar3:SearchUp();
-		end
+		
+			
+		
 	</Binding>
-	<Binding name="BananaBar3_BINDING_KEY">
+	<Binding name="BananaBar3_BINDING_SCROLL_UP" category="Bananabar "   runOnDown="false">
+		
+		print ("Scroll Up")
+		
+		BananaBar3:SearchUp();
+		
+		
+	</Binding>
+	<Binding name="BananaBar3_BINDING_KEY" category="Bananabar " >
+
 		BananaBar3:SetSymbolsKeyPressed();
+	</Binding>
+	<Binding name="BananaBar3_SAVE_SYMBOL_BINDING_KEY" category="Bananabar " >
+
+		BananaBar3:SaveSymbolsKeyPressed();
+	</Binding>
+	<Binding name="BananaBar3_SEARCH_SAVED_SYMBOL_BINDING_KEY" category="Bananabar " >
+
+		BananaBar3:SaveSymbolsKeyPressed();
 	</Binding>
 </Bindings>
 

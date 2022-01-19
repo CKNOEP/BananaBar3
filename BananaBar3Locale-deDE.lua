@@ -37,6 +37,11 @@ L.binding_key                     = "Taste zum setzen von Symbolen auf alle erre
 -- symbol of the mob you are searching for 
 L.binding_search                  = "Taste zum suchen von Symbolen durch Mouseover";
 
+L.binding_search_symbol                 = "Symbol suchen/scrollen nach einem Symbol mit Mouseover";
+L.binding_set_symbol_after_search		= "Stellen Sie das vom Maussymbol vorgeschlagene Symbol ein"
+L.binding_save_symbol_per_mobs			= "Speichern Sie das Symbol und verknüpfen Sie es mit dieser Art von Mob" 
+L.binding_search_saved_symbol_per_mobs	= "Suche und wähle die Symbole aus, die für diese Art von Mobs gespeichert sind"
+
 
 L.autosetcombat                  = "Symbole automatisch auf Mobs bei Kampfeintritt";
 L.autosetcombatdesc              = "Setze Symbole automatisch auf Mobs die in den Kampf eintreten";
@@ -119,8 +124,8 @@ L.iconminimapdesc                    = "Show icon Minamp";
 L.reset                           = "Einstellungen zurücksetzen";	
 L.resetdesc                       = "Setzt alle Einstellungen auf die Defaultwerte zurück mit Ausnahme der MobSettings";	
  -- show option
-L.option                           = "Option"; 
-L.optiondesc                       = "Show Options";        
+L.binding                            = "Binding"; 
+L.bindingdesc                       = "Show Binding Options";      
 -- this message comes up if BananaBarClassic has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults
 L.oldprofilemessage               = "BananaBarClassic hat erkannt das die vorhandenen einstellungen zu einer älteren version von BananaBar gehören die zu der aktuellen inkompatibel ist. Alle Einstellungen wurden auf die Defaultwerte zurückgesetzt.";

@@ -40,7 +40,13 @@ L.binding_key                     = "Touche pour définir les symboles sur les m
 -- when this key is held down, the mouse cursor changes it's icon to the icon of the 
 -- mob you are hoovering. This can be used to find a specific mob in a group or check the 
 -- symbol of the mob you are searching for 
-L.binding_search                  = "Rechercher un symbole avec la souris";
+
+L.binding_search_symbol                 = "Rechercher un symbole avec la souris";
+L.binding_set_symbol_after_search		= "Apppliquer le symbol proposé par l'icone de la souris"
+L.binding_save_symbol_per_mobs			= "Sauvegarder le symbol et l'associer à ce type de mob" 
+L.binding_search_saved_symbol_per_mobs	= "Recherche et propose les symboles sauvés pour ce type de mobs"
+
+
 
 
 L.autosetcombat                  = "Définir automatiquement des symboles sur les mobs lors d'un combat";
@@ -133,8 +139,8 @@ L.reset                           = "Réinitialiser";
 L.resetdesc                       = "Réinitialiser tous les paramètres du profil actuel"; 
 
 -- show option
-L.option                           = "Option"; 
-L.optiondesc                       = "Show Options"; 
+L.binding                           = "Raccourcis"; 
+L.bindingdesc                       = "Gérer les raccoucis"; 
 
 -- this message comes up if BananaBar3 has detected that you have installed a newer version 
 -- of BananaBar which is not compatible with the old one and the profile is resetted to defaults

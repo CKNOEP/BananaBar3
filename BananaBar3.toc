@@ -1,11 +1,11 @@
-## Interface: 20502
+## Interface: 20503
 ## Title: BananaBar3 Raid Symbols Classic & Ready TBC Classic |cff7fff7f-Ace3-|r
 ## Author: Bordeaux , Lädygaga-Sulfuron
 ## Version: "3.2.0" 
 ## Notes: BananaBar is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
 ## X-ReleaseDate: "2021-07-01T22:53:58Z"
 ## X-Email: lancetre at intenebris dot org
-## X-Credits: cknoep, ladygaga-sulfuron-eu, sipertruk, gogalugum, bordeaux  
+## X-Credits: cknoep, lanscestre as ladygaga-sulfuron-eu, sipertruk, gogalugum, bordeaux  
 ## X-Category: UnitFrame
 ## X-Embeds: Ace3
 ## X-Localizations: enUS, frFR, deDE

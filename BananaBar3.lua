@@ -28,6 +28,11 @@ BINDING_HEADER_BananaBar3_PLUGINNAME = L["addonnamelong"]
 BINDING_NAME_BananaBar3_BINDING_MOUSEOVER = L["binding_mouseover"]
 BINDING_NAME_BananaBar3_BINDING_KEY = L["binding_key"]
 BINDING_NAME_BananaBar3_BINDING_SEARCH = L["binding_search"]
+BINDING_NAME_BananaBar3_BINDING_SCROLL_DOWN = L["binding_search_symbol"]
+BINDING_NAME_BananaBar3_BINDING_SCROLL_UP = L["binding_set_symbol_after_search"]
+BINDING_NAME_BananaBar3_SAVE_SYMBOL_BINDING_KEY = L["binding_save_symbol_per_mobs"]
+BINDING_NAME_BananaBar3_SEARCH_SAVED_SYMBOL_BINDING_KEY = L["binding_search_saved_symbol_per_mobs"]
+
 
 BananaBar3.name = L["addonname"]
 BananaBar3.version = "3.2.0";
@@ -71,8 +76,8 @@ function BananaBar3:BBgetOptions()
 			end
         },
 		option = {
-            name = L["option"],
-            desc = L["optiondesc"],
+            name = L["binding"],
+            desc = L["bindingdesc"],
             hidden = false,
             width = "full",
             type = "execute",
@@ -2116,7 +2121,9 @@ function BananaBar3:COMBAT_LOG_EVENT_UNFILTERED(event, a1, a2, a3, ...)
 end
 
 function BananaBar3:BananaSetCursor(texture)
-    self.mouseOverlayFrameTex:SetTexture(texture)
+    
+	self.mouseOverlayFrameTex:SetTexture(texture)
+
 end
 
 function BananaBar3:PLAYER_REGEN_DISABLED(event)
@@ -3416,7 +3423,8 @@ function BananaBar3:OnTooltipUpdate()
 end
 
 function BananaBar3:BananaCursor()
-    if BananaBar3.Dragging then
+    --print (self.ShowMouseSymbol)
+	if BananaBar3.Dragging then
         if BananaBar3.DragPreparing then
             local x, y = GetCursorPosition()
             x = x - self.DragCursorPosX
@@ -3465,7 +3473,7 @@ function BananaBar3:BananaCursor()
             if idx and idx >= 1 and idx <= 8 then
                 self:BananaSetCursor(BANANA_RAID_CURSORS[idx])
             else
-                self:BananaSetCursor(nil)
+                --self:BananaSetCursor(nil)
             end
         else
             self:BananaSetCursor(nil)
@@ -3478,16 +3486,67 @@ function BananaBar3:SearchDown()
         return
     end
     --self:Print("Changing mouse cursor when over marked mob now.");
-    self.ShowMouseSymbol = true
-    self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 0.1, self)
+    
+	local idx_tex = (self.mouseOverlayFrame.texture:GetTextureFilePath()) 
+	
+	
+	if idx_tex then
+	local idx = string.sub(idx_tex, -1)
+
+	
+			if UnitExists("MOUSEOVER") then
+			local guid = UnitGUID("MOUSEOVER")
+			--print (guid)
+				BananaBar3:PlaySet()
+				SetRaidTarget("MOUSEOVER", idx)
+				self:BananaSetCursor(nil)
+				self.ShowMouseSymbol = false
+				self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 0.1, self) 				
+			end
+			
+		
+	end
+		
+	
+	
+	
+	self.ShowMouseSymbol = false
+--	BananaBar3.CancelTimer(self.BananaCursorTimer)
+	self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 0.1, self)  
+	
 end
 
 function BananaBar3:SearchUp()
-    if self.ShowMouseSymbol then
+  
+  self.ShowMouseSymbol = true  
+	if self.ShowMouseSymbol then
         --self:Print("No more changing mouse cursor when over marked mob now.");
-        self.ShowMouseSymbol = false
-        BananaBar3.CancelTimer(self.BananaCursorTimer)
+        
     end
+
+--self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 0.1, self)
+  --self.ShowMouseSymbol = true  
+
+local idx_tex = (self.mouseOverlayFrame.texture:GetTextureFilePath()) 
+print (idx_tex)
+BananaBar3.CancelTimer(self.BananaCursorTimer)
+if idx_tex then
+local idx = string.sub(idx_tex, -1)
+
+		print (idx)
+		if UnitExists("MOUSEOVER") then
+
+		self:BananaSetCursor(BANANA_RAID_CURSORS[idx-1])
+		
+        end
+else		
+		if UnitExists("MOUSEOVER") then
+
+		self:BananaSetCursor(BANANA_RAID_CURSORS[8])
+	BananaBar3.CancelTimer(self.BananaCursorTimer)
+		print (8)
+        end
+end
 end
 
 local targetingsymbol = 1
@@ -3552,11 +3611,12 @@ end
 function BananaBar3:MouseOverSymbolsDown()
     if BananaBar3.Dragging then
         -- dont start, dragging in progress
-        --BananaBar3:Print("dragging in progress, not painting");
+       --BananaBar3:Print("dragging in progress, not painting");
     elseif self.ShowMouseSymbol then
         -- dont start, dragging in progress
-        --BananaBar3:Print("searching in progress, not painting");
-    else
+        BananaBar3:Print("searching in progress, not painting");
+	
+	else
         -- start mouseoverpainting
         BananaBar3.MouseOverPainting = true
         self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 1, self)
