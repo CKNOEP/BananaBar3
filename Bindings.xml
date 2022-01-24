@@ -35,7 +35,7 @@
 	</Binding>
 	<Binding name="BananaBar3_SEARCH_SAVED_SYMBOL_BINDING_KEY" category="Bananabar " >
 
-		BananaBar3:SaveSymbolsKeyPressed();
+		BananaBar3:SearchSymbolsKeyPressed();
 	</Binding>
 </Bindings>
 
