@@ -3059,6 +3059,60 @@ function BananaBar3:SetSymbolsKeyPressed()
     self.SetSymbolsOnNextUpdate = true
 end
 
+--------------------------------
+--SEARCH SYMBOL ASSOCIED
+--------------------------------
+function BananaBar3:SearchSymbolsKeyPressed()
+    self:Debug("Search symbols Associed...")
+    if UnitName("mouseover") then
+		local name = UnitName("mouseover")
+		local zone = BananaBar3:ZoneText()
+		--print (name,zone)
+		local GMS = BananaBar3:GetMobSettings(zone, name)
+		--BananaBar3:Dump("GMS", GMS)
+		
+		local tabletarget={}
+		
+		--for i = 1, 8 do
+			--if GMS["sym"..i] and GMS["sym"..i] == true then
+			--print("Symbole",i ,name,GMS["sym"..i])
+			--table.insert(tabletarget,GMS["sym"..i])
+			--end
+		--end	
+		--print(table.getn(tabletarget))
+		
+		
+		-- La cible n'a pas de signe on affecte le premier
+		if not GetRaidTargetIndex("mouseover") then
+				for i = 1, 8 do
+					if GMS["sym"..i] == true then
+					SetRaidTarget("mouseover", i)
+					
+					break
+					end
+				
+				end
+		elsevvvvvvv
+		-- La cible a deja un signe on affecte le signe suivant
+
+			for j = (GetRaidTargetIndex("mouseover") + 1), 8 do
+			--print(GetRaidTargetIndex("mouseover"),GMS["sym"..j] )			
+					if GMS["sym"..j] == true then
+						SetRaidTarget("mouseover", j)
+						break
+					end
+					
+			end
+		
+			SetRaidTarget("mouseover", 0)
+		
+		end
+	
+	end	
+end		
+ 
+
+
 function BananaBar3:AutoSetSymbols(combatOnly)
     if not BananaBar3:CanSetSymbols() then
         return
