@@ -37,6 +37,10 @@
 
 		BananaBar3:SearchSymbolsKeyPressed();
 	</Binding>
+	<Binding name="BananaBar3_Reset_Symbol" category="Bananabar " >
+
+		SetRaidTarget("mouseover", 0);
+	</Binding>
 </Bindings>
 
 

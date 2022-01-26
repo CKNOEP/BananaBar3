@@ -3063,28 +3063,27 @@ end
 --SEARCH SYMBOL ASSOCIED
 --------------------------------
 function BananaBar3:SearchSymbolsKeyPressed()
-    self:Debug("Search symbols Associed...")
+    
     if UnitName("mouseover") then
 		local name = UnitName("mouseover")
 		local zone = BananaBar3:ZoneText()
 		--print (name,zone)
+		local count = 0
 		local GMS = BananaBar3:GetMobSettings(zone, name)
 		--BananaBar3:Dump("GMS", GMS)
+		for i = 1, 8, 1 do
+					if GMS["sym"..i] == true then
+					 count = count + 1
+					end
+				
+		end
+					
+		self:Debug("Search symbols Associed...:"..count.."Mark(s) stored out of the 8 possible found")
 		
-		local tabletarget={}
-		
-		--for i = 1, 8 do
-			--if GMS["sym"..i] and GMS["sym"..i] == true then
-			--print("Symbole",i ,name,GMS["sym"..i])
-			--table.insert(tabletarget,GMS["sym"..i])
-			--end
-		--end	
-		--print(table.getn(tabletarget))
-		
-		
+			
 		-- La cible n'a pas de signe on affecte le premier
 		if not GetRaidTargetIndex("mouseover") then
-				for i = 1, 8 do
+				for i = 1, 8, 1 do
 					if GMS["sym"..i] == true then
 					SetRaidTarget("mouseover", i)
 					
@@ -3092,23 +3091,34 @@ function BananaBar3:SearchSymbolsKeyPressed()
 					end
 				
 				end
-		elsevvvvvvv
+		else
 		-- La cible a deja un signe on affecte le signe suivant
 
-			for j = (GetRaidTargetIndex("mouseover") + 1), 8 do
+			for j = (GetRaidTargetIndex("mouseover") + 1),8,1 do
 			--print(GetRaidTargetIndex("mouseover"),GMS["sym"..j] )			
+					
+					--print(GetRaidTargetIndex("mouseover") + 1, j)
+					
 					if GMS["sym"..j] == true then
 						SetRaidTarget("mouseover", j)
+						
+						if GetRaidTargetIndex("mouseover") + 1 == j then
+						
+						end
+						
 						break
-					end
+					else
 					
-			end
+					
+					end
 		
+			if j == 8 then
 			SetRaidTarget("mouseover", 0)
-		
+			end 
 		end
 	
-	end	
+	end
+	end
 end		
  
 
@@ -3582,12 +3592,12 @@ function BananaBar3:SearchUp()
   --self.ShowMouseSymbol = true  
 
 local idx_tex = (self.mouseOverlayFrame.texture:GetTextureFilePath()) 
-print (idx_tex)
+--print (idx_tex)
 BananaBar3.CancelTimer(self.BananaCursorTimer)
 if idx_tex then
 local idx = string.sub(idx_tex, -1)
 
-		print (idx)
+	--	print (idx)
 		if UnitExists("MOUSEOVER") then
 
 		self:BananaSetCursor(BANANA_RAID_CURSORS[idx-1])
@@ -3598,7 +3608,7 @@ else
 
 		self:BananaSetCursor(BANANA_RAID_CURSORS[8])
 	BananaBar3.CancelTimer(self.BananaCursorTimer)
-		print (8)
+		--print (8)
         end
 end
 end
