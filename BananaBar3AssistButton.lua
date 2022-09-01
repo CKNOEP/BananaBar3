@@ -515,11 +515,17 @@ function BananaBar3AssistButton:SetSymbolTexture(frame, index)
         frame:SetTexCoord(0, 1, 0, 1);
     else
         frame:SetTexture(BANANA_TEXTURE_RAIDICONS_FLAT);            
-        frame:SetTexCoord(
-            UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordLeft, 
-            UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordRight, 
-            UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordTop, 
-            UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordBottom
+        local raidTargetIconButtons = UnitPopupMenuRaidTargetIcon.GetMenuButtons()[1]["GetButtons"]()[9 - index]
+		
+		local coords = raidTargetIconButtons["GetTextureCoords"]()
+	    local tCoordLeft, tCoordRight, tCoordTop, tCoordBottom = coords["tCoordLeft"], coords["tCoordRight"], coords["tCoordTop"], coords["tCoordBottom"]
+		
+		print (tCoordLeft, tCoordRight, tCoordTop, tCoordBottom)
+		frame:SetTexCoord(
+             tCoordLeft, 
+             tCoordRight, 
+             tCoordTop, 
+             tCoordBottom
         );
     end
 end

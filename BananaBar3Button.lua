@@ -218,11 +218,17 @@ function BananaBar3Button:SetSymbolTexture(frame, index, unit, icon)
 		frame:SetDesaturated(1);
 		frame:SetVertexColor(0.5, 0.5, 0.5);
 		
+		local raidTargetIconButtons = UnitPopupMenuRaidTargetIcon.GetMenuButtons()[1]["GetButtons"]()[9 - index]
+		
+		local coords = raidTargetIconButtons["GetTextureCoords"]()
+	    local tCoordLeft, tCoordRight, tCoordTop, tCoordBottom = coords["tCoordLeft"], coords["tCoordRight"], coords["tCoordTop"], coords["tCoordBottom"]
+		
+		--print (tCoordLeft, tCoordRight, tCoordTop, tCoordBottom)
 		frame:SetTexCoord(
-            UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordLeft, 
-            UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordRight, 
-            UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordTop, 
-            UnitPopupButtons[BANANA_RAID_TARGET_X[index]].tCoordBottom
+             tCoordLeft, 
+             tCoordRight, 
+             tCoordTop, 
+             tCoordBottom
         );
 
     end
