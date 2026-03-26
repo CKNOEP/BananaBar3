@@ -56,7 +56,8 @@ function BananaBar3AssistButton:init(addon,name)
     BananaBarButtonNameCounter = BananaBarButtonNameCounter +1;
     
 	
-		self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3AssistButtonTemplate","SecureActionButtonTemplate"); 
+		-- Use Button type to match template type in XML (TBC compatibility)
+	self.frame = CreateFrame("Button",self.FrameName,UIParent,"BananaBar3AssistButtonTemplate"); 
 		
 		SecureActionQueue:FrameSetAttribute(self.frame,"type2", "menu")
 		SecureActionQueue:FrameSetAttribute(self.frame,"*type1", "target")

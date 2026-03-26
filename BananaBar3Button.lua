@@ -51,8 +51,8 @@ function BananaBar3Button:init(addon,name)
     
 	BananaBarAllButtons[BananaBarButtonNameCounter] = self;
     BananaBarButtonNameCounter = BananaBarButtonNameCounter +1;
-    --self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3ButtonTemplate","SecureActionButtonTemplate"); 
-    self.frame = CreateFrame("CheckButton",self.FrameName,UIParent,"BananaBar3ButtonTemplate" , "SecureActionButtonTemplate"); 	
+    -- Use Button type to match template type in XML (TBC compatibility)
+    self.frame = CreateFrame("Button",self.FrameName,UIParent,"BananaBar3ButtonTemplate");
 			
 		self.frame:SetAttribute("*type1", "target")
 		self.frame:EnableMouse(true)
