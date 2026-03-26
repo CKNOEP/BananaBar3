@@ -53,11 +53,16 @@ function BananaBar3Button:init(addon,name)
     BananaBarButtonNameCounter = BananaBarButtonNameCounter +1;
     -- Use Button type to match template type in XML (TBC compatibility)
     self.frame = CreateFrame("Button",self.FrameName,UIParent,"BananaBar3ButtonTemplate");
-			
-		self.frame:SetAttribute("*type1", "target")
-		self.frame:EnableMouse(true)
-   
-	
+
+	-- Verify frame was created successfully (TBC compat issue check)
+	if not self.frame then
+		self.Addon:Print("ERROR: Failed to create frame "..self.FrameName)
+		return
+	end
+
+	self.frame:SetAttribute("*type1", "target")
+	self.frame:EnableMouse(true)
+
     self.frame:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp", "Button4Up", "Button5Up");
 	self.selected = false;
     self.frame.Id="1"

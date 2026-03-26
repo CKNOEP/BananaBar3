@@ -3787,7 +3787,9 @@ function BananaBar3:InitChatFrame()
         end
         if not self.DebugChatFrame then
             self.DebugChatFrame = _G["ChatFrame" .. 1]
-            self:Debug("Set debug chat frame to '".._G["ChatFrame" .. 1].name.."'")
+            -- ChatFrames don't have .name attribute in Classic/TBC
+            local chatName = self.DebugChatFrame and self.DebugChatFrame:GetName() or "ChatFrame1"
+            self:Debug("Set debug chat frame to '"..(chatName or "ChatFrame1").."'")
         end
     end
 end

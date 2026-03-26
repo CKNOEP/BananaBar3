@@ -105,15 +105,15 @@
 				</Texture>
 			</Layer>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentButtonback" file="Interface\AddOns\BananaBar3\Images\buttonback" hidden="false"  frameLevel="500">
+				<Texture name="$parentButtonback" file="Interface\AddOns\BananaBar3\Images\buttonback" hidden="false">
 					<Color a="0.75" r="0.25" g="0.25" b="0.25" />
 				</Texture>
 			</Layer>
 			<Layer level="ARTWORK">
 				<Texture name="$parentFlash" file="Interface\Buttons\UI-QuickslotRed" hidden="true" />
-				<Texture name="$parentIcon" textureSubLevel="0" frameLevel="501" >
+				<Texture name="$parentIcon" textureSubLevel="0" >
 				</Texture>
-				<FontString name="$parentMobName" inherits="GameFontNormalSmall" justifyH="LEFT" frameLevel="502">
+				<FontString name="$parentMobName" inherits="GameFontNormalSmall" justifyH="LEFT">
 					<Size>
 						<AbsDimension x="300" y="24" />
 					</Size>
@@ -125,7 +125,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<Texture name="$parentTargetSymbol" file="Interface\TargetingFrame\UI-RaidTargetingIcons" hidden="true" frameLevel="503">
+				<Texture name="$parentTargetSymbol" file="Interface\TargetingFrame\UI-RaidTargetingIcons" hidden="true">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -137,7 +137,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentHuntersmarkSymbol" file="Interface\AddOns\BananaBar3\Images\HuntermarkArrow" hidden="false" frameLevel="504">
+				<Texture name="$parentHuntersmarkSymbol" file="Interface\AddOns\BananaBar3\Images\HuntermarkArrow" hidden="false">
 					<Size>
 						<AbsDimension x="16" y="16" />
 					</Size>
@@ -149,7 +149,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<Texture name="$parentDeadSymbol" file="Interface\AddOns\BananaBar3\Images\Dead" hidden="true" frameLevel="505">
+				<Texture name="$parentDeadSymbol" file="Interface\AddOns\BananaBar3\Images\Dead" hidden="true">
 					<Size>
 						<AbsDimension x="24" y="24" />
 					</Size>

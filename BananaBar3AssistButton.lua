@@ -57,9 +57,15 @@ function BananaBar3AssistButton:init(addon,name)
     
 	
 		-- Use Button type to match template type in XML (TBC compatibility)
-	self.frame = CreateFrame("Button",self.FrameName,UIParent,"BananaBar3AssistButtonTemplate"); 
-		
-		SecureActionQueue:FrameSetAttribute(self.frame,"type2", "menu")
+	self.frame = CreateFrame("Button",self.FrameName,UIParent,"BananaBar3AssistButtonTemplate");
+
+	-- Verify frame was created successfully (TBC compat issue check)
+	if not self.frame then
+		self.Addon:Print("ERROR: Failed to create AssistButton frame "..self.FrameName)
+		return
+	end
+
+	SecureActionQueue:FrameSetAttribute(self.frame,"type2", "menu")
 		SecureActionQueue:FrameSetAttribute(self.frame,"*type1", "target")
 				
 
