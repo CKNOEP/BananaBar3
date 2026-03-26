@@ -20,17 +20,18 @@ local BananaBarAllAssistButtons = {};
 local BananaBarButtonNameCounter = 1;
 BananaBarButtonUnderMouse = nil;
 
--- Raid target icon texture coordinates (8 icons in 2x4 grid)
+-- Raid target icon texture coordinates (8 icons in 2 columns x 4 rows)
+-- Texture: Interface\TargetingFrame\UI-RaidTargetingIcons
 -- Replaces UnitPopupMenuRaidTargetIcon API (unavailable in TBC)
 local RAID_TARGET_ICON_COORDS = {
-	{0, 0.25, 0, 0.5},		-- [1] Skull
-	{0.25, 0.5, 0, 0.5},	-- [2] X
-	{0.5, 0.75, 0, 0.5},	-- [3] Square
-	{0.75, 1, 0, 0.5},		-- [4] Moon
-	{0, 0.25, 0.5, 1},		-- [5] Triangle
-	{0.25, 0.5, 0.5, 1},	-- [6] Diamond
-	{0.5, 0.75, 0.5, 1},	-- [7] Circle
-	{0.75, 1, 0.5, 1},		-- [8] Star
+	{0, 0.5, 0, 0.25},		-- [1] Skull (top-left)
+	{0.5, 1, 0, 0.25},		-- [2] X (top-right)
+	{0, 0.5, 0.25, 0.5},	-- [3] Square (2nd row left)
+	{0.5, 1, 0.25, 0.5},	-- [4] Moon (2nd row right)
+	{0, 0.5, 0.5, 0.75},	-- [5] Triangle (3rd row left)
+	{0.5, 1, 0.5, 0.75},	-- [6] Diamond (3rd row right)
+	{0, 0.5, 0.75, 1},		-- [7] Circle (bottom left)
+	{0.5, 1, 0.75, 1},		-- [8] Star (bottom right)
 };
 
 function BananaShowTargetDropDown()
