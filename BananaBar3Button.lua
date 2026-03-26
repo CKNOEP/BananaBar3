@@ -19,6 +19,19 @@ local BananaBarAllButtons = {};
 local BananaBarButtonNameCounter = 1;
 BananaBarButtonUnderMouse = nil;
 
+-- Raid target icon texture coordinates (8 icons in 2x4 grid)
+-- Replaces UnitPopupMenuRaidTargetIcon API (unavailable in TBC)
+local RAID_TARGET_ICON_COORDS = {
+	{0, 0.25, 0, 0.5},		-- [1] Skull
+	{0.25, 0.5, 0, 0.5},	-- [2] X
+	{0.5, 0.75, 0, 0.5},	-- [3] Square
+	{0.75, 1, 0, 0.5},		-- [4] Moon
+	{0, 0.25, 0.5, 1},		-- [5] Triangle
+	{0.25, 0.5, 0.5, 1},	-- [6] Diamond
+	{0.5, 0.75, 0.5, 1},	-- [7] Circle
+	{0.75, 1, 0.5, 1},		-- [8] Star
+};
+
 function BananaBar3Button:new(addon, name)
     o = {}
     setmetatable(o, self)
@@ -211,25 +224,19 @@ function BananaBar3Button:SetSymbolTexture(frame, index, unit, icon)
         --frame:SetTexture(BANANA_TEXTURE_HUNTERSMARK);            
         --frame:SetTexCoord(0, 1, 0, 1);
     else
-        frame:SetTexture(BANANA_TEXTURE_RAIDICONS);            
+        frame:SetTexture(BANANA_TEXTURE_RAIDICONS);
         --grayscale option
 		--self.Addon:Print("initFrame: ", frame, "index : ",index,"  unit:", unit,"  icone: ",icone);
-		
+
 		frame:SetDesaturated(1);
 		frame:SetVertexColor(0.5, 0.5, 0.5);
-		
-		local raidTargetIconButtons = UnitPopupMenuRaidTargetIcon.GetMenuButtons()[1]["GetButtons"]()[9 - index]
-		
-		local coords = raidTargetIconButtons["GetTextureCoords"]()
-	    local tCoordLeft, tCoordRight, tCoordTop, tCoordBottom = coords["tCoordLeft"], coords["tCoordRight"], coords["tCoordTop"], coords["tCoordBottom"]
-		
-		--print (tCoordLeft, tCoordRight, tCoordTop, tCoordBottom)
-		frame:SetTexCoord(
-             tCoordLeft, 
-             tCoordRight, 
-             tCoordTop, 
-             tCoordBottom
-        );
+
+		-- Use hardcoded coordinates instead of UnitPopupMenuRaidTargetIcon (TBC compatible)
+		local coordIndex = 9 - index
+		if coordIndex >= 1 and coordIndex <= 8 then
+			local coords = RAID_TARGET_ICON_COORDS[coordIndex]
+			frame:SetTexCoord(coords[1], coords[2], coords[3], coords[4]);
+		end
 
     end
 

@@ -3236,7 +3236,7 @@ end
 
 function BananaBar3:UPDATE_MOUSEOVER_UNIT(a1, a2, a3)
     if UnitExists("mouseover") then
-        if UnitCanAttack("player", "mouseover") and (not UnitIsCivilian("mouseover")) then
+        if UnitCanAttack("player", "mouseover") then
             if not UnitIsPlayer("mouseover") then
                 self:AddNewMob(self:ZoneText(), UnitName("mouseover"))
             end
@@ -4238,7 +4238,7 @@ function BananaBar3:UnitHasHuntersMark(unit)
 end
 
 function BananaBar3:IsAutoSymbolTarget(unit)
-    if UnitCanAttack("player", unit) and (not UnitIsCivilian(unit)) then
+    if UnitCanAttack("player", unit) then
         return true
     else
         return false
