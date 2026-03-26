@@ -27,4 +27,6 @@ BananaBar3Locale-frFR.lua
 BananaBar3Button.lua
 BananaBar3AssistButton.lua
 BananaBar3.lua
-Bindings.xml
+## TBC compatibility: Bindings.xml format not supported in TBC Anniversary
+## Use BINDING_HEADER_* and BINDING_NAME_* Lua variables instead
+# Bindings.xml
