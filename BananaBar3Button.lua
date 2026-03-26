@@ -19,18 +19,18 @@ local BananaBarAllButtons = {};
 local BananaBarButtonNameCounter = 1;
 BananaBarButtonUnderMouse = nil;
 
--- Raid target icon texture coordinates (4 columns x 2 rows)
+-- Raid target icon texture coordinates (8 columns x 1 row)
 -- Texture: Interface\TargetingFrame\UI-RaidTargetingIcons
--- CORRECTED: Top row: Moon, Square, Cross, Skull | Bottom row: Star, Circle, Diamond, Triangle
+-- Layout: [Star][Circle][Diamond][Triangle][Moon][Square][Cross][Skull] (left to right)
 local RAID_TARGET_ICON_COORDS = {
-	{0, 0.25, 0.5, 1},		-- [1] Star (bottom-left)
-	{0.25, 0.5, 0.5, 1},	-- [2] Circle (bottom-2nd)
-	{0.5, 0.75, 0.5, 1},	-- [3] Diamond (bottom-3rd)
-	{0.75, 1, 0.5, 1},		-- [4] Triangle (bottom-right)
-	{0, 0.25, 0, 0.5},		-- [5] Moon (top-left)
-	{0.25, 0.5, 0, 0.5},	-- [6] Square (top-2nd)
-	{0.5, 0.75, 0, 0.5},	-- [7] Cross (top-3rd)
-	{0.75, 1, 0, 0.5},		-- [8] Skull (top-right)
+	{0.000, 0.125, 0, 1},	-- [1] Star
+	{0.125, 0.250, 0, 1},	-- [2] Circle
+	{0.250, 0.375, 0, 1},	-- [3] Diamond
+	{0.375, 0.500, 0, 1},	-- [4] Triangle
+	{0.500, 0.625, 0, 1},	-- [5] Moon
+	{0.625, 0.750, 0, 1},	-- [6] Square
+	{0.750, 0.875, 0, 1},	-- [7] Cross
+	{0.875, 1.000, 0, 1},	-- [8] Skull
 };
 
 function BananaBar3Button:new(addon, name)
