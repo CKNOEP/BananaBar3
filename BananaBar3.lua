@@ -1804,8 +1804,9 @@ function BananaBar3:OnInitialize()
         BananaBar3:Execute_Config()
     end
 
-    --self.mouseOverlayFrame = CreateFrame("Frame", "BananaMouseOverlay", UIParent, "SecureActionButtonTemplate")
-	self.mouseOverlayFrame = CreateFrame("CheckButton", "BananaMouseOverlay", UIParent, "SecureActionButtonTemplate")
+    -- TBC compatibility: SecureActionButtonTemplate doesn't exist in TBC
+	-- Use CheckButton without template for simple overlay frame
+	self.mouseOverlayFrame = CreateFrame("CheckButton", "BananaMouseOverlay", UIParent)
 	-- sipertruk commented
 	--In BananaBar3.lua line 1687 you're creating a "Frame" using "SecureActionButtonTemplate" but it must be a "CheckButton" instead, it might work with a "Frame" but the UI complaints that there's no OnClick script in the object.
 

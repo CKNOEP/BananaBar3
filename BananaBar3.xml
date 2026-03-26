@@ -11,7 +11,8 @@
 		</FontHeight>
 		<Color r="1.0" g="0.7" b="0.7" />
 	</Font>
-	<Button name="BananaBar3ButtonTemplate" clampedToScreen="true"  inherits="SecureActionButtonTemplate"  virtual="true">
+	<!-- TBC compatibility: Use no inherit or SecureButtonTemplate instead of SecureActionButtonTemplate -->
+	<Button name="BananaBar3ButtonTemplate" clampedToScreen="true" virtual="true">
 				
 		<Size>
 			<AbsDimension x="36" y="36" />
