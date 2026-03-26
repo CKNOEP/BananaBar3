@@ -1826,7 +1826,8 @@ function BananaBar3:OnInitialize()
             self:OnMouseOverlayUpdate(...)
         end
     )
-    self.mouseOverlayFrameTex = self.mouseOverlayFrame:CreateTexture(nil, "TOOLTIP")
+    -- TOOLTIP is frameStrata, not drawLayer. Use OVERLAY for drawLayer
+    self.mouseOverlayFrameTex = self.mouseOverlayFrame:CreateTexture(nil, "OVERLAY")
     self.mouseOverlayFrameTex:SetTexture(nil)
     self.mouseOverlayFrameTex:SetAllPoints(self.mouseOverlayFrame)
     self.mouseOverlayFrame.texture = self.mouseOverlayFrameTex
