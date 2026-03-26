@@ -1674,8 +1674,13 @@ function BananaBar3:OnInitialize()
 	
     --self.dewdrop = AceLibrary("Dewdrop-2.0")
 
-    --self:RegisterChatCommand("bb2", options);
+	-- Register slash commands to open options
+	self:RegisterChatCommand("bb", function() LibStub("AceConfigDialog-3.0"):Open("BananaBar3") end)
+	self:RegisterChatCommand("banana", function() LibStub("AceConfigDialog-3.0"):Open("BananaBar3") end)
+	self:RegisterChatCommand("bananabar", function() LibStub("AceConfigDialog-3.0"):Open("BananaBar3") end)
+
 	self:Print("\124cffFF0000Bannabar 3 by Lädygaga-Sulfuron EU Loaded\124r")
+	self:Print("\124cff7fff7fCommands: /bb, /banana, /bananabar\124r")
 	
 	-- icon MiniMap
 	 if LDB then
