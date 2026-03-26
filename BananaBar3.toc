@@ -1,7 +1,7 @@
 ## Interface: 11508,20505,30400
 ## Title: BananaBar3 Raid Symbols Classic & Ready TBC/WOTLK Classic |cff7fff7f-Ace3-|r
 ## Author: Bordeaux , Lädygaga-Sulfuron
-## Version: "3.2.1" 
+## Version: "3.2.2" 
 ## Notes: BananaBar is a set of buttons and functions to manage everything you can do with raid symbols. V3 add Targeting funtion
 ## X-ReleaseDate: "2022-09-01T22:53:58Z"
 ## X-Email: lancetre at intenebris dot org
