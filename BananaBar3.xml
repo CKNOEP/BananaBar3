@@ -113,6 +113,16 @@
 			<Layer level="ARTWORK">
 				<Texture name="$parentFlash" file="Interface\Buttons\UI-QuickslotRed" hidden="true" />
 				<Texture name="$parentIcon">
+					<Size>
+						<AbsDimension x="36" y="36" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
 				</Texture>
 				<FontString name="$parentMobName" inherits="GameFontNormalSmall" justifyH="LEFT">
 					<Size>
