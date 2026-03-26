@@ -1675,9 +1675,19 @@ function BananaBar3:OnInitialize()
     --self.dewdrop = AceLibrary("Dewdrop-2.0")
 
 	-- Register slash commands to open options
-	self:RegisterChatCommand("bb", function() LibStub("AceConfigDialog-3.0"):Open("BananaBar3") end)
-	self:RegisterChatCommand("banana", function() LibStub("AceConfigDialog-3.0"):Open("BananaBar3") end)
-	self:RegisterChatCommand("bananabar", function() LibStub("AceConfigDialog-3.0"):Open("BananaBar3") end)
+	local function OpenOptions()
+		self:Print("Opening BananaBar3 options...")
+		local success = pcall(function()
+			LibStub("AceConfigDialog-3.0"):Open("BananaBar3")
+		end)
+		if not success then
+			self:Print("ERROR: Failed to open options panel")
+		end
+	end
+
+	self:RegisterChatCommand("bb", OpenOptions)
+	self:RegisterChatCommand("banana", OpenOptions)
+	self:RegisterChatCommand("bananabar", OpenOptions)
 
 	self:Print("\124cffFF0000Bannabar 3 by Lädygaga-Sulfuron EU Loaded\124r")
 	self:Print("\124cff7fff7fCommands: /bb, /banana, /bananabar\124r")
