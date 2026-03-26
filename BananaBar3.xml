@@ -208,6 +208,19 @@
 				</FontString>
 			</Layer>
 			<Layer level="OVERLAY">
+				<!-- DEBUG: Button number display -->
+				<FontString name="$parentButtonNumber" inherits="GameFontBananaButton" justifyH="CENTER" justifyV="MIDDLE">
+					<Size>
+						<AbsDimension x="36" y="36" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER" relativePoint="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
 				<!-- schrift, unten mitte -->
 				<FontString name="$parentName" inherits="GameFontHighlightSmallOutline">
 					<Size>

@@ -79,6 +79,13 @@ function BananaBar3Button:init(addon,name)
     self.Arrow2 = getglobal(self.FrameName.."Arrow2");
     self.Arrow3 = getglobal(self.FrameName.."Arrow3");
     self.Arrow4 = getglobal(self.FrameName.."Arrow4");
+
+    -- DEBUG: Display button number for diagnostics
+    self.ButtonNumber = getglobal(self.FrameName.."ButtonNumber");
+    if self.ButtonNumber then
+        self.ButtonNumber:SetText(tostring(self.ButtonId));
+        self.ButtonNumber:Show();
+    end
     self.Selected = getglobal(self.FrameName.."Selected");
     self.NormalTexture = getglobal(self.FrameName.."NormalTexture");
     self.PushedTexture = getglobal(self.FrameName.."PushedTexture");   
