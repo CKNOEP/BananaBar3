@@ -1660,9 +1660,12 @@ function BananaBar3:OnInitialize()
 	
 	LibStub("AceConfig-3.0"):RegisterOptionsTable("BananaBar3", BananaBar3:BBgetOptions(), {"bb2", "bb3","bb", "bananabar"})
 	LibStub("AceConfig-3.0"):RegisterOptionsTable("Profiles BB", ProfilesOptions)
-    
-	AceConfigDialog:AddToBlizOptions("BananaBar3")
-	AceConfigDialog:AddToBlizOptions("BananaBar3", "Profiles", "BananaBar3","profile")	
+
+	-- InterfaceOptions_AddCategory only exists in Retail (Dragonflight+), not in Classic/TBC/WOTLK
+	if InterfaceOptions_AddCategory then
+		AceConfigDialog:AddToBlizOptions("BananaBar3")
+		AceConfigDialog:AddToBlizOptions("BananaBar3", "Profiles", "BananaBar3","profile")
+	end
 	
     self.BananaUpdateTimer = self:ScheduleRepeatingTimer("BananaUpdate", self.db.profile.updaterate, self)
     self.BananaCursorTimer = self:ScheduleRepeatingTimer("BananaCursor", 1, self)
