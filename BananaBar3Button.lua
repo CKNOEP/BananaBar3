@@ -19,18 +19,19 @@ local BananaBarAllButtons = {};
 local BananaBarButtonNameCounter = 1;
 BananaBarButtonUnderMouse = nil;
 
--- Raid target icon texture coordinates (8 icons in 2 columns x 4 rows)
+-- Raid target icon texture coordinates (8 icons in 4 columns x 2 rows)
 -- Texture: Interface\TargetingFrame\UI-RaidTargetingIcons
--- Replaces UnitPopupMenuRaidTargetIcon API (unavailable in TBC)
+-- Direct mapping: index -> coordinates (no inversion)
+-- Order: Star, Circle, Diamond, Triangle, Moon, Square, Cross, Skull
 local RAID_TARGET_ICON_COORDS = {
-	{0, 0.5, 0, 0.25},		-- [1] Skull (top-left)
-	{0.5, 1, 0, 0.25},		-- [2] X (top-right)
-	{0, 0.5, 0.25, 0.5},	-- [3] Square (2nd row left)
-	{0.5, 1, 0.25, 0.5},	-- [4] Moon (2nd row right)
-	{0, 0.5, 0.5, 0.75},	-- [5] Triangle (3rd row left)
-	{0.5, 1, 0.5, 0.75},	-- [6] Diamond (3rd row right)
-	{0, 0.5, 0.75, 1},		-- [7] Circle (bottom left)
-	{0.5, 1, 0.75, 1},		-- [8] Star (bottom right)
+	{0.75, 1, 0.5, 1},		-- [1] Star
+	{0.5, 0.75, 0.5, 1},	-- [2] Circle
+	{0.25, 0.5, 0.5, 1},	-- [3] Diamond
+	{0, 0.25, 0.5, 1},		-- [4] Triangle
+	{0.75, 1, 0, 0.5},		-- [5] Moon
+	{0.5, 0.75, 0, 0.5},	-- [6] Square
+	{0.25, 0.5, 0, 0.5},	-- [7] Cross/X
+	{0, 0.25, 0, 0.5},		-- [8] Skull
 };
 
 function BananaBar3Button:new(addon, name)
@@ -238,10 +239,11 @@ function BananaBar3Button:SetSymbolTexture(frame, index, unit, icon)
 		frame:SetVertexColor(0.5, 0.5, 0.5);
 
 		-- Use hardcoded coordinates instead of UnitPopupMenuRaidTargetIcon (TBC compatible)
-		local coordIndex = 9 - index
-		if coordIndex >= 1 and coordIndex <= 8 then
-			local coords = RAID_TARGET_ICON_COORDS[coordIndex]
-			frame:SetTexCoord(coords[1], coords[2], coords[3], coords[4]);
+		if index >= 1 and index <= 8 then
+			local coords = RAID_TARGET_ICON_COORDS[index]
+			if coords then
+				frame:SetTexCoord(coords[1], coords[2], coords[3], coords[4]);
+			end
 		end
 
     end
